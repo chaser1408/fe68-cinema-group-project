@@ -1,14 +1,13 @@
-import React, { Fragment } from "react";
-import MovieDetail from "../MovieDetail/MovieDetail";
+import React, { Component } from "react";
 import MovieList from "../MovieList/MovieList";
-
-function Home() {
-  return (
-    <Fragment>
-      <MovieList />
-      <MovieDetail />
-    </Fragment>
-  );
+class Home extends Component {
+  render() {
+    return (
+      <>
+        <MovieList />
+      </>
+    );
+  }
 }
 
 export default Home;

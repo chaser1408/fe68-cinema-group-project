@@ -1,7 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 
-function MovieDetail() {
-  return <div>MovieDetail</div>;
+export class MovieDetail extends Component {
+  render() {
+    return (
+      <div>
+        <div>MovieDetail</div>
+      </div>
+    );
+  }
 }
 
 export default MovieDetail;
