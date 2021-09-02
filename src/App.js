@@ -1,5 +1,6 @@
 import Home from "container/clients/Home/Home";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
+import SeatPlan from "container/clients/SeatPlan/SeatPlan";
 // import MovieList from "container/clients/MovieList/MovieList";
 // import PageNotFound from "container/shared/PageNotFound/PageNotFound";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
@@ -20,6 +21,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/movie-detail/:movieId" component={MovieDetail} />
+          <Route exact path="/seat-plan/:showTimeId" component={SeatPlan} />
         </Switch>
       </Router>
     </>

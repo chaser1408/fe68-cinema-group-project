@@ -3,11 +3,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import movieReducer from "container/clients/MovieList/module/reducers";
 import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
-
+import movieSeatPlanReducer from "container/clients/SeatPlan/module/reducers";
 
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
+  movieSeatPlanReducer,
 });
 
 const store = createStore(
