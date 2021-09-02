@@ -11,7 +11,8 @@ export class SeatPlan extends Component {
 
   render() {
     const { movieSeat } = this.props;
-
+    // movieSeat is object
+    // it's contain thongTinPhim {} and danhSachGhe[]
     console.log(movieSeat);
     return (
       <div>
