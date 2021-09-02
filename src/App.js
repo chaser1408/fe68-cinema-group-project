@@ -18,13 +18,14 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          {renderRoutes(clientRoutes, ClientLayout)}
-          {/* {renderRoutes(adminRoutes, AdminLayout)} */}
-          <Route path="*" component={PageNotFound} />
-        </Switch>
-      </Router>
+      {/* <Router> */}
+      {/* <Switch> */}
+      {/* {renderRoutes(clientRoutes, ClientLayout)} */}
+      {/* {renderRoutes(adminRoutes, AdminLayout)} */}
+      {/* <Route path="*" component={PageNotFound} /> */}
+      {/* </Switch> */}
+      {/* </Router> */}
+      <Home />
     </div>
   );
 }
