@@ -2,9 +2,12 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import movieReducer from "container/clients/MovieList/module/reducers";
+import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
+
 
 const rootReducer = combineReducers({
   movieReducer,
+  movieDetailReducer,
 });
 
 const store = createStore(

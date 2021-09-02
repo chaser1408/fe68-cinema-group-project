@@ -1,11 +1,12 @@
 import Home from "container/clients/Home/Home";
+import MovieDetail from "container/clients/MovieDetail/MovieDetail";
 import MovieList from "container/clients/MovieList/MovieList";
 import PageNotFound from "container/shared/PageNotFound/PageNotFound";
-import { Route, Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <>
       {/* <Router> */}
       {/* <Switch> */}
       {/* <Route path="/" component={Home} /> */}
@@ -14,8 +15,22 @@ function App() {
       {/* <Route path="*" component={PageNotFound} /> */}
       {/* </Switch> */}
       {/* </Router> */}
-      <Home />
-    </div>
+      {/* <Home /> */}
+
+      {/* <Router>
+        <Switch>
+          <Route exact path="/" component={MovieDetail} />
+          <Route exact path="/movie_detail" component={Home} />
+        </Switch>
+      </Router> */}
+
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/movie-detail/:movieId" component={MovieDetail}/>
+          </Switch>
+      </Router>
+    </>
   );
 }
 
