@@ -13,9 +13,4 @@ export const clientRoutes = [
     component: MovieDetail,
     exact: false,
   },
-  {
-    path: "/movie-list",
-    component: MovieList,
-    exact: false,
-  },
 ];
