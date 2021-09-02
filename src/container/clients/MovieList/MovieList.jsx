@@ -16,10 +16,14 @@ class MovieList extends Component {
         <div className="card-body">
           <h4 className="card-title">{movie.tenPhim}</h4>
           <p className="card-text text-truncate">{movie.moTa}</p>
-          <button
+          {/* <button
             className="btn btn-success"
-            to={`/movie-detail/${movie.maPhim}`}>
-            View detail
+            to={`/movie-detail/${movie.maPhim}`}
+          >
+            
+          </button> */}
+          <button className="btn btn-dark">
+            <Link to={`/movie-detail/${movie.maPhim}`}>View detail</Link>
           </button>
         </div>
       </div>

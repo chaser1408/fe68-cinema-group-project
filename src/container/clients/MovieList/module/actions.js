@@ -31,14 +31,18 @@ export const actFetchAllMovieFailed = (err) => {
 export const actFetchAllMovieApi = () => {
   return (dispatch) => {
     dispatch(actStartLoading());
-
+//promise
+//then
+//catch
     movieApi
       .fecthAllMovieApi()
       .then((res) => {
+        //dispatch toi reducer success
         dispatch(actFetchAllMovieSuccess(res.data.content));
         dispatch(actStopLoading());
       })
       .catch((err) => {
+        // that bai dispatch toi reducer that bai
         dispatch(actFetchAllMovieFailed(err));
         dispatch(actStopLoading());
       });
