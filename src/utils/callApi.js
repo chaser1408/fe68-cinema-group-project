@@ -15,4 +15,5 @@ const callApi = (endpoint, method = "GET", data = null) => {
   });
 };
 
+
 export default callApi;

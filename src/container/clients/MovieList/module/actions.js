@@ -31,9 +31,9 @@ export const actFetchAllMovieFailed = (err) => {
 export const actFetchAllMovieApi = () => {
   return (dispatch) => {
     dispatch(actStartLoading());
-//promise
-//then
-//catch
+    //promise
+    //then
+    //catch
     movieApi
       .fecthAllMovieApi()
       .then((res) => {

@@ -7,8 +7,16 @@ const movieApi = {
   },
 
   fetchMovieDetailApi(movieId) {
-   return  callApi(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${movieId}`);
+    return callApi(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${movieId}`);
   },
+  fetchMovieSeatPlanApi(showTimeId) {
+    return callApi(`QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${showTimeId}`);
+  },
+  fetchMovieUserLoginApi(userLogin){
+    return callApi(`QuanLyNguoiDung/DangNhap`, userLogin);
+  }
 };
+
+
 
 export default movieApi;

@@ -22,7 +22,9 @@ class MovieList extends Component {
           >
             
           </button> */}
-          <Link to={`/movie-detail/${movie.maPhim}`}>View detail</Link>
+          <button className="btn btn-dark">
+            <Link to={`/movie-detail/${movie.maPhim}`}>View detail</Link>
+          </button>
         </div>
       </div>
     ));
