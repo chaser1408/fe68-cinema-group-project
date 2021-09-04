@@ -1,4 +1,5 @@
 import Home from "container/clients/Home/Home";
+import LoginUser from "container/clients/LoginUser/LoginUser";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
 import SeatPlan from "container/clients/SeatPlan/SeatPlan";
 // import MovieList from "container/clients/MovieList/MovieList";
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/movie-detail/:movieId" component={MovieDetail} />
           <Route exact path="/seat-plan/:showTimeId" component={SeatPlan} />
+          <Route path="/register" component={LoginUser} />
         </Switch>
       </Router>
     </>
