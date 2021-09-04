@@ -2,6 +2,8 @@ import Home from "container/clients/Home/Home";
 import LoginUser from "container/clients/LoginUser/LoginUser";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
 import SeatPlan from "container/clients/SeatPlan/SeatPlan";
+
+
 // import MovieList from "container/clients/MovieList/MovieList";
 // import PageNotFound from "container/shared/PageNotFound/PageNotFound";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
