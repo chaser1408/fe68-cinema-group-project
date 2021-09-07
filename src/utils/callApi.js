@@ -6,12 +6,6 @@ const callApi = (endpoint, method = "GET", data = null) => {
     url: `${BASE_URL}/${endpoint}`,
     method,
     data,
-    // headers: {
-    //   Accept: "application/json",
-    //   "Content-Type": "application/json",
-    //   email: "EMAIL",
-    //   password: "PASSWORD",
-    // },
   });
 };
 

@@ -1,8 +1,12 @@
-import { loginService } from 'apis/authApi';
-import movieApi from 'apis/movieApi';
-import { FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAIL, FETCH_LOGIN_RESQUEST } from './types';
-import { message, Button } from 'antd';
-import { Redirect } from 'react-router-dom';
+// import { loginService } from "apis/authApi";
+import movieApi from "apis/movieApi";
+// import {
+//   FETCH_LOGIN_SUCCESS,
+//   FETCH_LOGIN_FAIL,
+//   FETCH_LOGIN_RESQUEST,
+// } from "./types";
+import { message } from "antd";
+// import { Redirect } from "react-router-dom";
 
 // export const actFetchMovieLoginResquest = (userLogin) => ({
 //   type: FETCH_LOGIN_RESQUEST,
@@ -37,17 +41,21 @@ import { Redirect } from 'react-router-dom';
 // };
 
 export const loginAction = (user, pushCallback) => {
-    const loginPromise = loginService(user);
-    return (dispatch) => {
-        loginPromise
-            .then((rs) => {
-                const { content } = rs.data;
-                message.success('Xin chao ' + content.hoTen, 2);
-                localStorage.setItem('userLogin', JSON.stringify(content));
-                pushCallback()
-            })
-            .catch((err) => {
-                message.error(err.response.data.content);
-            });
-    };
+  // const loginPromise = loginService(user);
+  return (dispatch) => {
+    // loginPromise
+    movieApi
+      .fetchMovieUserLoginApi(user)
+      .then((rs) => {
+        const { content } = rs.data;
+        message.success("Xin chao " + content.hoTen, 2);
+        localStorage.setItem("userLogin", JSON.stringify(content));
+        pushCallback();
+        console.log("OK 200 Login");
+      })
+      .catch((err) => {
+        message.error(err.response.data.content);
+        console.log("Lỗi Login");
+      });
+  };
 };
