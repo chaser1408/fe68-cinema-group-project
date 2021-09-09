@@ -19,7 +19,6 @@ export default function Home() {
                                 <span>Xin chào</span></a>
                         </li>
                         <li>
-
                             <Link className="nav-link" to="/Admin/MovieManager">
                                 Movie Manager
                             </Link>
