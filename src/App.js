@@ -2,6 +2,7 @@ import Home from "container/clients/Home/Home";
 import LoginUser from "container/clients/LoginUser/LoginUser";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
 import SeatPlan from "container/clients/SeatPlan/SeatPlan";
+import Admin from "container/Admin/AdminLayout/Admin"
 
 
 // import MovieList from "container/clients/MovieList/MovieList";
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/movie-detail/:movieId" component={MovieDetail} />
           <Route exact path="/seat-plan/:showTimeId" component={SeatPlan} />
           <Route path="/register" component={LoginUser} />
+          <Route path="/Admin" component={Admin} />
         </Switch>
       </Router>
     </>

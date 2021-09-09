@@ -89,7 +89,8 @@ export class SeatPlan extends Component {
     console.log(movieSeat);
     return (
       <>
-        <div className="container">
+        <div className="container bg__screen ">
+         
           <div className={`screen`}></div>
           <div className="row">
             {this.renderNormalSeat()}

@@ -38,6 +38,9 @@ const movieApi = {
   fetchMovieUserLoginApi(userLogin) {
     return callApi(`QuanLyNguoiDung/DangNhap`, "POST", userLogin);
   },
+  fetchMovieManagerApi(){
+    return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)
+  }
 };
 
 export default movieApi;

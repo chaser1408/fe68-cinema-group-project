@@ -5,12 +5,16 @@ import movieReducer from "container/clients/MovieList/module/reducers";
 import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
 import movieSeatPlanReducer from "container/clients/SeatPlan/module/reducers";
 import UserLoginReducer from "container/clients/LoginUser/modules/reducers";
+import movieManagerReducer from "container/Admin/MovieManager/modules/reducer";
+
 
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
   movieSeatPlanReducer,
   UserLoginReducer,
+  movieManagerReducer,
+
 });
 
 const store = createStore(
