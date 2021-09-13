@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import MovieManager from "../MovieManager/MovieManager"
 
 
+
+
 export default function Home() {
+
     return (
         <div>
             <input type="checkbox" id="nav-toggle" />
@@ -18,26 +21,43 @@ export default function Home() {
                             <a href className="active"><span className="las la-home" />
                                 <span>Xin chào</span></a>
                         </li>
+                        <li className="active">
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Movie Manager</a>
+                            <ul className="collapse list-unstyled" id="homeSubmenu">
+                                <li>
+                                <Link className="nav-link" to="/Admin/MovieManager">Movie Manager  </Link>
+                                </li>
+                                <li>
+                                    <Link to="/Admin/MovieManager/AddMovie">Add Movie</Link>
+                                </li>
+                                <li>
+                                    <Link href="#">Delete Movie</Link>
+                                </li>
+                                <li>
+                                    <Link href="#">Edit Movie</Link>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
-                            <Link className="nav-link" to="/Admin/MovieManager">
-                                Movie Manager
+                            <Link className="nav-link" to="/MovieManager">
+                                hhhhhhhhh
                             </Link>
                         </li>
                         <li>
                             <Link className="nav-link" to="/MovieManager">
-                              hhhhhhhhh
+                                hhhhhhhhh
                             </Link>
-
                         </li>
+                      
+
+
 
                     </ul>
                 </div>
             </div>
 
 
-
-
-            <div className="main-content">
+            <div div className="main-content" >
                 <header>
                     <h2>
                         <label htmlFor="nav-toggle">
@@ -49,7 +69,7 @@ export default function Home() {
                         <input type="search" placeholder="Buscar aquí" />
                     </div>
                     <div className="user-wrapper">
-                        <img src="img/Avatar.png" width="40px" height="40px" alt />
+                        <img src="img/Avatar.png" width="40px" height="40px" alt="" />
                         <div>
                             <h4>Administrador</h4>
                             <small>Super Admin</small>
@@ -59,12 +79,11 @@ export default function Home() {
                 <main>
                     <div className="cards1">
                         <div className="card-single1">
-                            <MovieManager/>
+                            <MovieManager />
                         </div>
                     </div></main>
-
-            </div>
-        </div>
+            </div >
+        </div >
 
 
     )

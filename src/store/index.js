@@ -6,14 +6,16 @@ import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
 import movieSeatPlanReducer from "container/clients/SeatPlan/module/reducers";
 import UserLoginReducer from "container/clients/LoginUser/modules/reducers";
 import movieManagerReducer from "container/Admin/MovieManager/modules/reducer";
-
-
+// import addMovieManagerReducer from "container/Admin/MovieManager/Add/modules/reducer"
+import  editMovieInforReducer from "container/Admin/MovieManager/Edit/modules/reducer"
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
   movieSeatPlanReducer,
   UserLoginReducer,
   movieManagerReducer,
+  // addMovieManagerReducer,
+  editMovieInforReducer,
 
 });
 

@@ -3,11 +3,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { actFetchMovieManager } from './modules/action'
 import { Table } from 'antd';
 import './MovieManager.scss';
-import { NavLink } from "react-router-dom";
-import {EditOutlined,DeleteOutlined} from "@ant-design/icons";
+import { Link, NavLink } from "react-router-dom";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import AddMovie from "./Add/AddMovie"
+import { useHistory } from "react-router-dom";
+import {actDeleteMovie} from './Delete/modules/action'
+
 
 
 export default function QuanLyPhim(props) {
+  const history = useHistory();
   console.log(props);
   const dispatch = useDispatch();
   const { movieManager } = useSelector(state => state.movieManagerReducer)
@@ -37,7 +42,7 @@ export default function QuanLyPhim(props) {
       dataIndex: 'biDanh',
       sorter: {
         compare: (a, b) => a.moTa - b.moTa,
-        multiple: 2,
+        multiple: 1,
       },
     },
     {
@@ -62,25 +67,32 @@ export default function QuanLyPhim(props) {
       dataIndex: 'hành động',
       render: (text, film) => {
         return <Fragment>
-          <NavLink className="bg-dark text-white" to="/Admin/MovieManager/edit" ><EditOutlined/>
+          <NavLink key={1} className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${film.maPhim}`} ><EditOutlined />
           </NavLink>
-          <NavLink className=" bg-dark ml-2" to="/Admin/MovieManager/delete">
-            <DeleteOutlined/>
-          </NavLink>
+          <span onClick className=" bg-dark ml-2" to="/Admin/MovieManager/delete" onClick={() => {
+            if (window.confirm('Are you sure you want to delete' + film.maPhim)) {
+              //action
+              dispatch(actDeleteMovie(film.maPhim));
+            }
+          }} >
+            <DeleteOutlined />
+          </span>
         </Fragment>
-
       },
     }
   ];
 
   const data = movieManager;
-
   function onChange(pagination, filters, sorter, extra) {
     console.log('params', pagination, filters, sorter, extra);
   }
   return (
     <div>
-      <button>Thêm Phim</button>
+      <Link className="nav-link" to="/Admin/MovieManager/AddMovie">
+        chuyen trang
+      </Link>
+      {/* <button className=" btn btn-success" onClick={() => {
+        history.push('./admin/MovieManager/AddMovie')     }}   >AddMovie</button> */}
       <Table columns={columns} dataSource={data} onChange={onChange} />
     </div>
 

@@ -3,11 +3,11 @@ import LoginUser from "container/clients/LoginUser/LoginUser";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
 import SeatPlan from "container/clients/SeatPlan/SeatPlan";
 import Admin from "container/Admin/AdminLayout/Admin"
-
-
+import EditMovie from "container/Admin/MovieManager/Edit/EditMovie"
 // import MovieList from "container/clients/MovieList/MovieList";
 // import PageNotFound from "container/shared/PageNotFound/PageNotFound";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import AddMovie from "container/Admin/MovieManager/Add/AddMovie";
 
 function App() {
   // const renderRoutes = (routes, Layout) => {
@@ -18,7 +18,6 @@ function App() {
   //     );
   //   });
   // };
-
   return (
     <>
       <Router>
@@ -27,11 +26,12 @@ function App() {
           <Route exact path="/movie-detail/:movieId" component={MovieDetail} />
           <Route exact path="/seat-plan/:showTimeId" component={SeatPlan} />
           <Route path="/register" component={LoginUser} />
-          <Route path="/Admin" component={Admin} />
+          <Route exact path="/Admin" component={Admin} />
+          <Route exact path="/Admin/MovieManager/EditMovie/:id" component={EditMovie} />
+          <Route path="/Admin/MovieManager/AddMovie" component={AddMovie}/>
         </Switch>
       </Router>
     </>
   );
 }
-
 export default App;
