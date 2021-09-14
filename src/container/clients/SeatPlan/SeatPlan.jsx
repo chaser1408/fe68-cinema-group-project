@@ -18,7 +18,7 @@ export class SeatPlan extends Component {
 
   renderNormalSeat = () =>
     this.props.movieSeat.danhSachGhe?.map((seat, idx) => (
-      <div className="">
+      <div className="" key={idx}>
         {seat.loaiGhe === "Thuong" ? (
           <div className="">
             <Button
@@ -58,9 +58,35 @@ export class SeatPlan extends Component {
       </div>
     ));
 
-  renderVIPSeat = () =>
-    this.props.movieSeat.danhSachGhe?.map((seat, idx) => (
-      <div className="">
+  renderVIPSeat = () => {
+    // console.log("dong 63", this.props.movieSeat.danhSachGhe);
+    let seatVip = [];
+    // let countRow = 1;
+    // let countLine = [
+    //   "A",
+    //   "B",
+    //   "C",
+    //   "D",
+    //   "E",
+    //   "F",
+    //   "G",
+    //   "H",
+    //   "I",
+    //   "J",
+    //   "K",
+    //   "L",
+    //   "O",
+    // ];
+    // let countForLine = 0;
+    // let countSeat = 1;
+    for (let i = 0; i < this.props.movieSeat.danhSachGhe.length; i++) {
+      if (this.props.movieSeat.danhSachGhe[i].loaiGhe === "Vip") {
+        seatVip.push(this.props.movieSeat.danhSachGhe[i]);
+        console.log("seat vip", this.props.movieSeat.danhSachGhe[i]);
+      }
+    }
+    return seatVip?.map((seat, idx) => (
+      <div className="" key={idx}>
         {seat.loaiGhe === "Vip" ? (
           <div className="">
             <Button
@@ -69,8 +95,11 @@ export class SeatPlan extends Component {
               icon={<PoweroffOutlined />}
               onClick={() => this.enterLoading()}>
               <span className="seatVIP">
-                {seat.loaiGhe === "Thuong" ? "T" : "V"}
-                {seat.tenGhe}
+                {/* {seat.loaiGhe === "Vip" ? "V" : "T"} */}
+                {/* {countLine[countForLine] === "O"
+                  ? countLine[(countForLine = 0)]
+                  : countLine[countForLine++]}
+                {countRow <= 12 ? countRow++ : (countRow = 1)} */}
               </span>
             </Button>
           </div>
@@ -79,6 +108,28 @@ export class SeatPlan extends Component {
         )}
       </div>
     ));
+  };
+
+  // this.props.movieSeat.danhSachGhe?.slice(0, 60).map((seat, idx) => (
+  //   <div className="">
+  //     {seat.loaiGhe === "Thuong" ? (
+  //       <div className="">
+  //         <Button
+  //           className="seat"
+  //           type="primary"
+  //           icon={<PoweroffOutlined />}
+  //           onClick={() => this.enterLoading()}>
+  //           <span className="seatVIP">
+  //             {seat.loaiGhe === "Thuong" ? "V" : "T"}
+  //             {seat.tenGhe}
+  //           </span>
+  //         </Button>
+  //       </div>
+  //     ) : (
+  //       <div className=""></div>
+  //     )}
+  //   </div>
+  // ));
 
   enterLoading = (index) => {};
 
@@ -93,7 +144,7 @@ export class SeatPlan extends Component {
          
           <div className={`screen`}></div>
           <div className="row">
-            {this.renderNormalSeat()}
+            {/* {this.renderNormalSeat()} */}
             <hr />
           </div>
           <div className="row pt-5">
