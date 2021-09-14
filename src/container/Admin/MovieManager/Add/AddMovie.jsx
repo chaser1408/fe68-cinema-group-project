@@ -33,52 +33,30 @@ function AddMovie(props) {
       sapChieu: false,
       hot: false,
       danhGia: 0,
-      hinhAnh: ''
+      hinhAnh: {}
     },
-
     onSubmit: (values) => {
-      // let sampleArr = [values];
-      // console.log(sampleArr);
-      // có thể phải gửi lên với dạng mảng
-
-      // console.log('value 40 ----', values);
-      values.maNhom= GROUP_ID;
-    
-      // console.log('mang' ,values);
-      //tao đối tương
-      let formData = new FormData();
-      formData.append('tenPhim', formik.values.tenPhim);
-      console.log(formData);
+      console.log(values);
+      values.maNhom = GROUP_ID
+      let formData = new FormData()
       for (let key in values) {
-        // formData.append(key, values[key]);
-        // console.log('key', key);
-        // // khong append dc?? k append no moi lay dc
-        // // console.log('FormData',formData.get('tenPhim'));
-        // console.log('FormData',formData.get('hinhAnh'));
-        // // hoặc từ đây -=-----
         if (key !== 'hinhAnh') {
           formData.append(key, values[key]);
-          console.log(formData);
-        } else{
-          formData.append('File', values.hinhAnh, formik.hinhAnh.name);
+        } else {
+          formData.append('File', values.hinhAnh, values.hinhAnh.name)
         }
       }
-      // hình như code dừng chạy ở đây --------
-      // formData.append('tenPhim', formik.values.tenPhim)
-      console.log('formData', formData.get('tenPhim'));
-      // console.log(addMovie);
-      console.log(formData);
 
-      // console.log('FormData --',formData.get('File'));
-      dispatch(actFetchMovieAdd(formData));
-      // console.log('value 68 - dispatch', values);
+      dispatch(actFetchMovieAdd(formData))
     }
   })
 
+
+
   const handleChangeDatePicker = (value) => {
-    console.log('datepickerchange');
-    let ngayKhoiChieu = moment((value).format('DD/MM/YYYY'))
-    formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu._d);
+    let ngayKhoiChieu = moment(value).format('DD/MM/YYYY')
+    console.log(ngayKhoiChieu);
+    formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
   }
 
   const handleChangeSwitch = (name) => {
@@ -86,7 +64,7 @@ function AddMovie(props) {
       formik.setFieldValue(name, value);
     }
   }
-  
+
   const handleChangeInputNumber = (name) => {
     return (value) => {
       formik.setFieldValue(name, value);
@@ -138,7 +116,7 @@ function AddMovie(props) {
           <Input name="tenPhim" onChange={formik.handleChange} />
         </Form.Item>
         <Form.Item label="Trailer">
-          <Input  name="trailer" onChange={formik.handleChange} />
+          <Input name="trailer" onChange={formik.handleChange} />
         </Form.Item>
         <Form.Item label="Mô tả" >
           <Input name="moTa" onChange={formik.handleChange} />
@@ -146,14 +124,14 @@ function AddMovie(props) {
         <Form.Item label="Ngày Khởi chiếu">
           <DatePicker format="DD/MM/YYYY" onChange={handleChangeDatePicker} />
         </Form.Item>
-        <Form.Item label="Đang khởi Chiếu" valuePropName="checked">
-          <Switch name="dangChieu" onChange={(value) => { formik.setFieldValue('dangChieu', value) }} />
+        <Form.Item label="Đang khởi Chiếu">
+          <Switch name="dangChieu" onChange={handleChangeSwitch('dangChieu')} />
         </Form.Item>
-        <Form.Item label="Sắp Chiếu" valuePropName="checked">
-          <Switch name="sapChieu" onChange={(value) => { formik.setFieldValue('sapChieu', value) }} />
+        <Form.Item label="Sắp Chiếu">
+          <Switch name="sapChieu" onChange={handleChangeSwitch('sapChieu')} />
         </Form.Item>
-        <Form.Item label="Hot" valuePropName="checked">
-          <Switch name="Hot" onChange={(value) => { formik.setFieldValue('hot', value) }} />
+        <Form.Item label="Hot">
+          <Switch name="Hot" onChange={handleChangeSwitch('hot')} />
         </Form.Item>
         <Form.Item label="Số Sao">
           <InputNumber onChange={handleChangeInputNumber('danhGia')} min={1} max={10} />

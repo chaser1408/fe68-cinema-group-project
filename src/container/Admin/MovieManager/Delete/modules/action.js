@@ -5,7 +5,7 @@ export const actDeleteMovie=(maPhim)=>{
     return async(dispatch)=>{
         try{
             const res = await movieApi.DeleteMovieUpLoadAPi(maPhim);
-            console.log("res",res)
+            console.log("res", res.data.content);
 
             alert("thanh công")
             dispatch( actFetchMovieManager())
