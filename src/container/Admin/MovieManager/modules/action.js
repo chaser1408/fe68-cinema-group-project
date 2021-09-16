@@ -2,10 +2,10 @@ import movieApi from "apis/movieApi";
 import { FETCH_MOVIE_MANAGER_FAIL, FETCH_MOVIE_MANAGER_RESQUESS,
     FETCH_MOVIE_MANAGER_SUCCESS } from "./type";
 
-export const actFetchMovieManager =()=>{
+export const actFetchMovieManager =(tenPhim='')=>{
     return dispatch=>{
         // dispatch({type:FETCH_MOVIE_MANAGER_RESQUESS});
-        movieApi.fetchMovieManagerApi()
+        movieApi.fetchMovieManagerApi(tenPhim)
         .then(res=>{
             dispatch({
                 type: FETCH_MOVIE_MANAGER_SUCCESS,

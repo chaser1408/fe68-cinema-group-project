@@ -16,7 +16,7 @@ import { GROUP_ID } from 'settings/apiConfig';
 function EditMovie(props) {
     const dispatch = useDispatch();
     const { movieInfor } = useSelector(state => state.editMovieInforReducer);
-    console.log("movieInfor",movieInfor);
+    console.log("movieInfor", movieInfor);
     useEffect(() => {
         let { id } = props.match.params;
         dispatch(actFetchMovieEdit(id))
@@ -34,35 +34,28 @@ function EditMovie(props) {
             dangChieu: movieInfor?.dangChieu,
             sapChieu: movieInfor?.sapChieu,
             hot: movieInfor.hot,
-            maNhom:'GP1',
             danhGia: movieInfor?.danhGia,
             hinhAnh: null,
         },
-
         onSubmit: (values) => {
             console.log(values);
             values.maNhom = GROUP_ID;
-            //   dispatch(actFetchMovieAdd(values));
-            console.log(values);
-            //tao đối tương
             let formData = new FormData();
             for (let key in values) {
-          
-             formData.append(key, values[key]);
-
-              if (key == 'hinhAnh') {
-                formData.append((key, values[key]));
-              } else if (values.hinhAnh !== null) {
-                formData.append('File', values.hinhAnh, formik.hinhAnh.name);
-              }
+                if (key === 'hinhAnh') {
+                    formData.append(key, values[key]);
+                } else {
+                    formData.append('File', values.hinhAnh, values.hinhAnh)
+                  }
             }
             dispatch(CapNhatPhimUpload(formData));
         }
     })
 
     const handleChangeDatePicker = (value) => {
-        // console.log('datepickerchange');
-        formik.setFieldValue('ngayKhoiChieu', moment((value).format('YYYY/MM/DD')));
+        let ngayKhoiChieu = moment(value)
+        console.log(ngayKhoiChieu);
+        formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
     }
 
     const handleChangeSwitch = (name) => {
@@ -118,32 +111,32 @@ function EditMovie(props) {
                     </Radio.Group>
                 </Form.Item>
                 <Form.Item label="Tên Phim">
-                    <Input   name="tenPhim" onChange={formik.handleChange} value={formik.values.tenPhim}/>
+                    <Input name="tenPhim" onChange={formik.handleChange} value={formik.values.tenPhim} />
                 </Form.Item>
                 <Form.Item label="Trailer">
-                    <Input   name="trailer" onChange={formik.handleChange} value={formik.values.trailer}/>
+                    <Input name="trailer" onChange={formik.handleChange} value={formik.values.trailer} />
                 </Form.Item>
                 <Form.Item label="Mô tả" >
-                    <Input  name="moTa" onChange={formik.handleChange} value={formik.values.moTa}/>
+                    <Input name="moTa" onChange={formik.handleChange} value={formik.values.moTa} />
                 </Form.Item>
                 <Form.Item label="Ngày Khởi chiếu">
-                    <DatePicker  onChange={handleChangeDatePicker} format="YYYY/MM/DD" value={moment(formik.values.ngayKhoiChieu,'YYYY/MM/DD')} />
+                    <DatePicker onChange={handleChangeDatePicker} format="DD/MM/YYYY" value={moment(formik.values.ngayKhoiChieu)} />
                 </Form.Item>
                 <Form.Item label="Đang khởi Chiếu" valuePropName="checked">
-                    <Switch name="dangChieu" onChange={(value) => { formik.setFieldValue('dangChieu', value) }} checked={formik.values.dangChieu}/>
+                    <Switch name="dangChieu" onChange={(value) => { formik.setFieldValue('dangChieu', value) }} checked={formik.values.dangChieu} />
                 </Form.Item>
                 <Form.Item label="Sắp Chiếu" valuePropName="checked">
-                    <Switch name="sapChieu" onChange={(value) => { formik.setFieldValue('sapChieu', value) }}checked={formik.values.sapChieu} />
+                    <Switch name="sapChieu" onChange={(value) => { formik.setFieldValue('sapChieu', value) }} checked={formik.values.sapChieu} />
                 </Form.Item>
                 <Form.Item label="Hot" valuePropName="checked">
                     <Switch name="Hot" onChange={(value) => { formik.setFieldValue('hot', value) }} checked={formik.values.hot} />
                 </Form.Item>
                 <Form.Item label="Số Sao">
-                    <InputNumber onChange={handleChangeInputNumber('danhGia')} min={1} max={10} value={formik.values.danhGia}/>
+                    <InputNumber onChange={handleChangeInputNumber('danhGia')} min={1} max={10} value={formik.values.danhGia} />
                 </Form.Item>
                 <Form.Item label="Hình Ảnh">
                     <Input type="file" onChange={handleChangeFile} />
-                    <img src={imgSrc===''? movieInfor.hinhAnh: imgSrc} alt="" width={150} height={150}  />
+                    <img src={imgSrc === '' ? movieInfor.hinhAnh : imgSrc} alt="" width={150} height={150} />
                 </Form.Item>
                 <Form.Item label="Tac vụ">
                     <button type="submit" className="btn btn-default" value="">updtae</button>

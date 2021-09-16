@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState} from 'react';
+import { useDispatch } from 'react-redux'
 import { actFetchMovieAdd } from './modules/action'
 import {
   Form,
@@ -15,12 +15,6 @@ import { GROUP_ID } from 'settings/apiConfig';
 
 function AddMovie(props) {
   const dispatch = useDispatch();
-  //  const { addMovie } = useSelector(state => state.addMovieManagerReducer)
-  //  console.log(addMovie);
-  //  useEffect((values) => {
-  //   dispatch(actFetchMovieAdd(values))
-  // }, [])
-
   const [componentSize, setComponentSize] = useState('default');
   const [imgSrc, setImgSrc] = useState('')
   const formik = useFormik({
@@ -46,13 +40,9 @@ function AddMovie(props) {
           formData.append('File', values.hinhAnh, values.hinhAnh.name)
         }
       }
-
       dispatch(actFetchMovieAdd(formData))
     }
   })
-
-
-
   const handleChangeDatePicker = (value) => {
     let ngayKhoiChieu = moment(value).format('DD/MM/YYYY')
     console.log(ngayKhoiChieu);

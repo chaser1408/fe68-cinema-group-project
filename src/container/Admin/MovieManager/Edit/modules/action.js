@@ -1,12 +1,11 @@
 import movieApi from "apis/movieApi";
 import {
-    FETCH_MOVIE_EDIT_FAIL, FETCH_MOVIE_ADD_RESQUESS,
+    FETCH_MOVIE_EDIT_FAIL,
     FETCH_MOVIE_EDIT_SUCCESS
 } from "./type";
 
 export const actFetchMovieEdit =(maPhim)=>{
     return dispatch=>{
-        // dispatch({type:FETCH_MOVIE_MANAGER_RESQUESS});
         movieApi. fetchMovieInforApi(maPhim)
         .then(res=>{
             console.log(res)  

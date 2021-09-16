@@ -39,8 +39,12 @@ const movieApi = {
   fetchMovieUserLoginApi(userLogin) {
     return callApi(`QuanLyNguoiDung/DangNhap`, "POST", userLogin);
   },
-  fetchMovieManagerApi(){
-    return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)
+  fetchMovieManagerApi(tenPhim=''){
+    if(tenPhim !=''.trim()){
+      return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}&tenPhim=${tenPhim}`)
+    }
+      return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)
+    
   },
   fetchMovieAddMovieUploadHinhApi(formData){
     return callApiPost(`QuanLyPhim/ThemPhimUploadHinh`, formData);
@@ -53,7 +57,12 @@ const movieApi = {
   },
   DeleteMovieUpLoadAPi(maPhim){
     return callApiDelete(`QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
+  },
+  fetchTheaterSystemInformation(){
+    return callApi(`QuanLyRap/LayThongTinHeThongRap`)
+
   }
 };
+
 
 export default movieApi;

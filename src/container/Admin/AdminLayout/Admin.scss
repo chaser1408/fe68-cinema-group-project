@@ -15,7 +15,7 @@
 }
 
 .sidebar {
-    width: 345px;
+    width: 305px;
     position: fixed;
     left: 0;
     top: 0;
@@ -62,7 +62,7 @@
 }
 
 .sidebar-menu a span:first-child {
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding-right: 1rem;
 }
 
@@ -96,7 +96,7 @@
 
 .main-content {
     transition: margin-left 300ms;
-    margin-left: 345px;
+    margin-left: 305px;
 }
 
 header {
@@ -106,8 +106,8 @@ header {
     padding: 1rem 1.5rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     position: fixed;
-    left: 345px;
-    width: calc(100% - 345px);
+    left: 305px;
+    width: calc(100% - 205px);
     top: 0;
     z-index: 100;
     transition: left 300ms;
@@ -245,7 +245,7 @@ main {
         width: 345px;
     }
     #nav-toggle:checked+.sidebar:hover {
-        width: 345px;
+        width: 305px;
         z-index: 200;
     }
     #nav-goggle:checked+.sidebar .sidebar-brand,

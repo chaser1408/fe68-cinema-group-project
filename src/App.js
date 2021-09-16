@@ -8,6 +8,7 @@ import EditMovie from "container/Admin/MovieManager/Edit/EditMovie"
 // import PageNotFound from "container/shared/PageNotFound/PageNotFound";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import AddMovie from "container/Admin/MovieManager/Add/AddMovie";
+import ShowTime from "container/Admin/MovieManager/ShowTime/ShowTime"
 
 function App() {
   // const renderRoutes = (routes, Layout) => {
@@ -28,7 +29,8 @@ function App() {
           <Route path="/register" component={LoginUser} />
           <Route exact path="/Admin" component={Admin} />
           <Route exact path="/Admin/MovieManager/EditMovie/:id" component={EditMovie} />
-          <Route path="/Admin/MovieManager/AddMovie" component={AddMovie}/>
+          <Route exact path="/Admin/MovieManager/AddMovie" component={AddMovie}/>
+          <Route exact path="/Admin/MovieManager/ShowTime/:id" component={ShowTime} />
         </Switch>
       </Router>
     </>
