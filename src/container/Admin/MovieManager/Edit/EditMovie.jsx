@@ -45,9 +45,10 @@ function EditMovie(props) {
                 if (key === 'hinhAnh') {
                     formData.append(key, values[key]);
                 } else {
-                    formData.append('File', values.hinhAnh, values.hinhAnh)
+                    formData.append('File', values.hinhAnh, values.hinhAnh?.name)
                   }
             }
+            console.log(formik.values.hinhAnh)
             dispatch(CapNhatPhimUpload(formData));
         }
     })
@@ -58,11 +59,11 @@ function EditMovie(props) {
         formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
     }
 
-    const handleChangeSwitch = (name) => {
-        return (value) => {
-            formik.setFieldValue(name, value);
-        }
-    }
+    // const handleChangeSwitch = (name) => {
+    //     return (value) => {
+    //         formik.setFieldValue(name, value);
+    //     }
+    // }
 
     const handleChangeInputNumber = (name) => {
         return (value) => {
@@ -78,10 +79,12 @@ function EditMovie(props) {
             reader.onload = (e) => {
                 console.log(e.target.result);
                 setImgSrc(e.target.result);
+                formik.setFieldValue('hinhAnh', file);
             }
             console.log('file', file);
         }
-        formik.setFieldValue('hinhAnh', file)
+        
+        
     }
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);

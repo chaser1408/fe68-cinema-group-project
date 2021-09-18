@@ -1,51 +1,127 @@
-import React from 'react'
-import { Form, Input, Button, Checkbox, DatePicker,InputNumber } from 'antd';
+import React, { useState, useEffect } from 'react'
+import { Form, Button, DatePicker, InputNumber } from 'antd';
 import { Cascader } from 'antd';
+import {useDispatch}from 'react-redux'
+import movieApi from 'apis/movieApi';
+import moment from 'moment';
+import {taoLichChieu}from './modules/action'
 
-export default function ShowTime() {
-   
-    const handleChangeHeThongRap = (value) => {
+
+import { useFormik } from 'formik';
+export default function ShowTime(props) {
+    console.log("object", props);
+    const dispatch = useDispatch();
+
+    const formik = useFormik({
+        initialValues: {
+            maphim: props.match.params.id,
+            maRap: '',
+            ngayChieuGioChieu: '',
+            giaVe: '',
+        },
+        onSubmit:async (values) => {
+            console.log(values);
+            // try {
+            //     let res = await movieApi.taoLichChieu(value);
+            //     console.log("res", res); 
+            // } catch (err) {
+            //     console.log("err ok", err.response?.data);
+            // }
+
+            dispatch(taoLichChieu(values));
+        }
+    })
+
+    const [state, setState] = useState({
+        heThongRapChieu: [],
+        cumRapChieu: [],
+    })
+    console.log("heT",state.heThongRapChieu);
+    useEffect(async () => {
+        try {
+            let res = await movieApi.fetchTheaterSystemInformation();
+            setState({
+                ...state,
+                heThongRapChieu: res.data.content,
+            });
+        } catch (err) {
+            console.log("err r1", err);
+
+        }
+
+    }, [])
+    const handleChangeHeThongRap = async (values) => {
+        console.log(values);
+        try {
+            let res = await movieApi.layThongTinCumRap(values);
+            console.log("res", res);
+            setState({
+                ...state,
+                cumRapChieu: res.data.content,
+            })
+        } catch (err) {
+            console.log("err r", err.response?.data.content);
+
+        }
+    }
+    const onOk = (values) => {
+        formik.setFieldValue("ngayChieuGiochieu", moment(values).format("DD/MM/YYYY hh:mm:ss"))
+        console.log("object", moment(values).format("DD/MM/YYYY hh:mm:ss"));
+    }
+    const onChangeDateTime = (values) => {
+        formik.setFieldValue("ngayChieuGiochieu", moment(values).format("DD/MM/YYYY hh:mm:ss"))
+        console.log("object", moment(values).format("DD/MM/YYYY hh:mm:ss"));
 
     }
-    const onOk = (value) => {}
-    const onChange=(value) => {
+    const handleChangeNumber = (values) => {
+        formik.setFieldValue("giaVe", values)
 
     }
-    const handleChangeNumber = (value) => {
 
+    const renderHeThongRapChieu = () => {
+        return state.heThongRapChieu?.map((rap, index) => {
+            index="key"
+            return { label: rap.tenHeThongRap, value: rap.maHeThongRap }
+        })
+    }
+    const handleChangeCumRap = (values) => {
+        console.log(values); 
+         formik.setFieldValue("maRap", values)
     }
     return (
-
         <Form
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             initialValues={{ remember: true }}
+            onSubmitCapture={formik.handleSubmit}
         >
             <h3 className="text-2xl">Tạo lịch</h3>
-
             <Form.Item
+                name="heThongRapChieu"
                 label="hệ thống râp"  >
-                <Cascader options={[{ label: 'AA', value: "AA" }, { label: 'BB', value: 'BB' }]} onChange={handleChangeHeThongRap} placeholder="Please select" />
+                <Cascader options={renderHeThongRapChieu()} onChange={handleChangeHeThongRap} placeholder="Please select" />
             </Form.Item>
 
             <Form.Item
                 label="Cum Rap"  >
-                <Cascader options={[{ label: 'AA', value: "AA" }, { label: 'BB', value: 'BB' }]} onChange={handleChangeHeThongRap} placeholder="Please select" />
+                <Cascader options={state.cumRapChieu?.map((cumRap, idx) => {
+                    return { label: cumRap.tenCumRap, value: cumRap.maCumRap }
+                })} onChange={handleChangeCumRap} placeholder="Please select" />
             </Form.Item>
             <Form.Item
-            label=" ngày Khơi chiếu, giờ chiếu"
+                label=" ngày Khơi chiếu, giờ chiếu"
             >
-                <DatePicker showTime onChange={onChange} onOk={onOk} />
+                <DatePicker format="DD/MM/YYYY hh:mm:ss" showTime onChange={onChangeDateTime} onOk={onOk} />
             </Form.Item>
             <Form.Item
-            label=" ngày Khơi chiếu, giờ chiếu"
+                label=" Gia vé"
             >
-                <InputNumber min={1} max={10} defaultValue={3} onChange={handleChangeNumber} />
+                <InputNumber min={1} max={150000} defaultValue={3} onChange={handleChangeNumber} />
             </Form.Item>
             <Form.Item
-            label=" Tạo Lịch chiếu"
+                label=" Tạo Lịch chiếu"
             >
-                <Button>Tạo Lịch chiếu</Button>
+                <Button htmlType="submit">Tạo Lịch chiếu</Button>
             </Form.Item>
         </Form >
 

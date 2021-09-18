@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { actDeleteMovie } from './Delete/modules/action'
-import { Input, Space } from 'antd';
+import { Input } from 'antd';
 const { Search } = Input;
 
 
@@ -87,7 +87,7 @@ export default function QuanLyPhim(props) {
 
       render: (text, film) => {
         return <Fragment>
-          <NavLink key={1} className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${film.maPhim}`} ><EditOutlined />
+          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${film.maPhim}`} ><EditOutlined />
           </NavLink>
           <span width={200} onClick className=" bg-dark ml-2" to="/Admin/MovieManager/delete" onClick={() => {
             if (window.confirm('Are you sure you want to delete' + film.maPhim)) {
@@ -97,7 +97,7 @@ export default function QuanLyPhim(props) {
           }} >
             <DeleteOutlined />
           </span>
-          <NavLink key={1} className="bg-dark text-white" to={`/Admin/MovieManager/ShowTime/${film.maPhim}`} ><CalendarOutlined style={{color:'green', background:'none'}}/>
+          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/ShowTime/${film.maPhim}`} ><CalendarOutlined style={{color:'green', background:'none'}}/>
           </NavLink>
 
         </Fragment>

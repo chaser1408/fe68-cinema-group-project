@@ -1,5 +1,5 @@
 import movieApi from "apis/movieApi";
-import { FETCH_MOVIE_MANAGER_FAIL, FETCH_MOVIE_MANAGER_RESQUESS,
+import { FETCH_MOVIE_MANAGER_FAIL,
     FETCH_MOVIE_MANAGER_SUCCESS } from "./type";
 
 export const actFetchMovieManager =(tenPhim='')=>{

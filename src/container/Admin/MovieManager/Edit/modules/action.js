@@ -9,7 +9,6 @@ export const actFetchMovieEdit =(maPhim)=>{
         movieApi. fetchMovieInforApi(maPhim)
         .then(res=>{
             console.log(res)  
-              
             dispatch({
                 type: FETCH_MOVIE_EDIT_SUCCESS,
                 payload: res.data.content,
