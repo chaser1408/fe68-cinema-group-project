@@ -27,7 +27,7 @@ const movieApi = {
     return callApi(
       `QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`,
       "GET",
-      null,
+      null
     );
   },
   fetchMovieDetailApi(movieId) {
@@ -36,24 +36,30 @@ const movieApi = {
   fetchMovieSeatPlanApi(showTimeId) {
     return callApi(`QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${showTimeId}`);
   },
+  // LOG-IN / SIGN-UP
   fetchMovieUserLoginApi(userLogin) {
     return callApi(`QuanLyNguoiDung/DangNhap`, "POST", userLogin);
   },
-  fetchMovieManagerApi(){
-    return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)
+  // ADMIN MOVIE
+  fetchMovieManagerApi() {
+    return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`);
   },
-  fetchMovieAddMovieUploadHinhApi(formData){
+  fetchMovieAddMovieUploadHinhApi(formData) {
     return callApiPost(`QuanLyPhim/ThemPhimUploadHinh`, formData);
   },
-  fetchMovieInforApi(maPhim){
-    return callApi(`QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`)
+  fetchMovieInforApi(maPhim) {
+    return callApi(`QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
   },
-  UpdateMovieUpLoadAPi(formData){
-    return callApiPost(`QuanLyPhim/CapNhatPhimUpload`,formData);
+  UpdateMovieUpLoadAPi(formData) {
+    return callApiPost(`QuanLyPhim/CapNhatPhimUpload`, formData);
   },
-  DeleteMovieUpLoadAPi(maPhim){
+  DeleteMovieUpLoadAPi(maPhim) {
     return callApiDelete(`QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
-  }
+  },
+  // ADMIN USER
+  fetchUserManagement() {
+    return callApi(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`);
+  },
 };
 
 export default movieApi;

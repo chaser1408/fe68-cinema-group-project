@@ -8,6 +8,8 @@ import "./SeatPlan.scss";
 export class SeatPlan extends Component {
   state = {
     loadings: [],
+    clientChoose: [],
+    ticketShow: "",
   };
 
   componentDidMount() {
@@ -16,122 +18,63 @@ export class SeatPlan extends Component {
     // call for seat plan with movie detail id
   }
 
-  renderNormalSeat = () =>
-    this.props.movieSeat.danhSachGhe?.map((seat, idx) => (
+  renderSeat = () =>
+    this.props.movieSeat.danhSachGhe?.slice(0, 144).map((seat, idx) => (
       <div className="" key={idx}>
-        {seat.loaiGhe === "Thuong" ? (
-          <div className="">
-            <Button
-              className="seat"
-              type="primary"
-              icon={<PoweroffOutlined />}
-              onClick={() => this.enterLoading()}>
-              <span className="seatThuong">
-                {seat.loaiGhe === "Thuong" ? "T" : "V"}
-                {seat.tenGhe}
-              </span>
-            </Button>
-          </div>
-        ) : (
-          <div className=""></div>
-          // <Button
-          //   className="seat"
-          //   type="primary"
-          //   icon={<PoweroffOutlined />}
-          //   onClick={() => this.enterLoading()}>
-          //   <span className="seatVIP">
-          //     {seat.loaiGhe === "Thuong" ? "T" : "V"}
-          //     {seat.tenGhe}
-          //   </span>
-          // </Button>
-        )}
-        {/* <Button
+        <Button
           className="seat"
           type="primary"
           icon={<PoweroffOutlined />}
-          onClick={() => this.enterLoading()}>
-          <span className="fontSize: 20px">
-            {seat.loaiGhe === "Thuong" ? "T" : "V"}
-            {seat.tenGhe}
-          </span>
-        </Button> */}
+          onClick={() => this.enterLoading(seat)}>
+          <span className="seatVIP">{seat.tenGheMoi}</span>
+        </Button>
       </div>
     ));
 
-  renderVIPSeat = () => {
-    // console.log("dong 63", this.props.movieSeat.danhSachGhe);
-    let seatVip = [];
-    // let countRow = 1;
-    // let countLine = [
-    //   "A",
-    //   "B",
-    //   "C",
-    //   "D",
-    //   "E",
-    //   "F",
-    //   "G",
-    //   "H",
-    //   "I",
-    //   "J",
-    //   "K",
-    //   "L",
-    //   "O",
-    // ];
-    // let countForLine = 0;
-    // let countSeat = 1;
-    for (let i = 0; i < this.props.movieSeat.danhSachGhe.length; i++) {
-      if (this.props.movieSeat.danhSachGhe[i].loaiGhe === "Vip") {
-        seatVip.push(this.props.movieSeat.danhSachGhe[i]);
-        console.log("seat vip", this.props.movieSeat.danhSachGhe[i]);
-      }
+  enterLoading = (seat) => {
+    // if (seat) {
+    //   let seatSelect = [];
+    //   seatSelect.push(seat);
+    //   console.log("ghe 2", seat);
+    //   console.log("seatSelect", seatSelect);
+    //   for (let i = 0; i < seatSelect.length; i++) {
+    //     let newSeatSelect = "";
+    //     return (newSeatSelect += `${seatSelect[i].tenGheMoi}`);
+    //   }
+    // }
+
+    if (seat) {
+      console.log(seat);
+
+      this.state.clientChoose.push(seat);
+
+      console.log(this.state.clientChoose);
     }
-    return seatVip?.map((seat, idx) => (
-      <div className="" key={idx}>
-        {seat.loaiGhe === "Vip" ? (
-          <div className="">
-            <Button
-              className="seat"
-              type="primary"
-              icon={<PoweroffOutlined />}
-              onClick={() => this.enterLoading()}>
-              <span className="seatVIP">
-                {/* {seat.loaiGhe === "Vip" ? "V" : "T"} */}
-                {/* {countLine[countForLine] === "O"
-                  ? countLine[(countForLine = 0)]
-                  : countLine[countForLine++]}
-                {countRow <= 12 ? countRow++ : (countRow = 1)} */}
-              </span>
-            </Button>
-          </div>
-        ) : (
-          <div className=""></div>
-        )}
+
+    return this.state.clientChoose.map((newSeat, idx) => (
+      <div className="row" key={idx}>
+        <span>{newSeat.tenGheMoi}</span>
       </div>
     ));
+
+    // if (seat) {
+    //   let newTicketShow = [];
+
+    //   newTicketShow.push(seat);
+
+    //   this.setState({
+    //     clientChoose: newTicketShow,
+    //   });
+
+    //   console.log("clientChoose", this.state.clientChoose);
+    // }
+
+    // return this.state.clientChoose.map((newSeat, idx) => (
+    //   <div className="row" key={idx}>
+    //     <span>{newSeat.tenGheMoi}</span>
+    //   </div>
+    // ));
   };
-
-  // this.props.movieSeat.danhSachGhe?.slice(0, 60).map((seat, idx) => (
-  //   <div className="">
-  //     {seat.loaiGhe === "Thuong" ? (
-  //       <div className="">
-  //         <Button
-  //           className="seat"
-  //           type="primary"
-  //           icon={<PoweroffOutlined />}
-  //           onClick={() => this.enterLoading()}>
-  //           <span className="seatVIP">
-  //             {seat.loaiGhe === "Thuong" ? "V" : "T"}
-  //             {seat.tenGhe}
-  //           </span>
-  //         </Button>
-  //       </div>
-  //     ) : (
-  //       <div className=""></div>
-  //     )}
-  //   </div>
-  // ));
-
-  enterLoading = (index) => {};
 
   render() {
     const { movieSeat } = this.props;
@@ -141,18 +84,17 @@ export class SeatPlan extends Component {
     return (
       <>
         <div className="container bg__screen ">
-         
           <div className={`screen`}></div>
-          <div className="row">
-            {/* {this.renderNormalSeat()} */}
+          {/* <div className="row">
+            {this.renderNormalSeat()}
             <hr />
-          </div>
+          </div> */}
           <div className="row pt-5">
-            {this.renderVIPSeat()}
+            {this.renderSeat()}
             <hr />
           </div>
           <div className="row">
-            <div className="col-12">Your Seat: {}</div>
+            <div className="col-12">Your Seat: {this.enterLoading()}</div>
           </div>
         </div>
       </>
