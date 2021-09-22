@@ -3,7 +3,7 @@ import { actFetchMovieDetailApi } from "./module/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./MovieDetail.scss";
-import { Tabs, Radio, Space } from 'antd';
+import { Tabs } from 'antd';
 
 const { TabPane } = Tabs;
 
@@ -14,7 +14,7 @@ class MovieDetail extends Component {
   }
 
   render() {
-    const { movieDetail, fetchMovieDetail } = this.props;
+    const { movieDetail } = this.props;
     return (
       <div className=" movie__detail__content">
         <div className="movie__detail__img">
@@ -38,7 +38,7 @@ class MovieDetail extends Component {
               </div>
               <div className="col-2 movie__detail__title">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAeCAYAAADQBxWhAAACtUlEQVRIib2WTUhUURTHf+9l3tHyKyx1ZYpECxlqokUlQlEugkK3QSFEgVAxVLSxD2oZBRO4ahEtwkXQsgKpNBcSJLeaFkpmq/Ij7UNHnTvO9CauvWeTmvNm1PffPObMmfObe+955/5xIzPkN8yQv9pVspt6aRNC/lrgFdBhhvxmSrzCDPnLs4EaLqC68BtAP5uATuA+0GinPAZOWMHwd7fQnGVgRcBeIA+4BrQBF4ELQF1Kagcw4xbIUivV5wdcskF5aX7fD9wGyoBp4APw0gqGpzOFXgFOAgXApkxWYEuv+h7QagXDk66gNrgYaAFOAVVuabpYVSQ+UfsjZlVOxYdv9o4dFVINLgs1Q/51wDl7a4uceEHcSkbWm/O5ZdFE8tinSOJ9ichJGhg1k7PsG42yf2SGUvUrtWRM1xNS3V0SajfOQ6AhNWH7xGyyvWvIaK6vIFwi5mKHP0/z6MUXtxug1SakOut8mO9eKxieiO7ydQ4U5jb0FecSyTHZOhVnz1dlGCQZyfuTuiFh0fruWyZArTOxgG9cSHX9n5XGAr6DdvsvOufu8nyu7ixl93iUlv6fVEfimUK1ksABIVWXYQP1vvVl0jRZ6i0QcMbacQ+AWjuAegfa7AHQUZMRC/jygYib4b9K6tGgGg+BWpVmlqNuJdqooVn1/wo0Zto3hZcaNIVUerwMewjtdRroqYfQZw603SOgviW656BCqufAaw+gt4RUVur7GbSH8lqpx/ZZf4eCkEoHz68RULuHRiFVgoWTSEgVsldsrSJQ6iEvpBpzAovGn5DqDnAIGF0hTB+VrlUnpBpK/eK/ZjsW8Gn7cgM4DfgyBD4BLguptElfpLQOPxbwbbavviO2+dbmbaH0WekLWrv9B0Kqj8vVTAtd8AdygW3AFqAQmAJGgAEhlXZ+6QX8BhA9zCEQOoADAAAAAElFTkSuQmCC" alt="" />
-                <span className="percent text-white pl-2 font-weight-bold text-center">88%</span>
+                <span className="percent text-white  font-weight-bold text-center">88%</span>
                 <p>Tomatometer</p>
               </div>
               <div className="col-2 movie__detail__title">
@@ -66,7 +66,6 @@ class MovieDetail extends Component {
               <span className="">{movieDetail.moTa}</span>
             </div>
             <div className="col-6">
-              <span className="">{movieDetail.moTa}</span>
             </div>
           </div>
         </div>

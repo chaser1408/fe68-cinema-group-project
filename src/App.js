@@ -9,6 +9,7 @@ import EditMovie from "container/Admin/MovieManager/Edit/EditMovie"
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import AddMovie from "container/Admin/MovieManager/Add/AddMovie";
 import ShowTime from "container/Admin/MovieManager/ShowTime/ShowTime"
+import Header from "components/Header/Header";
 
 function App() {
   // const renderRoutes = (routes, Layout) => {
@@ -21,7 +22,9 @@ function App() {
   // };
   return (
     <>
+
       <Router>
+      <Header/>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/movie-detail/:movieId" component={MovieDetail} />

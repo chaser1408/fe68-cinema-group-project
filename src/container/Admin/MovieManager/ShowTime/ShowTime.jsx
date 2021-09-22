@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button, DatePicker, InputNumber } from 'antd';
+import { Form, Button, DatePicker, InputNumber, Select } from 'antd';
 import { Cascader } from 'antd';
 import {useDispatch}from 'react-redux'
 import movieApi from 'apis/movieApi';
@@ -16,18 +16,10 @@ export default function ShowTime(props) {
         initialValues: {
             maphim: props.match.params.id,
             maRap: '',
-            ngayChieuGioChieu: '',
             giaVe: '',
         },
-        onSubmit:async (values) => {
+        onSubmit: (values) => {
             console.log(values);
-            // try {
-            //     let res = await movieApi.taoLichChieu(value);
-            //     console.log("res", res); 
-            // } catch (err) {
-            //     console.log("err ok", err.response?.data);
-            // }
-
             dispatch(taoLichChieu(values));
         }
     })
@@ -37,7 +29,8 @@ export default function ShowTime(props) {
         cumRapChieu: [],
     })
     console.log("heT",state.heThongRapChieu);
-    useEffect(async () => {
+    useEffect(
+        async () => {
         try {
             let res = await movieApi.fetchTheaterSystemInformation();
             setState({
@@ -48,8 +41,8 @@ export default function ShowTime(props) {
             console.log("err r1", err);
 
         }
-
-    }, [])
+    }
+    , [])
     const handleChangeHeThongRap = async (values) => {
         console.log(values);
         try {
@@ -75,18 +68,16 @@ export default function ShowTime(props) {
     }
     const handleChangeNumber = (values) => {
         formik.setFieldValue("giaVe", values)
-
     }
 
     const renderHeThongRapChieu = () => {
         return state.heThongRapChieu?.map((rap, index) => {
-            index="key"
             return { label: rap.tenHeThongRap, value: rap.maHeThongRap }
         })
     }
     const handleChangeCumRap = (values) => {
         console.log(values); 
-         formik.setFieldValue("maRap", values)
+        formik.setFieldValue("maRap", values)
     }
     return (
         <Form
@@ -104,7 +95,7 @@ export default function ShowTime(props) {
 
             <Form.Item
                 label="Cum Rap"  >
-                <Cascader options={state.cumRapChieu?.map((cumRap, idx) => {
+                <Select options={state.cumRapChieu?.map((cumRap, idx) => {
                     return { label: cumRap.tenCumRap, value: cumRap.maCumRap }
                 })} onChange={handleChangeCumRap} placeholder="Please select" />
             </Form.Item>

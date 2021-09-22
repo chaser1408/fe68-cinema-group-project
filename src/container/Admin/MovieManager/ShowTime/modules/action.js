@@ -4,10 +4,10 @@ export const taoLichChieu = (layThongTinLichChieu) => {
         try {
             let res = await movieApi.taoLichChieu(layThongTinLichChieu);
             console.log(res)
+            alert("thanh cong")
 
         } catch(error) {
             console.log(error.response?.data)
-
         }
 
     }
