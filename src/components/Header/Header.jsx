@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Carousel from "components/carousel/Carousel";
+// import Carousel from "components/Carousel/Carousel";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss"
@@ -55,8 +55,7 @@ export default class Header extends Component {
           </div>
         </nav>
         <div>
-          <Carousel />
-        </div> */}
+        </div>  */}
 
 
       </div>

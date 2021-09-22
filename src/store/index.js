@@ -7,7 +7,9 @@ import movieSeatPlanReducer from "container/clients/SeatPlan/module/reducers";
 import UserLoginReducer from "container/clients/LoginUser/modules/reducers";
 import movieManagerReducer from "container/Admin/MovieManager/modules/reducer";
 // import addMovieManagerReducer from "container/Admin/MovieManager/Add/modules/reducer"
-import  editMovieInforReducer from "container/Admin/MovieManager/Edit/modules/reducer"
+import editMovieInforReducer from "container/Admin/MovieManager/Edit/modules/reducer";
+import userMagenementReducer from "container/Admin/UserManagement/modules/reducers";
+
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
@@ -16,7 +18,8 @@ const rootReducer = combineReducers({
   movieManagerReducer,
   // addMovieManagerReducer,
   editMovieInforReducer,
-
+  // user - admin
+  userMagenementReducer,
 });
 
 const store = createStore(

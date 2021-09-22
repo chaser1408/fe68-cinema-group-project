@@ -16,7 +16,8 @@ import { GROUP_ID } from 'settings/apiConfig';
 function AddMovie(props) {
   const dispatch = useDispatch();
   const [componentSize, setComponentSize] = useState('default');
-  const [imgSrc, setImgSrc] = useState('')
+  const [imgSrc, setImgSrc] = useState('');
+  console.log('hello AddMovie');
   const formik = useFormik({
     initialValues: {
       tenPhim: '',

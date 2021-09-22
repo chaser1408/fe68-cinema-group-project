@@ -16,7 +16,7 @@ export const actFetchMovieSeatPlanSuccess = (movieSeat) => ({
   type: FETCH_MOVIE_SEAT_SUCCESS,
   payload: movieSeat,
 });
-export const actFetchMovieDetailFail = (err) => ({
+export const actFetchMovieSeatPlanFail = (err) => ({
   type: FETCH_MOVIE_SEAT_FAIL,
   payload: err,
 });

@@ -8,6 +8,8 @@ import "./SeatPlan.scss";
 export class SeatPlan extends Component {
   state = {
     loadings: [],
+    clientChoose: [],
+    ticketShow: "",
   };
 
   componentDidMount() {
@@ -16,71 +18,63 @@ export class SeatPlan extends Component {
     // call for seat plan with movie detail id
   }
 
-  renderNormalSeat = () =>
-    this.props.movieSeat.danhSachGhe?.map((seat, idx) => (
-      <div className="">
-        {seat.loaiGhe === "Thuong" ? (
-          <div className="">
-            <Button
-              className="seat"
-              type="primary"
-              icon={<PoweroffOutlined />}
-              onClick={() => this.enterLoading()}>
-              <span className="seatThuong">
-                {seat.loaiGhe === "Thuong" ? "T" : "V"}
-                {seat.tenGhe}
-              </span>
-            </Button>
-          </div>
-        ) : (
-          <div className=""></div>
-          // <Button
-          //   className="seat"
-          //   type="primary"
-          //   icon={<PoweroffOutlined />}
-          //   onClick={() => this.enterLoading()}>
-          //   <span className="seatVIP">
-          //     {seat.loaiGhe === "Thuong" ? "T" : "V"}
-          //     {seat.tenGhe}
-          //   </span>
-          // </Button>
-        )}
-        {/* <Button
+  renderSeat = () =>
+    this.props.movieSeat.danhSachGhe?.slice(0, 144).map((seat, idx) => (
+      <div className="" key={idx}>
+        <Button
           className="seat"
           type="primary"
           icon={<PoweroffOutlined />}
-          onClick={() => this.enterLoading()}>
-          <span className="fontSize: 20px">
-            {seat.loaiGhe === "Thuong" ? "T" : "V"}
-            {seat.tenGhe}
-          </span>
-        </Button> */}
+          onClick={() => this.enterLoading(seat)}>
+          <span className="seatVIP">{seat.tenGheMoi}</span>
+        </Button>
       </div>
     ));
 
-  renderVIPSeat = () =>
-    this.props.movieSeat.danhSachGhe?.map((seat, idx) => (
-      <div className="">
-        {seat.loaiGhe === "Vip" ? (
-          <div className="">
-            <Button
-              className="seat"
-              type="primary"
-              icon={<PoweroffOutlined />}
-              onClick={() => this.enterLoading()}>
-              <span className="seatVIP">
-                {seat.loaiGhe === "Thuong" ? "T" : "V"}
-                {seat.tenGhe}
-              </span>
-            </Button>
-          </div>
-        ) : (
-          <div className=""></div>
-        )}
+  enterLoading = (seat) => {
+    // if (seat) {
+    //   let seatSelect = [];
+    //   seatSelect.push(seat);
+    //   console.log("ghe 2", seat);
+    //   console.log("seatSelect", seatSelect);
+    //   for (let i = 0; i < seatSelect.length; i++) {
+    //     let newSeatSelect = "";
+    //     return (newSeatSelect += `${seatSelect[i].tenGheMoi}`);
+    //   }
+    // }
+
+    if (seat) {
+      console.log(seat);
+
+      this.state.clientChoose.push(seat);
+
+      console.log(this.state.clientChoose);
+    }
+
+    return this.state.clientChoose.map((newSeat, idx) => (
+      <div className="row" key={idx}>
+        <span>{newSeat.tenGheMoi}</span>
       </div>
     ));
 
-  enterLoading = (index) => {};
+    // if (seat) {
+    //   let newTicketShow = [];
+
+    //   newTicketShow.push(seat);
+
+    //   this.setState({
+    //     clientChoose: newTicketShow,
+    //   });
+
+    //   console.log("clientChoose", this.state.clientChoose);
+    // }
+
+    // return this.state.clientChoose.map((newSeat, idx) => (
+    //   <div className="row" key={idx}>
+    //     <span>{newSeat.tenGheMoi}</span>
+    //   </div>
+    // ));
+  };
 
   render() {
     const { movieSeat } = this.props;
@@ -90,18 +84,17 @@ export class SeatPlan extends Component {
     return (
       <>
         <div className="container bg__screen ">
-         
           <div className={`screen`}></div>
-          <div className="row">
+          {/* <div className="row">
             {this.renderNormalSeat()}
             <hr />
-          </div>
+          </div> */}
           <div className="row pt-5">
-            {this.renderVIPSeat()}
+            {this.renderSeat()}
             <hr />
           </div>
           <div className="row">
-            <div className="col-12">Your Seat: {}</div>
+            <div className="col-12">Your Seat: {this.enterLoading()}</div>
           </div>
         </div>
       </>

@@ -84,15 +84,16 @@ export default function QuanLyPhim(props) {
       dataIndex: 'hành động',
       multiple: 3,
 
-
+//<EditOutlined />
       render: (text, film) => {
+      const id = film.maPhim;
         return <Fragment>
-          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${film.maPhim}`} ><EditOutlined />
+          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${id}`} >
           </NavLink>
           <span width={200} onClick className=" bg-dark ml-2" to="/Admin/MovieManager/delete" onClick={() => {
-            if (window.confirm('Are you sure you want to delete' + film.maPhim)) {
+            if (window.confirm('Are you sure you want to delete' + id)) {
               //action
-              dispatch(actDeleteMovie(film.maPhim));
+              dispatch(actDeleteMovie(id));
             }
           }} >
             <DeleteOutlined />
@@ -104,9 +105,9 @@ export default function QuanLyPhim(props) {
       },
     }
   ];
-  const onSearch = value => {
-    console.log(value);
-    dispatch(actFetchMovieManager(value));
+  const onSearch = values => {
+    console.log(values);
+    dispatch(actFetchMovieManager(values));
   }
 
 
@@ -126,7 +127,6 @@ export default function QuanLyPhim(props) {
         enterButton={<SearchOutlined />}
         onSearch={onSearch}
         size="small">
-
       </Search>
       {/* <button className=" btn btn-success" onClick={() => {
         history.push('./admin/MovieManager/AddMovie')     }}   >AddMovie</button> */}
