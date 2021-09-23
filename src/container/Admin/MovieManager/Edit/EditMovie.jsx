@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { actFetchMovieEdit, CapNhatPhimUpload } from './modules/action'
+import {useParams} from "react-router-dom"
 import {
     Form,
     Input,
@@ -14,11 +15,12 @@ import moment from 'moment';
 import { GROUP_ID } from 'settings/apiConfig';
 
 function EditMovie(props) {
+    const {id} =useParams()
+
     const dispatch = useDispatch();
     const { movieInfor } = useSelector(state => state.editMovieInforReducer);
     console.log("movieInfor", movieInfor);
     useEffect(() => {
-        let { id } = props.match.params;
         dispatch(actFetchMovieEdit(id))
     }, [])
 

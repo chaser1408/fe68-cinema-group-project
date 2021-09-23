@@ -2,8 +2,11 @@ import React from "react";
 import "./Admin.scss";
 import { Link } from "react-router-dom";
 import MovieManager from "../MovieManager/MovieManager";
+import EditMovie from "../MovieManager/Edit/EditMovie";
+import AddMovie from "../MovieManager/Add/AddMovie";
 
 export default function Admin() {
+ 
   return (
     <div>
       <input type="checkbox" id="nav-toggle" />
@@ -111,7 +114,10 @@ export default function Admin() {
         <main>
           <div className="cards1">
             <div className="card-single1">
-              <MovieManager />
+              <MovieManager/>
+
+              {/* <AddMovie/> */}
+              {/* <EditMovie/> */}
             </div>
           </div>
         </main>

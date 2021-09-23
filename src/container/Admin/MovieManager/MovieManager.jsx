@@ -8,7 +8,9 @@ import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from "
 import { useHistory } from "react-router-dom";
 import { actDeleteMovie } from './Delete/modules/action'
 import { Input } from 'antd';
+import {useParams} from "react-router-dom"
 const { Search } = Input;
+
 
 
 export default function QuanLyPhim(props) {
@@ -86,14 +88,15 @@ export default function QuanLyPhim(props) {
 
 //<EditOutlined />
       render: (text, film) => {
-      const id = film.maPhim;
+    
         return <Fragment>
-          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${id}`} >
+          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${film.maPhim}`} ><EditOutlined/>
+
           </NavLink>
           <span width={200} onClick className=" bg-dark ml-2" to="/Admin/MovieManager/delete" onClick={() => {
-            if (window.confirm('Are you sure you want to delete' + id)) {
+            if (window.confirm('Are you sure you want to delete' + film.maPhim)) {
               //action
-              dispatch(actDeleteMovie(id));
+              dispatch(actDeleteMovie(film.maPhim));
             }
           }} >
             <DeleteOutlined />

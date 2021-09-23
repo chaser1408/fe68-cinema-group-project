@@ -31,9 +31,9 @@ export const adminRoutes = [
     exact: true,
   },
   {
-    path: "/Admin/MovieManager/EditMovie/:id",
+    path: "/Admin/MovieManager/EditMovie:id",
     component: EditMovie,
-    exact: false,
+    exact: true,
   },
 
   // {

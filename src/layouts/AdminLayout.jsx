@@ -5,7 +5,6 @@ import React from "react";
 function AdminLayout(props) {
   return (
     <>
-        <Admin />
         {props.children}
     </>
   );
