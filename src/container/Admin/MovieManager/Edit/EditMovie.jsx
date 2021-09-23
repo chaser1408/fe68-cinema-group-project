@@ -33,6 +33,7 @@ function EditMovie(props) {
             dangChieu: movieInfor?.dangChieu,
             sapChieu: movieInfor?.sapChieu,
             hot: movieInfor?.hot,
+            maNhom: GROUP_ID,
             danhGia: movieInfor?.danhGia,
             hinhAnh: null,
         },
@@ -60,15 +61,12 @@ function EditMovie(props) {
         formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
     }
 
-    
-
     const handleChangeInputNumber = (name) => {
         return (value) => {
             formik.setFieldValue(name, value);
         }
     }
     const handleChangeFile = (e) => {
-        //lay file ra tu e
         let file = e.target.files[0];
         if (file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/gif' || file.type === 'image/png') {
             let reader = new FileReader();

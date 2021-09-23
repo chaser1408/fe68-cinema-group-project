@@ -8,7 +8,6 @@ import React from "react";
 function ClientLayout(props) {
   return (
     <>
-      <Header/>
         {props.children}
       <Footer/>
     </>

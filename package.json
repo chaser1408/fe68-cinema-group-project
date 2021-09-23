@@ -2,7 +2,7 @@
   "name": "fe68-cineme-group-project",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "http://movieapi.cyberlearn.vn",
   "dependencies": {
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/react": "11.1.0",
@@ -14,6 +14,7 @@
     "popper.js": "1.16.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-js-pagination": "^3.0.3",
     "react-redux": "7.2.4",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",

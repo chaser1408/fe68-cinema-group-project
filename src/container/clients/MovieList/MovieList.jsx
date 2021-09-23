@@ -29,7 +29,7 @@ class MovieList extends Component {
       </div>
     ));
 
-  render() {
+  render() { 
     const { isLoading } = this.props;
     if (isLoading) {
       return <div className="loader"></div>;
