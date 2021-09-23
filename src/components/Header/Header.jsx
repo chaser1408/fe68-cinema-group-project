@@ -1,14 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// import Carousel from "components/Carousel/Carousel";
+import Carousel from "components/Carousel/Carousel";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss"
-
 export default class Header extends Component {
   render() {
     return (
       <div>
-        {/* <nav className="navbar navbar-expand-sm navbar-light bg-light header__content">
+        <nav className="navbar navbar-expand-sm navbar-light bg-light header__content">
           <a className="navbar-brand" href="#">
             Cinema Booking
           </a>
@@ -55,9 +54,8 @@ export default class Header extends Component {
           </div>
         </nav>
         <div>
-        </div>  */}
-
-
+        </div> 
+<Carousel/>
       </div>
 
     );

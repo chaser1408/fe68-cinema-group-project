@@ -24,16 +24,15 @@ export const actFetchMovieEdit =(maPhim)=>{
 }
 
 
-export  const  CapNhatPhimUpload =(formData)=>{
-    return async(dispatch)=>{
+export const CapNhatPhimUpload = (formData)=>{
+    return async (dispatch)=>{
         try{
             let res = await movieApi.UpdateMovieUpLoadAPi(formData);
             alert("Cập nhât thành công");
             console.log('res', res.data.content)
 
         }catch(error){
-            console.log(error.response?.date)
-
+            console.log(error.response?.data)
         }
     }
 }

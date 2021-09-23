@@ -16,7 +16,6 @@ import { GROUP_ID } from 'settings/apiConfig';
 function EditMovie(props) {
     const dispatch = useDispatch();
     const { movieInfor } = useSelector(state => state.editMovieInforReducer);
-    console.log("movieInfor", movieInfor);
     useEffect(() => {
         let { id } = props.match.params;
         dispatch(actFetchMovieEdit(id))
@@ -38,17 +37,19 @@ function EditMovie(props) {
             hinhAnh: null,
         },
         onSubmit: (values) => {
-            console.log(values);
+            console.log("thong tin",values);
             values.maNhom = GROUP_ID;
             let formData = new FormData();
             for (let key in values) {
-                if (key === 'hinhAnh') {
+                if (key !== 'hinhAnh') {
                     formData.append(key, values[key]);
                 } else {
-                    formData.append('File', values.hinhAnh, values.hinhAnh.name)
-                  }
+                    if(values.hinhAnh !== null){
+                        formData.append('File', values.hinhAnh, values.hinhAnh.name)
+                    }                 
+                }
             }
-            console.log(formik.values.hinhAnh)
+            console.log('alo');
             dispatch(CapNhatPhimUpload(formData));
         }
     })

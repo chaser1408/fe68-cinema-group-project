@@ -9,7 +9,6 @@ function ClientLayout(props) {
   return (
     <>
       <Header/>
-      {/* <Carousel/> */}
         {props.children}
       <Footer/>
     </>
