@@ -4,6 +4,7 @@ import Home from "container/clients/Home/Home";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
 import AddMovie from "container/Admin/MovieManager/Add/AddMovie";
 import EditMovie from "container/Admin/MovieManager/Edit/EditMovie";
+import ShowTime from "container/Admin/MovieManager/ShowTime/ShowTime";
 
 export const clientRoutes = [
   {
@@ -23,17 +24,22 @@ export const adminRoutes = [
   {
     path: "/Admin/MovieManager",
     component: Admin,
-    exact: false,
+    exact: true,
   },
   {
     path: "/Admin/MovieManager/AddMovie",
     component: AddMovie,
-    exact: true,
+    exact: false,
   },
   {
-    path: "/Admin/MovieManager/EditMovie:id",
+    path: "/Admin/MovieManager/EditMovie/:id",
     component: EditMovie,
-    exact: true,
+    exact: false,
+  },
+  {
+    path: "/Admin/MovieManager/ShowTime/:id",
+    component: ShowTime,
+    exact: false,
   },
 
   // {

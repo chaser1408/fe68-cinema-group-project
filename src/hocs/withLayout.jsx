@@ -2,8 +2,9 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 const withLayout = (WrappedComponent) => {
-  return ({ component: Component, ...rest }) => (
-    <Route
+  return ({ component: Component, ...rest }) => {
+    return (
+      <Route
       {...rest}
       render={(routeProps) => (
         <WrappedComponent>
@@ -11,7 +12,8 @@ const withLayout = (WrappedComponent) => {
         </WrappedComponent>
       )}
     />
-  );
+    )
+  }
 };
 
 export default withLayout;

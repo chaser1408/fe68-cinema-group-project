@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { actFetchMovieEdit, CapNhatPhimUpload } from './modules/action'
-import {useParams} from "react-router-dom"
 import {
     Form,
     Input,
@@ -15,12 +14,11 @@ import moment from 'moment';
 import { GROUP_ID } from 'settings/apiConfig';
 
 function EditMovie(props) {
-    const {id} =useParams()
-
     const dispatch = useDispatch();
     const { movieInfor } = useSelector(state => state.editMovieInforReducer);
     console.log("movieInfor", movieInfor);
     useEffect(() => {
+        let { id } = props.match.params;
         dispatch(actFetchMovieEdit(id))
     }, [])
 
@@ -35,7 +33,7 @@ function EditMovie(props) {
             ngayKhoiChieu: movieInfor.ngayKhoiChieu,
             dangChieu: movieInfor?.dangChieu,
             sapChieu: movieInfor?.sapChieu,
-            hot: movieInfor.hot,
+            hot: movieInfor?.hot,
             danhGia: movieInfor?.danhGia,
             hinhAnh: null,
         },
@@ -47,7 +45,7 @@ function EditMovie(props) {
                 if (key === 'hinhAnh') {
                     formData.append(key, values[key]);
                 } else {
-                    formData.append('File', values.hinhAnh, values.hinhAnh?.name)
+                    formData.append('File', values.hinhAnh, values.hinhAnh.name)
                   }
             }
             console.log(formik.values.hinhAnh)
@@ -61,11 +59,7 @@ function EditMovie(props) {
         formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
     }
 
-    // const handleChangeSwitch = (name) => {
-    //     return (value) => {
-    //         formik.setFieldValue(name, value);
-    //     }
-    // }
+    
 
     const handleChangeInputNumber = (name) => {
         return (value) => {
