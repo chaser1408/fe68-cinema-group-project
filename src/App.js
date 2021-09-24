@@ -1,17 +1,11 @@
-import Home from "container/clients/Home/Home";
 import LoginUser from "container/clients/LoginUser/LoginUser";
-import MovieDetail from "container/clients/MovieDetail/MovieDetail";
-import SeatPlan from "container/clients/SeatPlan/SeatPlan";
-import Admin from "container/Admin/AdminLayout/Admin";
-import EditMovie from "container/Admin/MovieManager/Edit/EditMovie";
-// import MovieList from "container/clients/MovieList/MovieList";
-// import PageNotFound from "container/shared/PageNotFound/PageNotFound";
+
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import AddMovie from "container/Admin/MovieManager/Add/AddMovie";
-import UserManagement from "container/Admin/UserManagement/UserManagement";
-import { clientRoutes } from "routes";
+
+import { adminRoutes, clientRoutes } from "routes";
 import ClientLayout from "layouts/ClientLayout";
 import PageNotFound from "container/shared/PageNotFound/PageNotFound";
+import AdminLayout from "layouts/AdminLayout";
 
 function App() {
   const renderRoutes = (routes, Layout) => {
@@ -44,6 +38,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          {renderRoutes(adminRoutes, AdminLayout)}
           {renderRoutes(clientRoutes, ClientLayout)}
           <Route path="/login" component={LoginUser} />
           <Route path="*" component={PageNotFound} />

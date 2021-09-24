@@ -1,7 +1,7 @@
 import React from "react";
 
 function AddUser() {
-  return <div></div>;
+  return <div>AddUser</div>;
 }
 
 export default AddUser;

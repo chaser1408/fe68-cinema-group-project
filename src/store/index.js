@@ -5,10 +5,10 @@ import movieReducer from "container/clients/MovieList/module/reducers";
 import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
 import movieSeatPlanReducer from "container/clients/SeatPlan/module/reducers";
 import UserLoginReducer from "container/clients/LoginUser/modules/reducers";
-import movieManagerReducer from "container/Admin/MovieManager/modules/reducer";
+import movieManagerReducer from "container/admin/MovieManager/modules/reducer";
 // import addMovieManagerReducer from "container/Admin/MovieManager/Add/modules/reducer"
-import editMovieInforReducer from "container/Admin/MovieManager/Edit/modules/reducer";
-import userMagenementReducer from "container/Admin/UserManagement/modules/reducers";
+import editMovieInforReducer from "container/admin/MovieManager/Edit/modules/reducer";
+import userMagenementReducer from "container/admin/UserManagement/modules/reducers";
 
 const rootReducer = combineReducers({
   movieReducer,

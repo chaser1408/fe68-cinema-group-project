@@ -3,7 +3,7 @@ import "./Admin.scss";
 import { Link } from "react-router-dom";
 import MovieManager from "../MovieManager/MovieManager";
 
-export default function Admin() {
+function Admin() {
   return (
     <div>
       <input type="checkbox" id="nav-toggle" />
@@ -119,3 +119,4 @@ export default function Admin() {
     </div>
   );
 }
+export default Admin;

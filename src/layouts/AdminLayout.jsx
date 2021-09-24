@@ -1,12 +1,14 @@
-import Admin from "container/Admin/AdminLayout/Admin";
+import Admin from "container/admin/AdminLayout/Admin";
+import withLayout from "hocs/withLayout";
 import React from "react";
 
-function AdminLayout() {
+function AdminLayout(props) {
   return (
     <>
       <Admin />
+      {props.children}
     </>
   );
 }
 
-export default AdminLayout;
+export default withLayout(AdminLayout);
