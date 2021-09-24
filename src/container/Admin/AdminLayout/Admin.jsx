@@ -114,7 +114,7 @@ export default function Admin() {
         <main>
           <div className="cards1">
             <div className="card-single1">
-              <MovieManager/>
+              {/* <MovieManager/> */}
 
               {/* <AddMovie/> */}
               {/* <EditMovie/> */}

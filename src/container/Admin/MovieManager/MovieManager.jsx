@@ -8,7 +8,6 @@ import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from "
 import { useHistory } from "react-router-dom";
 import { actDeleteMovie } from './Delete/modules/action'
 import { Input } from 'antd';
-import {useParams} from "react-router-dom"
 const { Search } = Input;
 
 

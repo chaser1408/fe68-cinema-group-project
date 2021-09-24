@@ -5,6 +5,11 @@ import "./MovieList.scss";
 import { actFetchAllMovieApi } from "./module/actions";
 import { Link } from "react-router-dom";
 class MovieList extends Component {
+  state= {
+    
+    currentPage: 1,
+    postperPage: 5,
+  }
   componentDidMount() {
     this.props.fetchAllMovie();
   }
@@ -29,7 +34,10 @@ class MovieList extends Component {
       </div>
     ));
 
-  render() { 
+  render() {
+    const {currentPage, postperPage} =this.state;
+    const indexOfLastPost =currentPage * postperPage;
+    const indexOfFirstPost = indexOfLastPost - postperPage;
     const { isLoading } = this.props;
     if (isLoading) {
       return <div className="loader"></div>;
