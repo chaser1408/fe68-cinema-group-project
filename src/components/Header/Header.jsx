@@ -58,7 +58,7 @@ export default class Header extends Component {
         <div>
         </div>
         <Carousel />
-        <div>
+        <div className="container">
           <Products />
         </div>
       </div>

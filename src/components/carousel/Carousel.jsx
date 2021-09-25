@@ -24,6 +24,7 @@ import "./carousel.scss"
                     <span className="sr-only">Next</span>
                 </a>
             </div>
+            
 
         </div>
     )

@@ -28,8 +28,8 @@ export default class Product extends Component {
     const settings = {
       dots: true,
       infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
+      slidesToShow: 4,
+      slidesToScroll: 2,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
@@ -56,6 +56,7 @@ export default class Product extends Component {
             <h3>6</h3>
           </div>
         </Slider>
+        
       </div>
     );
   }
