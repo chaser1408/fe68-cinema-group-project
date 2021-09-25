@@ -38,7 +38,7 @@ export const actFetchAllMovieApi = () => {
       .fecthAllMovieApi()
       .then((res) => {
         //dispatch toi reducer success
-        dispatch(actFetchAllMovieSuccess(res.data.content.slice(0, 20)));
+        dispatch(actFetchAllMovieSuccess(res.data.content));
         dispatch(actStopLoading());
         
       })

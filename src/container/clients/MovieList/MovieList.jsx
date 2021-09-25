@@ -4,10 +4,13 @@ import { connect } from "react-redux";
 import "./MovieList.scss";
 import { actFetchAllMovieApi } from "./module/actions";
 import { Link } from "react-router-dom";
+import './module/reducers';
+import "./module/nagination"
+import { Pagination } from "antd";
 class MovieList extends Component {
   state= {
-    
-    currentPage: 1,
+    listMovie:[],
+    currentPage: 'maphim',
     postperPage: 5,
   }
   componentDidMount() {
@@ -35,9 +38,11 @@ class MovieList extends Component {
     ));
 
   render() {
-    const {currentPage, postperPage} =this.state;
+    const {currentPage, postperPage, listMovie} =this.state;
     const indexOfLastPost =currentPage * postperPage;
     const indexOfFirstPost = indexOfLastPost - postperPage;
+    const currentPost = listMovie.slice(indexOfLastPost, indexOfLastPost);
+    const paginate = pageNum=>this.setState({currentPage: pageNum})
     const { isLoading } = this.props;
     if (isLoading) {
       return <div className="loader"></div>;
@@ -45,6 +50,7 @@ class MovieList extends Component {
       return (
         <div className="container">
           <div className="row">{this.renderListMovie()}</div>
+          <Pagination postperPage={postperPage} totalPosts={listMovie.length} pagination={paginate} />
         </div>
       );
     }
