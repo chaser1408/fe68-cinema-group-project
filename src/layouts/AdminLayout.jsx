@@ -1,9 +1,8 @@
 import withLayout from "hocs/withLayout";
-import Admin from "../container/Admin/AdminLayout/Admin"
+import Admin from "../container/admin/AdminLayout/Admin";
 import React from "react";
 
 function AdminLayout(props) {
-
   return (
     <>
       <div className="container-fluid">
@@ -12,13 +11,9 @@ function AdminLayout(props) {
             {""}
             <Admin />
           </div>
-          <div className="col-9">
-            {props.children}
-          </div>
+          <div className="col-9">{props.children}</div>
         </div>
-
       </div>
-
     </>
   );
 }

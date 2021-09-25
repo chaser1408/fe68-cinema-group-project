@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+
 import Carousel from "components/Carousel/Carousel";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Header.scss"
+import "./Header.scss";
 export default class Header extends Component {
   render() {
     return (
@@ -44,20 +45,16 @@ export default class Header extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/LoginUser">
-                  <button type="button" className="">
-                    dn
-                  </button>
+                <Link className="nav-link" to="/login">
+                  Sign up
                 </Link>
               </li>
             </ul>
           </div>
         </nav>
-        <div>
-        </div> 
-<Carousel/>
+        <div></div>
+        {/* <Carousel /> */}
       </div>
-
     );
   }
 }

@@ -1,10 +1,10 @@
 // import { loginService } from "apis/authApi";
 import movieApi from "apis/movieApi";
-// import {
-//   FETCH_LOGIN_SUCCESS,
-//   FETCH_LOGIN_FAIL,
-//   FETCH_LOGIN_RESQUEST,
-// } from "./types";
+import {
+  FETCH_LOGIN_SUCCESS,
+  //   FETCH_LOGIN_FAIL,
+  //   FETCH_LOGIN_RESQUEST,
+} from "./types";
 import { message } from "antd";
 // import { Redirect } from "react-router-dom";
 
@@ -13,10 +13,10 @@ import { message } from "antd";
 //   payload: userLogin,
 // });
 
-// export const actFetchMovieLoginSuccess = (userLogin) => ({
-//   type: FETCH_LOGIN_SUCCESS,
-//   payload: userLogin,
-// });
+export const actFetchMovieLoginSuccess = (userLogin) => ({
+  type: FETCH_LOGIN_SUCCESS,
+  payload: userLogin,
+});
 // export const actFetchMovieLoginFail = (err) => ({
 //   type: FETCH_LOGIN_FAIL,
 //   payload: err,
@@ -50,8 +50,13 @@ export const loginAction = (user, pushCallback) => {
         const { content } = rs.data;
         message.success("Xin chao " + content.hoTen, 2);
         localStorage.setItem("userLogin", JSON.stringify(content));
-        pushCallback();
+        if (content.maLoaiNguoiDung === "QuanTri") {
+          pushCallback("Admin/MovieManager/");
+        } else {
+          pushCallback("/");
+        }
         console.log("OK 200 Login");
+        dispatch(actFetchMovieLoginSuccess(content));
       })
       .catch((err) => {
         message.error(err.response.data.content);
