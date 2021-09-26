@@ -1,9 +1,9 @@
 import React from "react";
 import "./Admin.scss";
 import { Link } from "react-router-dom";
-import MovieManager from "../MovieManager/MovieManager";
-import EditMovie from "../MovieManager/Edit/EditMovie";
-import AddMovie from "../MovieManager/Add/AddMovie";
+// import MovieManager from "../MovieManager/MovieManager";
+// import EditMovie from "../MovieManager/Edit/EditMovie";
+// import AddMovie from "../MovieManager/Add/AddMovie";
 
 export default function Admin() {
  

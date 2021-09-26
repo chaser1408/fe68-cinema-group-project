@@ -88,6 +88,13 @@ const movieApi = {
 fetchUserManagement() {
   return callApi(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`);
 },
+//MovieInformation
+//  fetchMovieInforAPi(){
+//    return callApi(`QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01`);
+//  }
+ fetchShowtimeTheaterSystemApi() {
+  return callApi(`QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP_ID}`);
+},
 };
 
 export default movieApi;

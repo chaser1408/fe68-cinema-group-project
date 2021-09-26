@@ -4,18 +4,21 @@ import thunk from "redux-thunk";
 import movieReducer from "container/clients/MovieList/module/reducers";
 import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
 import movieSeatPlanReducer from "container/clients/SeatPlan/module/reducers";
-import UserLoginReducer from "container/clients/LoginUser/modules/reducers";
-import movieManagerReducer from "container/Admin/MovieManager/modules/reducer";
-// import addMovieManagerReducer from "container/Admin/MovieManager/Add/modules/reducer"
-import editMovieInforReducer from "container/Admin/MovieManager/Edit/modules/reducer";
-import userMagenementReducer from "container/Admin/UserManagement/modules/reducers";
-
+import userLoginReducer from "container/shared/LoginUser/modules/reducers";
+import movieManagerReducer from "container/admin/MovieManager/modules/reducer";
+import editMovieInforReducer from "container/admin/MovieManager/Edit/modules/reducer";
+import userMagenementReducer from "container/admin/UserManagement/modules/reducers";
+import clientMovieReducer from "container/clients/MovieInfor/modules/reducer";
+// import QuanLyPhimReducer from "components/HomeMovie/module/reducer"
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
   movieSeatPlanReducer,
-  UserLoginReducer,
+  userLoginReducer,
   movieManagerReducer,
+  //movieInforReducer
+  clientMovieReducer,
+  // QuanLyPhimReducer,
   // addMovieManagerReducer,
   editMovieInforReducer,
   // user - admin

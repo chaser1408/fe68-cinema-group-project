@@ -26,7 +26,7 @@ function EditMovie(props) {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            maPhim: movieInfor.maPhim,
+            maPhim: movieInfor?.maPhim,
             tenPhim: movieInfor?.tenPhim,
             trailer: movieInfor?.trailer,
             moTa: movieInfor?.moTa,

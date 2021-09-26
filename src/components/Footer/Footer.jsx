@@ -27,32 +27,32 @@ export class Footer extends Component {
               <h5 className="footer__title">đối tác</h5>
               <div className="row">
                 <div className="footer__list--image col-12">
-                  <a href><img src="./img/cgv.png" alt /></a>
-                  <a href><img src="./img/bhd.png" alt /></a>
-                  <a href><img src="./img/galaxycine.png" alt /></a>
-                  <a href><img src="./img/cinestar.png" alt /></a>
-                  <a href><img src="./img/404b8c4b80d77732e7426cdb7e24be20.png" alt /></a>
+                  <a href><img src="./img/cgv.png" alt="#" /></a>
+                  <a href><img src="./img/bhd.png" alt="#" /></a>
+                  <a href><img src="./img/galaxycine.png" alt="#" /></a>
+                  <a href><img src="./img/cinestar.png" alt="#" /></a>
+                  <a href><img src="./img/404b8c4b80d77732e7426cdb7e24be20.png" alt="#" /></a>
                 </div>
                 <div className="footer__list--image col-12">
-                  <a href><img src="./img/megags.png" alt /></a>
-                  <a href><img src="./img/77807d96b5048f1d79f45d9d7d3f6a3a.png" alt /></a>
-                  <a href><img src="./img/9b240f96a233bb43203ee514a21a6004.png" alt /></a>
-                  <a href><img src="./img/TOUCH.png" alt /></a>
-                  <a href><img src="./img/cnx.jpg" alt /></a>
+                  <a href><img src="./img/megags.png" alt="#" /></a>
+                  <a href><img src="./img/77807d96b5048f1d79f45d9d7d3f6a3a.png" alt="#" /></a>
+                  <a href><img src="./img/9b240f96a233bb43203ee514a21a6004.png" alt="#"alt /></a>
+                  <a href><img src="./img/TOUCH.png" alt="#" /></a>
+                  <a href><img src="./img/cnx.jpg" alt="#" /></a>
                 </div>
                 <div className="footer__list--image col-12">
-                  <a href><img src="./img/STARLIGHT.png" alt /></a>
-                  <a href><img src="./img/dcine.png" alt /></a>
-                  <a href><img src="./img/zalopay_icon.png" alt /></a>
-                  <a href><img src="./img/payoo.jpg" alt /></a>
-                  <a href><img src="./img/VCB.png" alt /></a>
+                  <a href><img src="./img/STARLIGHT.png" alt="#" /></a>
+                  <a href><img src="./img/dcine.png" alt="#" /></a>
+                  <a href><img src="./img/zalopay_icon.png" alt="#" /></a>
+                  <a href><img src="./img/payoo.jpg" alt="#" /></a>
+                  <a href><img src="./img/VCB.png" alt="#" /></a>
                 </div>
                 <div className="footer__list--image col-12">
-                  <a href><img src="./img/AGRIBANK.png" alt /></a>
-                  <a href><img src="./img/VIETTINBANK.png" alt /></a>
-                  <a href><img src="./img/IVB.png" alt /></a>
-                  <a href><img src="./img/123go.png" alt /></a>
-                  <a href><img src="./img/laban.png" alt /></a>
+                  <a href><img src="./img/AGRIBANK.png" alt="#" /></a>
+                  <a href><img src="./img/VIETTINBANK.png" alt="#" /></a>
+                  <a href><img src="./img/IVB.png" alt="#" /></a>
+                  <a href><img src="./img/123go.png" alt="#" /></a>
+                  <a href><img src="./img/laban.png" alt="#" /></a>
                 </div>
               </div>
             </div>
@@ -62,8 +62,8 @@ export class Footer extends Component {
                   <h5 className="footer__title">mobile app</h5>
                   <div className="row">
                     <div className="footer__list--icon col-12">
-                      <a href><img src="./img/apple-logo.png" alt /></a>
-                      <a href><img src="./img/android-logo.png" alt /></a>
+                      <a href><img src="./img/apple-logo.png" alt="#" /></a>
+                      <a href><img src="./img/android-logo.png" alt="#" /></a>
                     </div>
                   </div>
                 </div>
@@ -71,8 +71,8 @@ export class Footer extends Component {
                   <h5 className="footer__title ml-3">social</h5>
                   <div className="row">
                     <div className="footer__list--social col-12">
-                      <a href><img src="./img/facebook-logo.png" alt /></a>
-                      <a href><img src="./img/zalo-logo.png" alt /></a>
+                      <a href><img src="./img/facebook-logo.png" alt="#" /></a>
+                      <a href><img src="./img/zalo-logo.png" alt="#" /></a>
                     </div>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ export class Footer extends Component {
           </div>
           <div className="row footer__bot">
             <div className="col-12 col-lg-1 mb-3">
-              <img src="./img/zion-logo.jpg" alt />
+              <img src="./img/zion-logo.jpg" alt="#" />
             </div>
             <div className="col-12 col-lg-9 footer__info mb-3">
               <h5 className="footer__title">TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</h5>
@@ -93,7 +93,7 @@ export class Footer extends Component {
               <p>Email: <a href>support@tix.vn</a></p>
             </div>
             <div className="col-12 col-lg-2 mb-3">
-              <a href><img className="image" src="./img/d1e6bd560daa9e20131ea8a0f62e87f8.png" alt /></a>
+              <a href><img className="image" src="./img/d1e6bd560daa9e20131ea8a0f62e87f8.png" alt="#" /></a>
             </div>
           </div>
         </div>
