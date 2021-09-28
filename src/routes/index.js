@@ -1,10 +1,19 @@
 import Admin from "container/admin/AdminLayout/Admin";
+<<<<<<< HEAD
 import AddMovie from "container/admin/MovieManager/Add/AddMovie";
 import EditMovie from "container/admin/MovieManager/Edit/EditMovie";
+=======
+>>>>>>> mia
 import UserManagement from "container/admin/UserManagement/UserManagement";
 import Home from "container/clients/Home/Home";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
-import MovieList from "container/clients/MovieList/MovieList";
+import AddMovie from "container/admin/MovieManager/Add/AddMovie";
+import EditMovie from "container/admin/MovieManager/Edit/EditMovie";
+import ShowTime from "container/admin/MovieManager/ShowTime/ShowTime";
+import MovieManager from "container/admin/MovieManager/MovieManager";
+import LoginUser from "container/shared/LoginUser/LoginUser";
+import SeatPlan from "container/clients/SeatPlan/SeatPlan";
+import UpdateUser from "container/admin/UserManagement/UpdateUser/UpdateUser";
 
 export const adminRoutes = [
   {
@@ -41,14 +50,56 @@ export const clientRoutes = [
     component: MovieDetail,
     exact: false,
   },
+<<<<<<< HEAD
   // {
   //   path: "/Admin/MovieManager",
   //   component: Admin,
   //   exact: false,
   // },
+=======
+  {
+    path: "/seat-plan/:showTimeId",
+    component: SeatPlan,
+    exact: false,
+  },
+  {
+    path: "/login",
+    component: LoginUser,
+    exact: false,
+  },
+];
+
+export const adminRoutes = [
+  {
+    path: "/Admin/MovieManager",
+    component: MovieManager,
+    exact: true,
+  },
+  {
+    path: "/Admin/MovieManager/AddMovie",
+    component: AddMovie,
+    exact: false,
+  },
+>>>>>>> mia
+  {
+    path: "/Admin/MovieManager/EditMovie/:id",
+    component: EditMovie,
+    exact: false,
+  },
+  {
+    path: "/Admin/MovieManager/ShowTime/:id",
+    component: ShowTime,
+    exact: false,
+  },
+  // User
   {
     path: "/Admin/UserManagement",
     component: UserManagement,
-    exact: false,
+    exact: true,
+  },
+  {
+    path: "/Admin/UserManagement/EditUser/:taiKhoan",
+    component: UpdateUser,
+    exact: true,
   },
 ];

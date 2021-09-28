@@ -16,6 +16,24 @@
 // };
 
 // export default movieApi;
+// import { GROUP_ID } from "settings/apiConfig";
+// import callApi from "utils/callApi";
+
+// const movieApi = {
+//   fecthAllMovieApi() {
+//     return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`);
+//   },
+
+//   fetchMovieDetailApi(movieId) {
+//     return callApi(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${movieId}`);
+//   },
+//   fetchMovieSeatPlanApi(showTimeId) {
+//     return callApi(`QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${showTimeId}`);
+//   },
+//   fetchMovieUserLoginApi()
+// };
+
+// export default movieApi;
 
 import { GROUP_ID } from "settings/apiConfig";
 import callApi from "utils/callApi";
@@ -36,12 +54,15 @@ const movieApi = {
   fetchMovieSeatPlanApi(showTimeId) {
     return callApi(`QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${showTimeId}`);
   },
-  // LOG-IN / SIGN-UP
   fetchMovieUserLoginApi(userLogin) {
     return callApi(`QuanLyNguoiDung/DangNhap`, "POST", userLogin);
   },
-  // ADMIN MOVIE
-  fetchMovieManagerApi() {
+  fetchMovieManagerApi(tenPhim = "") {
+    if (tenPhim != "".trim()) {
+      return callApi(
+        `QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}&tenPhim=${tenPhim}`
+      );
+    }
     return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`);
   },
   fetchMovieAddMovieUploadHinhApi(formData) {
@@ -56,9 +77,28 @@ const movieApi = {
   DeleteMovieUpLoadAPi(maPhim) {
     return callApiDelete(`QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   },
-  // ADMIN USER
+  fetchTheaterSystemInformation() {
+    return callApi(`QuanLyRap/LayThongTinHeThongRap`);
+  },
+  layThongTinCumRap(maHeThongRap) {
+    return callApi(
+      `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+    );
+  },
+  taoLichChieu(layThongTinLichChieu) {
+    return callApiPost(`QuanLyDatVe/TaoLichChieu`, layThongTinLichChieu);
+  },
+  // admin user
   fetchUserManagement() {
     return callApi(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`);
+  },
+  fetchAddUser(clientData) {
+    return callApiPost(`QuanLyNguoiDung/ThemNguoiDung`, clientData);
+  },
+  fetchGetUserInfo(tuKhoa) {
+    return callApi(
+      `QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUP_ID}&tuKhoa=${tuKhoa}`
+    );
   },
 };
 

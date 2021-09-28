@@ -2,12 +2,15 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actFetchUserManagement } from "./modules/actions";
+import { actFetchAddUser, actFetchUserManagement } from "./modules/actions";
 import "./UserManagement.scss";
-import { Modal, Button, Form, Input, Checkbox } from "antd";
+import { Modal, Button, Form, Input } from "antd";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 function UserManagement(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   console.log(props);
   const { userManagement } = useSelector(
     (state) => state.userMagenementReducer
@@ -17,17 +20,38 @@ function UserManagement(props) {
     dispatch(actFetchUserManagement());
   }, []);
 
+  const pushCallback = (url) => {
+    history.push(url);
+  };
+
   console.log(userManagement);
 
   const renderUserList = () =>
     userManagement?.map((user, idx) => {
       return (
-        <div className="col-3">
+        <div className="col-4">
           <div className="card">
             <img className="card-img-top" src="holder.js/100x180/" alt="" />
             <div className="card-body">
-              <h4 className="card-title">{user.hoTen}</h4>
-              <p className="card-text">{user.email}</p>
+              <h4 className="card-title">Họ tên: {user.hoTen}</h4>
+              <p className="card-text">Tài khoản: {user.taiKhoan}</p>
+              <p className="card-text">Email: {user.email}</p>
+              <p className="card-text">Role: {user.maLoaiNguoiDung}</p>
+              <p className="card-text">SĐT: {user.soDt}</p>
+              <div className="row">
+                <div className="col-6">
+                  <Button className="mr-2 bg-secondary text-white">
+                    <Link
+                      className=""
+                      to={`/Admin/UserManagement/EditUser/${user.taiKhoan}`}>
+                      Sửa
+                    </Link>
+                  </Button>
+                  <Button className="" type="danger">
+                    <Link path="/Admin/UserManagement/EditUser">Xóa</Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -55,6 +79,7 @@ function UserManagement(props) {
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    dispatch(actFetchAddUser(values, pushCallback));
     setIsModalVisible(false);
   };
 
@@ -66,9 +91,9 @@ function UserManagement(props) {
   return (
     <>
       <div className="container">
-        <div className="row">
-          <h1 className="mr-auto my-3">UserManagement</h1>
-          <Button className="ml-auto my-4" type="primary" onClick={showModal}>
+        <div className="row addUserButton">
+          <h1 className="mr-auto">UserManagement</h1>
+          <Button className="ml-auto mt-2" type="primary" onClick={showModal}>
             Add New User
           </Button>
           <Modal

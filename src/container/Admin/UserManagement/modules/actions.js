@@ -1,3 +1,4 @@
+import { message } from "antd";
 import movieApi from "apis/movieApi";
 import {
   FETCH_USER_MANAGEMENT_FAIL,
@@ -20,4 +21,18 @@ export const actFetchUserManagement = () => (dispatch) => {
         payload: err.response.data,
       });
     });
+};
+
+export const actFetchAddUser = (clientData, pushCallback) => {
+  return async () => {
+    try {
+      let { data } = await movieApi.fetchAddUser(clientData);
+      message.success("Add user success", data);
+      pushCallback("/Admin/UserManagement");
+      console.log(data, "data add user");
+    } catch (error) {
+      console.log(error.response?.data);
+      message.error("Add user fail " + error.response?.data);
+    }
+  };
 };

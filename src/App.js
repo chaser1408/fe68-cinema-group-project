@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 import LoginUser from "container/clients/LoginUser/LoginUser";
 
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import { adminRoutes, clientRoutes } from "routes";
+=======
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { clientRoutes, adminRoutes } from "routes";
+>>>>>>> mia
 import ClientLayout from "layouts/ClientLayout";
-import PageNotFound from "container/shared/PageNotFound/PageNotFound";
 import AdminLayout from "layouts/AdminLayout";
+import PageNotFound from "container/shared/PageNotFound/PageNotFound";
+<<<<<<< HEAD
+import AdminLayout from "layouts/AdminLayout";
+=======
+import LoginUser from "container/shared/LoginUser/LoginUser";
+>>>>>>> mia
 
 function App() {
   const renderRoutes = (routes, Layout) => {
@@ -40,6 +50,8 @@ function App() {
         <Switch>
           {renderRoutes(adminRoutes, AdminLayout)}
           {renderRoutes(clientRoutes, ClientLayout)}
+          {renderRoutes(adminRoutes, AdminLayout)}
+
           <Route path="/login" component={LoginUser} />
           <Route path="*" component={PageNotFound} />
         </Switch>

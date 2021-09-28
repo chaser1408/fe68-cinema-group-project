@@ -8,9 +8,11 @@ import React from "react";
 function ClientLayout(props) {
   return (
     <>
-      <Header />
-      {props.children}
-      <Footer />
+      <div className="container-fluid">
+        <Header />
+        {props.children}
+        <Footer />
+      </div>
     </>
   );
 }

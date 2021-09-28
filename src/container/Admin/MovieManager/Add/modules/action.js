@@ -1,8 +1,5 @@
 import movieApi from "apis/movieApi";
-import {
-    FETCH_MOVIE_ADD_FAIL, FETCH_MOVIE_ADD_RESQUESS,
-    FETCH_MOVIE_ADD_SUCCESS
-} from "./type";
+
 
 // export const actFetchMovieAdd =(formData)=>{
 //     return dispatch=>{
@@ -28,7 +25,7 @@ import {
 export const actFetchMovieAdd = (formData) => {
     return async (dispatch) => {
         try {
-            let {data, status} = await movieApi.fetchMovieAddMovieUploadHinhApi(formData);
+            let {data} = await movieApi.fetchMovieAddMovieUploadHinhApi(formData);
             console.log(data)
 
         } catch(error) {
