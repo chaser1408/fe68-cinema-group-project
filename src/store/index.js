@@ -9,6 +9,7 @@ import movieManagerReducer from "container/admin/MovieManager/modules/reducer";
 // import addMovieManagerReducer from "container/Admin/MovieManager/Add/modules/reducer"
 import editMovieInforReducer from "container/admin/MovieManager/Edit/modules/reducer";
 import userMagenementReducer from "container/admin/UserManagement/modules/reducers";
+import userEditUserReducer from "container/admin/UserManagement/UpdateUser/modules/reducers";
 
 const rootReducer = combineReducers({
   movieReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   editMovieInforReducer,
   // user - admin
   userMagenementReducer,
+  userEditUserReducer,
 });
 
 const store = createStore(

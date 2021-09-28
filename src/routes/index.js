@@ -8,6 +8,7 @@ import ShowTime from "container/admin/MovieManager/ShowTime/ShowTime";
 import MovieManager from "container/admin/MovieManager/MovieManager";
 import LoginUser from "container/shared/LoginUser/LoginUser";
 import SeatPlan from "container/clients/SeatPlan/SeatPlan";
+import UpdateUser from "container/admin/UserManagement/UpdateUser/UpdateUser";
 
 export const clientRoutes = [
   {
@@ -57,6 +58,11 @@ export const adminRoutes = [
   {
     path: "/Admin/UserManagement",
     component: UserManagement,
+    exact: true,
+  },
+  {
+    path: "/Admin/UserManagement/EditUser/:taiKhoan",
+    component: UpdateUser,
     exact: true,
   },
 ];

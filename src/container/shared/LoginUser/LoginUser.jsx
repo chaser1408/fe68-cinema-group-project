@@ -11,7 +11,9 @@ export default function LoginUser(props) {
 
   const dispatch = useDispatch();
 
-  const { loading, userLogin } = useSelector((state) => state.userLoginReducer);
+  const { loading, setLoading } = useSelector(
+    (state) => state.userLoginReducer
+  );
 
   console.log(loading);
 
