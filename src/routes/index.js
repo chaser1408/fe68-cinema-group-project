@@ -7,11 +7,8 @@ import ShowTime from "container/admin/MovieManager/ShowTime/ShowTime";
 import MovieManager from "container/admin/MovieManager/MovieManager";
 import LoginUser from "container/shared/LoginUser/LoginUser";
 import SeatPlan from "container/clients/SeatPlan/SeatPlan";
-<<<<<<< HEAD
 import UpdateUser from "container/admin/UserManagement/UpdateUser/UpdateUser";
-=======
 import CheckOut from "container/clients/CheckOut/CheckOut";
->>>>>>> 323a1471e6a4469fd56fcea8b373351d46f2da71
 
 export const clientRoutes = [
   {

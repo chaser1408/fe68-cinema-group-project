@@ -39,7 +39,7 @@ import { GROUP_ID } from "settings/apiConfig";
 import callApi from "utils/callApi";
 import callApiPost from "utils/callApiPost";
 import callApiDelete from "utils/callApiDelete";
-import {ThongTinDatVe} from "../_core/models/ThongTinDatVe"
+import { ThongTinDatVe } from "../_core/models/ThongTinDatVe";
 
 const movieApi = {
   fecthAllMovieApi() {
@@ -89,38 +89,23 @@ const movieApi = {
   taoLichChieu(layThongTinLichChieu) {
     return callApiPost(`QuanLyDatVe/TaoLichChieu`, layThongTinLichChieu);
   },
-<<<<<<< HEAD
-  // admin user
+
   fetchUserManagement() {
     return callApi(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`);
   },
-  fetchAddUser(clientData) {
-    return callApiPost(`QuanLyNguoiDung/ThemNguoiDung`, clientData);
-  },
-  fetchGetUserInfo(tuKhoa) {
+  //MovieInformation
+  //  fetchMovieInforAPi(){
+  //    return callApi(`QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01`);
+  //  }
+  fetchShowtimeTheaterSystemApi() {
     return callApi(
-      `QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUP_ID}&tuKhoa=${tuKhoa}`
+      `QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP_ID}`
     );
   },
-=======
-  
-fetchUserManagement() {
-  return callApi(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`);
-},
-//MovieInformation
-//  fetchMovieInforAPi(){
-//    return callApi(`QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01`);
-//  }
- fetchShowtimeTheaterSystemApi() {
-  return callApi(`QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP_ID}`);
-},
-//api DatVe
-fetchDatVeApi ( thongTinDatVe = new ThongTinDatVe()){
-  return callApiPost(`QuanLyDatVe/DatVe`, thongTinDatVe)
-}
- 
->>>>>>> 323a1471e6a4469fd56fcea8b373351d46f2da71
+  //api DatVe
+  fetchDatVeApi(thongTinDatVe = new ThongTinDatVe()) {
+    return callApiPost(`QuanLyDatVe/DatVe`, thongTinDatVe);
+  },
 };
-
 
 export default movieApi;

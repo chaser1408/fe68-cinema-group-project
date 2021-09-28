@@ -8,12 +8,9 @@ import userLoginReducer from "container/shared/LoginUser/modules/reducers";
 import movieManagerReducer from "container/admin/MovieManager/modules/reducer";
 import editMovieInforReducer from "container/admin/MovieManager/Edit/modules/reducer";
 import userMagenementReducer from "container/admin/UserManagement/modules/reducers";
-<<<<<<< HEAD
 import userEditUserReducer from "container/admin/UserManagement/UpdateUser/modules/reducers";
-=======
 import clientMovieReducer from "container/clients/MovieInfor/modules/reducer";
-import   movieSeatPlanReducer1 from "container/clients/CheckOut/module/reducers"
->>>>>>> 323a1471e6a4469fd56fcea8b373351d46f2da71
+import movieSeatPlanReducer1 from "container/clients/CheckOut/module/reducers";
 
 // import QuanLyPhimReducer from "components/HomeMovie/module/reducer"
 const rootReducer = combineReducers({
