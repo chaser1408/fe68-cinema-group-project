@@ -39,6 +39,7 @@ import { GROUP_ID } from "settings/apiConfig";
 import callApi from "utils/callApi";
 import callApiPost from "utils/callApiPost";
 import callApiDelete from "utils/callApiDelete";
+import {ThongTinDatVe} from "../_core/models/ThongTinDatVe"
 
 const movieApi = {
   fecthAllMovieApi() {
@@ -95,7 +96,13 @@ fetchUserManagement() {
  fetchShowtimeTheaterSystemApi() {
   return callApi(`QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP_ID}`);
 },
+//api DatVe
+fetchDatVeApi ( thongTinDatVe = new ThongTinDatVe()){
+  return callApiPost(`QuanLyDatVe/DatVe`, thongTinDatVe)
+}
+ 
 };
+
 
 export default movieApi;
 

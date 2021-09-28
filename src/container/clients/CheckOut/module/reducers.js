@@ -2,7 +2,8 @@
 import {
   FETCH_MOVIE_SEAT_FAIL,
   FETCH_MOVIE_SEAT_SUCCESS,
-  DAT_VE
+  DAT_VE,
+  DAT_VE_HOAN_TAT
   // START_LOADING,
   // STOP_LOADING,
 } from "./types";
@@ -39,6 +40,10 @@ const movieSeatPlanReducer1 = (state = initialState, action ) => {
         return{...state, danhSachGheDangDat:danhSachGheCapNhat }
 
       }
+      case DAT_VE_HOAN_TAT :
+        state.danhSachGheDangDat = []
+        return {...state}
+   
     default:
       return state;
   }

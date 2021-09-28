@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, } from 'react'
 import { useDispatch, useSelector, } from 'react-redux'
 import "../CheckOut/CheckOut.scss"
-import { actFetchMovieSeatApi } from "container/clients/CheckOut/module/actions"
+import { actFetchMovieSeatApi, actDatVe } from "container/clients/CheckOut/module/actions"
 import { CloseOutlined } from "@ant-design/icons";
 import { DAT_VE } from 'container/clients/CheckOut/module/types'
-
 import _ from 'lodash'
+import { ThongTinDatVe } from '_core/models/ThongTinDatVe';
 
 export default function CheckOut(props) {
     console.log(".....", props);
@@ -29,6 +29,8 @@ export default function CheckOut(props) {
 
             let classGheDangDat = '';
             let indexGheDD = danhSachGheDangDat.findIndex(gheDD => gheDD.maGhe === ghe.maGhe)
+
+            
 
             if (indexGheDD !==-1) {
                 classGheDaDat = 'gheDangDat';
@@ -87,7 +89,14 @@ export default function CheckOut(props) {
                     <hr />
                     <i>Tên Khách Hàng:</i>
                     <span>{userLogin.taiKhoan}</span>
-                    <div className="bg-green  w-full text-center py-3 font-bold text-2xl"> Đặt Vé</div>
+                    <div onClick={()=>{
+                         const thongTinDatVe = new ThongTinDatVe()
+                            thongTinDatVe.maLichChieu =props.match.params.id;
+                            thongTinDatVe.danhSachVe= danhSachGheDangDat;
+                            console.log("thongtindatve", thongTinDatVe);
+                            dispatch(actDatVe(thongTinDatVe));
+
+                    }} className="bg-green  w-full text-center py-3 font-bold text-2xl"> Đặt Vé</div>
                 </div>
             </div>
 

@@ -15,7 +15,7 @@ import   movieSeatPlanReducer1 from "container/clients/CheckOut/module/reducers"
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
-  movieSeatPlanReducer,
+   movieSeatPlanReducer,
   movieSeatPlanReducer1,
 
   userLoginReducer,
