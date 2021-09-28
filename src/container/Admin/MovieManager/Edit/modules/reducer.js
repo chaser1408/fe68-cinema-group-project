@@ -15,6 +15,8 @@ import { FETCH_MOVIE_EDIT_FAIL,
          return { ...state, err:payload,  };
      default:
        return state;
+// sao ko có token nó vẫn xóa đc ta
+//no k can
    }
  };
  export default editMovieInforReducer;

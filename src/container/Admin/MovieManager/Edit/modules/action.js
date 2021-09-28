@@ -6,9 +6,9 @@ import {
 
 export const actFetchMovieEdit =(maPhim)=>{
     return dispatch=>{
-        movieApi. fetchMovieInforApi(maPhim)
+        movieApi.fetchMovieInforApi(maPhim)
         .then(res=>{
-            console.log(res)  
+            console.log(res, 'res editmovie')  
             dispatch({
                 type: FETCH_MOVIE_EDIT_SUCCESS,
                 payload: res.data.content,

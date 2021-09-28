@@ -1,1 +1,14 @@
 @import '../../../scss/main.scss';
+
+
+.movieList{
+    margin-top:100px;
+    .movieList__card{  
+        width: 200px; 
+        .movieList__imgs{
+            display: block;
+            width: 230px;
+          }
+}
+    
+}   
