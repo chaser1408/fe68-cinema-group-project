@@ -8,7 +8,7 @@ import React from "react";
 function ClientLayout(props) {
   return (
     <>
-      <div className="container-fluid">
+      <div className="">
         <Header />
         {props.children}
         <Footer />

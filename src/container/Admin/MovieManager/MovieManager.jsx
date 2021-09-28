@@ -120,11 +120,11 @@ export default function QuanLyPhim(props) {
   }
   return (
     <div>
-      <Link className="nav-link" to="/Admin/MovieManager/AddMovie">
+      <Link className="nav-link searchText" to="/Admin/MovieManager/AddMovie">
         Thêm Phim
       </Link>
 
-      <Search className="mb-5"
+      <Search className="mt-5 searchText"
         placeholder="pls search:"
         enterButton={<SearchOutlined />}
         onSearch={onSearch}
@@ -137,3 +137,5 @@ export default function QuanLyPhim(props) {
 
   )
 }
+
+// tai sao mat cai search nhi, ko mất đâu, nó bị đẩy lên

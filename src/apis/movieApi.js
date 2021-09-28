@@ -39,6 +39,7 @@ import { GROUP_ID } from "settings/apiConfig";
 import callApi from "utils/callApi";
 import callApiPost from "utils/callApiPost";
 import callApiDelete from "utils/callApiDelete";
+import { ThongTinDatVe } from "../_core/models/ThongTinDatVe";
 
 const movieApi = {
   fecthAllMovieApi() {
@@ -88,10 +89,11 @@ const movieApi = {
   taoLichChieu(layThongTinLichChieu) {
     return callApiPost(`QuanLyDatVe/TaoLichChieu`, layThongTinLichChieu);
   },
-  // admin user
+
   fetchUserManagement() {
     return callApi(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`);
   },
+
   fetchAddUser(clientData) {
     return callApiPost(`QuanLyNguoiDung/ThemNguoiDung`, clientData);
   },
@@ -99,6 +101,19 @@ const movieApi = {
     return callApi(
       `QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUP_ID}&tuKhoa=${tuKhoa}`
     );
+  },
+  //MovieInformation
+  //  fetchMovieInforAPi(){
+  //    return callApi(`QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01`);
+  //  }
+  fetchShowtimeTheaterSystemApi() {
+    return callApi(
+      `QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP_ID}`
+    );
+  },
+  //api DatVe
+  fetchDatVeApi(thongTinDatVe = new ThongTinDatVe()) {
+    return callApiPost(`QuanLyDatVe/DatVe`, thongTinDatVe);
   },
 };
 

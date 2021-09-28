@@ -1,63 +1,88 @@
-import React, { Component } from "react";
 // import { Button } from "antd";
-import { connect } from "react-redux";
 import "./MovieList.scss";
 import { actFetchAllMovieApi } from "./module/actions";
 import { Link } from "react-router-dom";
-class MovieList extends Component {
-  state= {
-    
-    currentPage: 1,
-    postperPage: 5,
-  }
-  componentDidMount() {
-    this.props.fetchAllMovie();
-  }
+import './module/reducers';
+import "../MovieList/MovieList.scss";
+import Slider from "react-slick";
+import { Button } from 'antd';
+import { PHIM_SAP_CHIEU, PHIM_DANG_CHIEU } from "./module/types";
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
-  renderListMovie = () =>
-    this.props.listMovie.map((movie) => (
-      <div className="col-3 card" key={movie.maPhim}>
-        <img className="card-img-top" src={movie.hinhAnh} alt={movie.biDanh} />
-        <div className="card-body">
-          <h4 className="card-title">{movie.tenPhim}</h4>
-          <p className="card-text text-truncate">{movie.moTa}</p>
-          {/* <button
-            className="btn btn-success"
-            to={`/movie-detail/${movie.maPhim}`}
-          >
-            
-          </button> */}
-          <button className="btn btn-dark">
-            <Link to={`/movie-detail/${movie.maPhim}`}>View detail</Link>
-          </button>
-        </div>
-      </div>
-    ));
-
-  render() {
-    const {currentPage, postperPage} =this.state;
-    const indexOfLastPost =currentPage * postperPage;
-    const indexOfFirstPost = indexOfLastPost - postperPage;
-    const { isLoading } = this.props;
-    if (isLoading) {
-      return <div className="loader"></div>;
-    } else {
-      return (
-        <div className="container">
-          <div className="row">{this.renderListMovie()}</div>
-        </div>
-      );
-    }
-  }
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "red" }}
+      onClick={onClick}
+    />
+  );
 }
 
-const mapStateToProps = (state) => ({
-  listMovie: state.movieReducer.listMovie,
-  isLoading: state.movieReducer.isLoading,
-});
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "green" }}
+      onClick={onClick}
+    />
+  );
+}
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchAllMovie: () => dispatch(actFetchAllMovieApi()),
-});
+const settings = {
+  className: "center variable-width",
+  // centerMode: true,
+  infinite: true,
+  centerPadding: "50px",
+  slidesToShow: 4,
+  speed: 500,
+  rows: 2,
+  nextArrow: <SampleNextArrow />,
+  prevArrow: <SamplePrevArrow />
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
+export default function MovieList(props) {
+  const dispatch = useDispatch();
+  const { listMovie } = useSelector(state => state.movieReducer)
+
+  console.log("object", listMovie);
+  useEffect((listMovie) => {
+    dispatch(actFetchAllMovieApi())
+  }, [])
+
+  return (
+    <div>
+      <div className="container  movieList">
+        <div className="text-center mb-20">
+          <Button className="mb-30"type="primary" danger onClick={() => dispatch({
+              type: PHIM_DANG_CHIEU,
+          })}>
+            Đang Chiếu
+          </Button>
+
+          <Button danger  onClick={()=>dispatch({type: PHIM_SAP_CHIEU})}>Sắp Chiếu</Button>
+        </div>
+
+        <Slider {...settings}>
+          {listMovie.map((movie, index) => {
+            return <div className="  movieList__card   " height={50} key={movie.maPhim}>
+              <img className="card-img-top movieList__imgs" height={300} width={200} backgroundposition='center' src={movie.hinhAnh} alt={movie.biDanh} />
+              <div className="card-body">
+                <h5 className="card-title h-21" >{movie.tenPhim}</h5>
+                <p className="card-text text-truncate">{movie.moTa.length > 100 ? <span>{movie.moTa.slice(0, 100)}...</span> : <span>{movie.moTa}</span>}</p>
+
+                <button className="btn btn-dark">
+                  <Link to={`/movie-detail/${movie.maPhim}`}>View detail</Link>
+                </button>
+              </div>
+            </div>
+          })}
+
+        </Slider>
+      </div>
+    </div>
+  )
+}

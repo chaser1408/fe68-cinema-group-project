@@ -1,9 +1,4 @@
 import Admin from "container/admin/AdminLayout/Admin";
-<<<<<<< HEAD
-import AddMovie from "container/admin/MovieManager/Add/AddMovie";
-import EditMovie from "container/admin/MovieManager/Edit/EditMovie";
-=======
->>>>>>> mia
 import UserManagement from "container/admin/UserManagement/UserManagement";
 import Home from "container/clients/Home/Home";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
@@ -12,32 +7,33 @@ import EditMovie from "container/admin/MovieManager/Edit/EditMovie";
 import ShowTime from "container/admin/MovieManager/ShowTime/ShowTime";
 import MovieManager from "container/admin/MovieManager/MovieManager";
 import LoginUser from "container/shared/LoginUser/LoginUser";
-import SeatPlan from "container/clients/SeatPlan/SeatPlan";
+// import SeatPlan from "container/clients/SeatPlan/SeatPlan";
 import UpdateUser from "container/admin/UserManagement/UpdateUser/UpdateUser";
+import CheckOut from "container/clients/CheckOut/CheckOut";
 
-export const adminRoutes = [
-  {
-    path: "/Admin/MovieManager/AddMovie",
-    component: AddMovie,
-    exact: true,
-  },
-  {
-    path: "/Admin/MovieManager/EditMovie/:id",
-    component: EditMovie,
-    exact: true,
-  },
+// export const adminRoutes = [
+//   {
+//     path: "/Admin/MovieManager/AddMovie",
+//     component: AddMovie,
+//     exact: true,
+//   },
+//   {
+//     path: "/Admin/MovieManager/EditMovie/:id",
+//     component: EditMovie,
+//     exact: true,
+//   },
 
-  // {
-  //   path: "/Admin/UserManagement",
-  //   component: UserManagement,
-  //   exact: true,
-  // },
-  {
-    path: "/Admin/MovieManager",
-    component: Admin,
-    exact: true,
-  },
-];
+//   // {
+//   //   path: "/Admin/UserManagement",
+//   //   component: UserManagement,
+//   //   exact: true,
+//   // },
+//   {
+//     path: "/Admin/MovieManager",
+//     component: Admin,
+//     exact: true,
+//   },
+// ];
 
 export const clientRoutes = [
   {
@@ -50,16 +46,20 @@ export const clientRoutes = [
     component: MovieDetail,
     exact: false,
   },
-<<<<<<< HEAD
+
   // {
   //   path: "/Admin/MovieManager",
   //   component: Admin,
   //   exact: false,
   // },
-=======
+  // {
+  //   path: "/seat-plan/:showTimeId",
+  //   component: SeatPlan,
+  //   exact: false,
+  // },
   {
-    path: "/seat-plan/:showTimeId",
-    component: SeatPlan,
+    path: "/CheckOut/:id",
+    component: CheckOut,
     exact: false,
   },
   {
@@ -80,7 +80,6 @@ export const adminRoutes = [
     component: AddMovie,
     exact: false,
   },
->>>>>>> mia
   {
     path: "/Admin/MovieManager/EditMovie/:id",
     component: EditMovie,
