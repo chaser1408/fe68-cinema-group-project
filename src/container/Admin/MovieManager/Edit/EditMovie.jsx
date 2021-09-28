@@ -51,7 +51,7 @@ function EditMovie(props) {
                     }                 
                 }
             }
-            console.log('alo');
+            console.log('alo CapNhatPhimUpload');
             dispatch(CapNhatPhimUpload(formData));
         }
     })
@@ -109,7 +109,7 @@ function EditMovie(props) {
                         <Radio.Button value="large">Large</Radio.Button>
                     </Radio.Group>
                 </Form.Item>
-                <Form.Item label="Tên Phim">
+                <Form.Item label="Tên Phim"  style={{marginTop: "80px"}}>
                     <Input name="tenPhim" onChange={formik.handleChange} value={formik.values.tenPhim} />
                 </Form.Item>
                 <Form.Item label="Trailer">
@@ -145,3 +145,13 @@ function EditMovie(props) {
     );
 };
 export default EditMovie;
+
+
+// o may ong co bi k, tai may bua tui edit binh thuong
+// vấn đề ko biết bên backend có cho post lên 1 cái 
+// object có element bị null ko, tại xóa thì khỏi kiểm tra
+// còn update là post, post thì căng, get và delete thì ko sao, tại có token hoặc key
+// sao mât cai search r
+
+// ok chưa, tui ko chắc
+// cai dc, cai k 

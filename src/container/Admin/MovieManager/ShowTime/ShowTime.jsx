@@ -86,8 +86,9 @@ export default function ShowTime(props) {
             initialValues={{ remember: true }}
             onSubmitCapture={formik.handleSubmit}
         >
-            <h3 className="text-2xl">Tạo lịch</h3>
+            <h3 className="text-2xl chinh mt-30">Tạo lịch</h3>
             <Form.Item
+            style={{marginTop: "80px"}}
                 name="heThongRapChieu"
                 label="hệ thống râp"  >
                 <Cascader options={renderHeThongRapChieu()} onChange={handleChangeHeThongRap} placeholder="Please select" />

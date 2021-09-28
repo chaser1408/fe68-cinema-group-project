@@ -36,7 +36,7 @@
 
 
 
-import React, { Component, PureComponent, Fragment } from 'react';
+import React, {  PureComponent, Fragment } from 'react';
 import { Tabs, Button } from 'antd';
 import { connect } from 'react-redux';
  import { actFetchShowtimeTheaterSystem } from './modules/action';

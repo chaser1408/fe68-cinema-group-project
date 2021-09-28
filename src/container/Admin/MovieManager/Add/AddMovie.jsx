@@ -20,6 +20,7 @@ function AddMovie(props) {
   console.log('hello AddMovie');
   const formik = useFormik({
     initialValues: {
+      maPhim:"",
       tenPhim: '',
       trailer: '',
       moTa: '',
@@ -103,7 +104,7 @@ function AddMovie(props) {
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Tên Phim" >
+        <Form.Item label="Tên Phim" style={{marginTop: "80px"}} >
           <Input name="tenPhim" onChange={formik.handleChange} />
         </Form.Item>
         <Form.Item label="Trailer">

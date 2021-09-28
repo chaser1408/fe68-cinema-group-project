@@ -7,6 +7,7 @@ import ShowTime from "container/admin/MovieManager/ShowTime/ShowTime";
 import MovieManager from "container/admin/MovieManager/MovieManager";
 import LoginUser from "container/shared/LoginUser/LoginUser";
 import SeatPlan from "container/clients/SeatPlan/SeatPlan";
+import CheckOut from "container/clients/CheckOut/CheckOut";
 
 export const clientRoutes = [
   {
@@ -22,6 +23,11 @@ export const clientRoutes = [
   {
     path: "/seat-plan/:showTimeId",
     component: SeatPlan,
+    exact: false,
+  },
+  {
+    path: "/CheckOut/:id",
+    component: CheckOut,
     exact: false,
   },
   {

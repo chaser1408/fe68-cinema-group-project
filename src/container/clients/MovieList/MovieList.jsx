@@ -34,9 +34,9 @@ function SamplePrevArrow(props) {
 
 const settings = {
   className: "center variable-width",
-  centerMode: true,
+  // centerMode: true,
   infinite: true,
-  centerPadding: "60px",
+  centerPadding: "50px",
   slidesToShow: 4,
   speed: 500,
   rows: 2,
@@ -47,6 +47,7 @@ const settings = {
 export default function MovieList(props) {
   const dispatch = useDispatch();
   const { listMovie } = useSelector(state => state.movieReducer)
+
   console.log("object", listMovie);
   useEffect((listMovie) => {
     dispatch(actFetchAllMovieApi())
@@ -56,26 +57,19 @@ export default function MovieList(props) {
     <div>
       <div className="container  movieList">
         <div className="text-center mb-20">
-
-          <Button className="mb-30"type="primary" danger onClick={() => {
-            const action = {
-              type: PHIM_DANG_CHIEU
-            }
-            dispatch(action);
-            console.log(action);
-          }}>
+          <Button className="mb-30"type="primary" danger onClick={() => dispatch({
+              type: PHIM_DANG_CHIEU,
+          })}>
             Đang Chiếu
           </Button>
 
-          <Button danger >Sắp Chiếu</Button>
+          <Button danger  onClick={()=>dispatch({type: PHIM_SAP_CHIEU})}>Sắp Chiếu</Button>
         </div>
-
-
 
         <Slider {...settings}>
           {listMovie.map((movie, index) => {
             return <div className="  movieList__card   " height={50} key={movie.maPhim}>
-              <img className="card-img-top movieList__imgs" height={270} backgroundposition='center' src={movie.hinhAnh} alt={movie.biDanh} />
+              <img className="card-img-top movieList__imgs" height={300} width={200} backgroundposition='center' src={movie.hinhAnh} alt={movie.biDanh} />
               <div className="card-body">
                 <h5 className="card-title h-21" >{movie.tenPhim}</h5>
                 <p className="card-text text-truncate">{movie.moTa.length > 100 ? <span>{movie.moTa.slice(0, 100)}...</span> : <span>{movie.moTa}</span>}</p>
