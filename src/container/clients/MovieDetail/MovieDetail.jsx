@@ -110,7 +110,7 @@ class MovieDetail extends Component {
                             return (
                               <div className="col-3" key={"lichChieu-" + key}>
                                 <Link
-                                  to={`/seat-plan/${lichChieu.maLichChieu}`}>
+                                  to={`/checkout/${lichChieu.maLichChieu}`}>
                                   {new Date(
                                     lichChieu.ngayChieuGioChieu
                                   ).toLocaleTimeString()}

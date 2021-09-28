@@ -20,11 +20,11 @@ export const clientRoutes = [
     component: MovieDetail,
     exact: false,
   },
-  {
-    path: "/seat-plan/:showTimeId",
-    component: SeatPlan,
-    exact: false,
-  },
+  // {
+  //   path: "/seat-plan/:showTimeId",
+  //   component: SeatPlan,
+  //   exact: false,
+  // },
   {
     path: "/CheckOut/:id",
     component: CheckOut,

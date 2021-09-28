@@ -3,7 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import movieReducer from "container/clients/MovieList/module/reducers";
 import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
-import movieSeatPlanReducer from "container/clients/SeatPlan/module/reducers";
+// import movieSeatPlanReducer from "container/clients/SeatPlan/module/reducers";
 import userLoginReducer from "container/shared/LoginUser/modules/reducers";
 import movieManagerReducer from "container/admin/MovieManager/modules/reducer";
 import editMovieInforReducer from "container/admin/MovieManager/Edit/modules/reducer";
@@ -15,7 +15,7 @@ import   movieSeatPlanReducer1 from "container/clients/CheckOut/module/reducers"
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
-   movieSeatPlanReducer,
+  //  movieSeatPlanReducer,
   movieSeatPlanReducer1,
 
   userLoginReducer,

@@ -30,7 +30,10 @@ export default function CheckOut(props) {
             let classGheDangDat = '';
             let indexGheDD = danhSachGheDangDat.findIndex(gheDD => gheDD.maGhe === ghe.maGhe)
 
-            
+            let classGheDaDuocDat= '';
+            if(userLogin.taiKhoan === ghe.taiKhoanNguoiDat){
+                classGheDaDuocDat= 'classGheDaDuocDat'
+            }
 
             if (indexGheDD !==-1) {
                 classGheDaDat = 'gheDangDat';
@@ -44,7 +47,7 @@ export default function CheckOut(props) {
                             gheDuocChon: ghe,
                         })
 
-                    }} disable={ghe.daDat} className={`ghe ${classGheVip} ${classGheDaDat} ${classGheDangDat} text-center`} key={index}>{ghe.daDat ? <CloseOutlined style={{ marginBottom: 5, fontWeight: 'bold' }} /> : ghe.stt}
+                    }} disable={ghe.daDat} className={`ghe ${classGheVip} ${classGheDaDat} ${classGheDangDat}${classGheDaDuocDat} text-center`} key={index}>{ghe.daDat ? <CloseOutlined style={{ marginBottom: 5, fontWeight: 'bold' }} /> : ghe.stt}
                     </button>
                 }
                 {(index + 1) % 16 === 0 ? <br /> : ''}

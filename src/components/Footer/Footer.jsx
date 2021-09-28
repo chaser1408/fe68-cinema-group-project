@@ -1,8 +1,23 @@
-import React, { Component } from "react";
+
 import "../Footer/Footer.scss"
-export class Footer extends Component {
-  render() {
-    return <div>
+import React, { useEffect, } from 'react'
+import { useDispatch, useSelector, } from 'react-redux'
+import { actFetchShowtimeTheaterSystem } from '../../container/clients/MovieInfor/modules/action'
+import _ from 'lodash'
+
+export default function Footer() {
+  const dispatch = useDispatch();
+  const { listTheaterSystem } = useSelector(state => state.clientMovieReducer)
+  console.log("listTheaterSystem", listTheaterSystem);
+  const arrListTheater = _.map(listTheaterSystem, (theater) => _.pick(theater, ['logo', 'maHeThongRap']))
+
+  useEffect(() => {
+    dispatch(actFetchShowtimeTheaterSystem());
+  }, [])
+
+
+  return (
+    <div>
       <footer>
         <div className="footer__content container">
           <div className="row footer__top">
@@ -27,33 +42,15 @@ export class Footer extends Component {
               <h5 className="footer__title">đối tác</h5>
               <div className="row">
                 <div className="footer__list--image col-12">
-                  <a href><img src="./img/cgv.png" alt="#" /></a>
-                  <a href><img src="./img/bhd.png" alt="#" /></a>
-                  <a href><img src="./img/galaxycine.png" alt="#" /></a>
-                  <a href><img src="./img/cinestar.png" alt="#" /></a>
-                  <a href><img src="./img/404b8c4b80d77732e7426cdb7e24be20.png" alt="#" /></a>
+                  { arrListTheater?.map((movieInfor, index) => {
+                    return (
+                      <a href><img src={movieInfor.logo} alt="#" alt="#" /></a>
+
+                    )
+
+                  })}
                 </div>
-                <div className="footer__list--image col-12">
-                  <a href><img src="./img/megags.png" alt="#" /></a>
-                  <a href><img src="./img/77807d96b5048f1d79f45d9d7d3f6a3a.png" alt="#" /></a>
-                  <a href><img src="./img/9b240f96a233bb43203ee514a21a6004.png" alt="#"alt /></a>
-                  <a href><img src="./img/TOUCH.png" alt="#" /></a>
-                  <a href><img src="./img/cnx.jpg" alt="#" /></a>
-                </div>
-                <div className="footer__list--image col-12">
-                  <a href><img src="./img/STARLIGHT.png" alt="#" /></a>
-                  <a href><img src="./img/dcine.png" alt="#" /></a>
-                  <a href><img src="./img/zalopay_icon.png" alt="#" /></a>
-                  <a href><img src="./img/payoo.jpg" alt="#" /></a>
-                  <a href><img src="./img/VCB.png" alt="#" /></a>
-                </div>
-                <div className="footer__list--image col-12">
-                  <a href><img src="./img/AGRIBANK.png" alt="#" /></a>
-                  <a href><img src="./img/VIETTINBANK.png" alt="#" /></a>
-                  <a href><img src="./img/IVB.png" alt="#" /></a>
-                  <a href><img src="./img/123go.png" alt="#" /></a>
-                  <a href><img src="./img/laban.png" alt="#" /></a>
-                </div>
+              
               </div>
             </div>
             <div className="col-lg-4 col-md-6 footer__right">
@@ -98,8 +95,6 @@ export class Footer extends Component {
           </div>
         </div>
       </footer>
-    </div>;
-  }
+    </div>
+  )
 }
-
-export default Footer;
