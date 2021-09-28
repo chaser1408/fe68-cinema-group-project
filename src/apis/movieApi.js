@@ -93,6 +93,15 @@ const movieApi = {
   fetchUserManagement() {
     return callApi(`QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`);
   },
+
+  fetchAddUser(clientData) {
+    return callApiPost(`QuanLyNguoiDung/ThemNguoiDung`, clientData);
+  },
+  fetchGetUserInfo(tuKhoa) {
+    return callApi(
+      `QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUP_ID}&tuKhoa=${tuKhoa}`
+    );
+  },
   //MovieInformation
   //  fetchMovieInforAPi(){
   //    return callApi(`QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01`);
