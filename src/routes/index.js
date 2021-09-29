@@ -48,26 +48,35 @@ export const adminRoutes = [
     path: "/Admin/MovieManager",
     component: MovieManager,
     exact: true,
+    isPrivate: true,
+
   },
   {
     path: "/Admin/MovieManager/AddMovie",
     component: AddMovie,
     exact: false,
+    isPrivate: true,
+
   },
   {
     path: "/Admin/MovieManager/EditMovie/:id",
     component: EditMovie,
     exact: false,
   },
+  
   {
     path: "/Admin/MovieManager/ShowTime/:id",
     component: ShowTime,
     exact: false,
+    isPrivate: true,
+
   },
   // User
   {
     path: "/Admin/UserManagement",
     component: UserManagement,
     exact: true,
+    isPrivate: true,
+
   },
 ];
