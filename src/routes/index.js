@@ -6,7 +6,6 @@ import EditMovie from "container/admin/MovieManager/Edit/EditMovie";
 import ShowTime from "container/admin/MovieManager/ShowTime/ShowTime";
 import MovieManager from "container/admin/MovieManager/MovieManager";
 import LoginUser from "container/shared/LoginUser/LoginUser";
-import SeatPlan from "container/clients/SeatPlan/SeatPlan";
 import CheckOut from "container/clients/CheckOut/CheckOut";
 
 export const clientRoutes = [
@@ -14,11 +13,14 @@ export const clientRoutes = [
     path: "/",
     component: Home,
     exact: true,
+    isPrivate: false
   },
   {
     path: "/movie-detail/:movieId",
     component: MovieDetail,
     exact: false,
+    isPrivate: false
+
   },
   // {
   //   path: "/seat-plan/:showTimeId",
@@ -29,11 +31,15 @@ export const clientRoutes = [
     path: "/CheckOut/:id",
     component: CheckOut,
     exact: false,
+    isPrivate: true,
+
   },
   {
     path: "/login",
     component: LoginUser,
     exact: false,
+    isPrivate: false
+
   },
 ];
 

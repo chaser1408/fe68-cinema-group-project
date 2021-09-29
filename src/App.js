@@ -9,9 +9,9 @@ import LoginUser from "container/shared/LoginUser/LoginUser";
 function App() {
   const renderRoutes = (routes, Layout) => {
     return routes.map((route, index) => {
-      const { path, component, exact } = route;
+      const { path, component, exact,isPrivate } = route;
       return (
-        <Layout key={index} path={path} component={component} exact={exact} />
+        <Layout key={index} path={path} component={component} exact={exact} isPrivate={isPrivate} />
       );
     });
   };
