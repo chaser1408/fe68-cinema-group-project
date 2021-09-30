@@ -13,8 +13,8 @@ export default function Admin() {
       <div className="sidebar">
         <div className="sidebar-brand">
           <h2>
-            <span className="las la-clinic-medical" />{" "}
-            <span>Cinema Booking</span>
+            <span className="" />{" "}
+          
           </h2>
         </div>
         <div className="sidebar-menu">

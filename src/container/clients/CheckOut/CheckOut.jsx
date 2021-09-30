@@ -6,6 +6,8 @@ import { CloseOutlined } from "@ant-design/icons";
 import { DAT_VE } from 'container/clients/CheckOut/module/types'
 import _ from 'lodash'
 import { ThongTinDatVe } from '_core/models/ThongTinDatVe';
+import { Button } from 'antd';
+
 
 export default function CheckOut(props) {
     console.log(".....", props);
@@ -67,7 +69,7 @@ export default function CheckOut(props) {
                 <div className="col-4 checkout__right">
                     Tên Phim:
                     <span>{thongTinPhim?.tenPhim}</span>
-                    <div className="text-red-400 text-lg col-span-3 md:col-span-4 my-auto ml-6 okk">
+                    <div className="text-red-400 text-lg col-span-3 md:col-span-4 my-auto ml-6 ">
                         <span className="text-red-400 text-lg">
                             Ghế:
                         </span>
@@ -87,19 +89,28 @@ export default function CheckOut(props) {
                     </div>
                     <hr />
                     <i className="ml-20">Email</i>
-                    <span>{userLogin.email}</span>
+                    <div>{userLogin.email}</div>
 
                     <hr />
                     <i>Tên Khách Hàng:</i>
-                    <span>{userLogin.taiKhoan}</span>
-                    <div onClick={()=>{
+                    <div>{userLogin.taiKhoan}</div>
+                    {/* <button  onClick={()=>{
                          const thongTinDatVe = new ThongTinDatVe()
                             thongTinDatVe.maLichChieu =props.match.params.id;
                             thongTinDatVe.danhSachVe= danhSachGheDangDat;
                             console.log("thongtindatve", thongTinDatVe);
                             dispatch(actDatVe(thongTinDatVe));
 
-                    }} className="bg-green  w-full text-center py-3 font-bold text-2xl"> Đặt Vé</div>
+                    }} className="bg-green  w-full text-center py-3 font-bold text-2xl datVe__chechout"> Đặt Vé</button> */}
+                        <Button     onClick={()=>{
+                         const thongTinDatVe = new ThongTinDatVe()
+                            thongTinDatVe.maLichChieu =props.match.params.id;
+                            thongTinDatVe.danhSachVe= danhSachGheDangDat;
+                            console.log("thongtindatve", thongTinDatVe);
+                            dispatch(actDatVe(thongTinDatVe));
+
+                    }}  block>Default</Button>
+
                 </div>
             </div>
 
