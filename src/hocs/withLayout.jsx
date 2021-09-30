@@ -1,18 +1,33 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux"
 
 const withLayout = (WrappedComponent) => {
-  return ({ component: Component, ...rest }) => {
-    return (
+  return ({ component: Component, isPrivate, ...rest }) => {
+    console.log("isPrivate", isPrivate);
+    const userLogin = useSelector(state => state.userLoginReducer.userLogin)
+    const content = (
       <Route
-      {...rest}
-      render={(routeProps) => (
-        <WrappedComponent>
-          <Component {...routeProps} />
-        </WrappedComponent>
-      )}
-    />
+        {...rest}
+        render={(routeProps) => (
+          <WrappedComponent>
+            <Component {...routeProps} />
+          </WrappedComponent>
+        )}
+      />
     )
+    if (isPrivate) {
+      if (userLogin.taiKhoan) {
+        return content;
+      } else {
+        alert('Please login!');
+
+        return <Redirect to="/Login" />
+
+      }
+
+    }
+    return content;
   }
 };
 
