@@ -1,5 +1,3 @@
-
-
 import { GROUP_ID } from "settings/apiConfig";
 import callApi from "utils/callApi";
 import callApiPost from "utils/callApiPost";
@@ -24,7 +22,7 @@ const movieApi = {
     return callApi(`QuanLyNguoiDung/DangNhap`, "POST", userLogin);
   },
   fetchMovieManagerApi(tenPhim = "") {
-    if (tenPhim != "".trim()) {
+    if (tenPhim !== "".trim()) {
       return callApi(
         `QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}&tenPhim=${tenPhim}`
       );

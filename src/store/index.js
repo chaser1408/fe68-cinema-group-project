@@ -1,5 +1,4 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import movieReducer from "container/clients/MovieList/module/reducers";
 import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
@@ -11,7 +10,6 @@ import clientMovieReducer from "container/clients/MovieInfor/modules/reducer";
 import movieSeatPlanReducer1 from "container/clients/CheckOut/module/reducers";
 import userLoginReducer from "container/shared/LoginUser/modules/reducers";
 
-// import QuanLyPhimReducer from "components/HomeMovie/module/reducer"
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
