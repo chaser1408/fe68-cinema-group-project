@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Form, Input } from "antd";
 import React, { useState, useEffect } from "react";
@@ -13,7 +14,7 @@ function UpdateUser(props) {
   const { userInfo } = useSelector((state) => state.userEditUserReducer);
   console.log(userInfo, "userInfo");
   useEffect(() => {
-    dispatch(actFetchUserInfo(props.match.params.taiKhoan));
+    dispatch(actFetchUserInfo(props.match.params.taiKhoan, pushCallback));
     console.log(props.match.params.taiKhoan);
   }, []);
 

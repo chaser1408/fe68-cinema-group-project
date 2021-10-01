@@ -1,39 +1,44 @@
-import React, { useEffect, Fragment } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { actFetchMovieManager } from './modules/action'
-import { Table } from 'antd';
-import './MovieManager.scss';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/jsx-no-duplicate-props */
+import React, { useEffect, Fragment } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { actFetchMovieManager } from "./modules/action";
+import { Table } from "antd";
+import "./MovieManager.scss";
 import { Link, NavLink } from "react-router-dom";
-import { EditOutlined, DeleteOutlined, SearchOutlined, CalendarOutlined } from "@ant-design/icons";
-import { useHistory } from "react-router-dom";
-import { actDeleteMovie } from './Delete/modules/action'
-import { Input } from 'antd';
+import {
+  EditOutlined,
+  DeleteOutlined,
+  SearchOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons";
+import { actDeleteMovie } from "./Delete/modules/action";
+import { Input } from "antd";
 const { Search } = Input;
 
-
-
 export default function QuanLyPhim(props) {
-  const history = useHistory();
   console.log(props);
   const dispatch = useDispatch();
-  const { movieManager } = useSelector(state => state.movieManagerReducer)
+  const { movieManager } = useSelector((state) => state.movieManagerReducer);
   console.log(movieManager);
   useEffect(() => {
-    dispatch(actFetchMovieManager())
-  }, [])
+    dispatch(actFetchMovieManager());
+  }, []);
 
   const columns = [
     {
-      title: 'maPhim',
-      dataIndex: 'maPhim',
+      title: "maPhim",
+      dataIndex: "maPhim",
       width: 50,
-      value: (text, object) => { return <span>{text}</span> },
+      value: (text, object) => {
+        return <span>{text}</span>;
+      },
       sorter: (a, b) => a.maPhim - b.maPhim,
-      sortDirections: ['descend']
+      sortDirections: ["descend"],
     },
     {
-      title: 'tenPhim',
-      dataIndex: 'tenPhim',
+      title: "tenPhim",
+      dataIndex: "tenPhim",
       width: 50,
       sorter: {
         compare: (a, b) => a.tenPhim - b.tenPhim,
@@ -42,8 +47,8 @@ export default function QuanLyPhim(props) {
     },
 
     {
-      title: 'biDanh',
-      dataIndex: 'biDanh',
+      title: "biDanh",
+      dataIndex: "biDanh",
       width: 100,
       sorter: {
         compare: (a, b) => a.moTa - b.moTa,
@@ -51,72 +56,85 @@ export default function QuanLyPhim(props) {
       },
     },
     {
-      title: 'moTa',
-      dataIndex: 'moTa',
+      title: "moTa",
+      dataIndex: "moTa",
       width: 300,
       sorter: {
         compare: (a, b) => a.moTa - b.biDanh,
         multiple: 1,
-
-
       },
-
     },
     {
-      title: 'hinhAnh',
-      dataIndex: 'hinhAnh',
-      width:100,
+      title: "hinhAnh",
+      dataIndex: "hinhAnh",
+      width: 100,
 
       render: (text, film) => {
-        return <Fragment>
-          <img src={film.hinhAnh} width={50} height={50} alt="" />
-        </Fragment>
+        return (
+          <Fragment>
+            <img src={film.hinhAnh} width={50} height={50} alt="" />
+          </Fragment>
+        );
       },
     },
     {
-      title: 'trailer',
-      dataIndex: 'trailer',
-      width:50,
-
-     
+      title: "trailer",
+      dataIndex: "trailer",
+      width: 50,
     },
     {
-      title: 'hành động',
-      dataIndex: 'hành động',
+      title: "hành động",
+      dataIndex: "hành động",
       multiple: 3,
 
-//<EditOutlined />
+      //<EditOutlined />
       render: (text, film) => {
-    
-        return <Fragment>
-          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${film.maPhim}`} ><EditOutlined/>
-
-          </NavLink>
-          <span width={200} onClick className=" bg-dark ml-2" to="/Admin/MovieManager/delete" onClick={() => {
-            if (window.confirm('Are you sure you want to delete' + film.maPhim)) {
-              //action
-              dispatch(actDeleteMovie(film.maPhim));
-            }
-          }} >
-            <DeleteOutlined />
-          </span>
-          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/ShowTime/${film.maPhim}`} ><CalendarOutlined style={{color:'green', background:'none'}}/>
-          </NavLink>
-
-        </Fragment>
+        return (
+          <Fragment>
+            <NavLink
+              className="bg-dark text-white"
+              to={`/Admin/MovieManager/EditMovie/${film.maPhim}`}>
+              <EditOutlined />
+            </NavLink>
+            <span
+              width={200}
+              onClick
+              className=" bg-dark ml-2"
+              to="/Admin/MovieManager/delete"
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Are you sure you want to delete" + film.maPhim
+                  )
+                ) {
+                  //action
+                  dispatch(actDeleteMovie(film.maPhim));
+                }
+              }}>
+              <DeleteOutlined />
+            </span>
+            <NavLink
+              className="bg-dark text-white"
+              to={`/Admin/MovieManager/ShowTime/${film.maPhim}`}>
+              <CalendarOutlined
+                style={{ color: "green", background: "none" }}
+              />
+            </NavLink>
+          </Fragment>
+        );
       },
-    }
+    },
   ];
-  const onSearch = values => {
+
+  const onSearch = (values) => {
     console.log(values);
     dispatch(actFetchMovieManager(values));
-  }
-
+  };
 
   // const onSearch = value => console.log(value);
   const data = movieManager;
   function onChange(pagination, filters, sorter, extra) {
-    console.log('params', pagination, filters, sorter, extra);
+    console.log("params", pagination, filters, sorter, extra);
   }
   return (
     <div>
@@ -124,18 +142,22 @@ export default function QuanLyPhim(props) {
         Thêm Phim
       </Link>
 
-      <Search className="mt-5 searchText"
+      <Search
+        className="mt-5 searchText"
         placeholder="pls search:"
         enterButton={<SearchOutlined />}
         onSearch={onSearch}
-        size="small">
-      </Search>
+        size="small"></Search>
       {/* <button className=" btn btn-success" onClick={() => {
         history.push('./admin/MovieManager/AddMovie')     }}   >AddMovie</button> */}
-      <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        rowKey={"maPhim"}
+      />
     </div>
-
-  )
+  );
 }
 
 // tai sao mat cai search nhi, ko mất đâu, nó bị đẩy lên
