@@ -8,12 +8,8 @@ const userLoginReducer = (state = initialState, { type, payload }) => {
     case "FETCH_LOGIN_SUCCESS":
       state.userLogin = payload;
       console.log("payload", payload);
-
       return { ...state };
 
-    // case "FETCH_LOGIN_FAIL":
-    //   state.error = payload;
-    //   return { ...state };
     default:
       return state;
   }

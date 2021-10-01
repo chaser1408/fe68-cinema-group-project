@@ -9,9 +9,15 @@ import LoginUser from "container/shared/LoginUser/LoginUser";
 function App() {
   const renderRoutes = (routes, Layout) => {
     return routes.map((route, index) => {
-      const { path, component, exact,isPrivate } = route;
+      const { path, component, exact, isPrivate } = route;
       return (
-        <Layout key={index} path={path} component={component} exact={exact} isPrivate={isPrivate} />
+        <Layout
+          key={index}
+          path={path}
+          component={component}
+          exact={exact}
+          isPrivate={isPrivate}
+        />
       );
     });
   };
@@ -21,9 +27,9 @@ function App() {
         <Switch>
           {renderRoutes(adminRoutes, AdminLayout)}
           {renderRoutes(clientRoutes, ClientLayout)}
-          {renderRoutes(adminRoutes, AdminLayout)}
+          {/* {renderRoutes(adminRoutes, AdminLayout)} */}
 
-          <Route path="/login" component={LoginUser} />
+          <Route path="/Login" component={LoginUser} />
           <Route path="*" component={PageNotFound} />
         </Switch>
       </Router>

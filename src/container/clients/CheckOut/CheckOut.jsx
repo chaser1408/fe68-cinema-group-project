@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../CheckOut/CheckOut.scss";
+import "./CheckOut.scss";
 import {
   actFetchMovieSeatApi,
   actDatVe,
@@ -74,14 +74,14 @@ export default function CheckOut(props) {
     });
   };
   return (
-    <div className=" container bg__screen   ">
+    <div className="container bg__screen">
       <div className="row">
         <div className="col-8 checkout">
           <div className={`screen`}></div>
           {renderSeats()}
         </div>
         <div className="col-4 checkout__right">
-          Tên Phim:
+          Tên Phim:{" "}
           <span>{thongTinPhim?.tenPhim}</span>
           <div className="text-red-400 text-lg col-span-3 md:col-span-4 my-auto ml-6 ">
             <span className="text-red-400 text-lg">Ghế:</span>
@@ -92,7 +92,7 @@ export default function CheckOut(props) {
           </div>
           <div className="text-right ">
             <span className="text-green-800 text-lg">
-              Giá Vé:
+              Giá Vé:{" "}
               {danhSachGheDangDat
                 .reduce((tongTien, ghe, index) => {
                   return (tongTien += ghe.giaVe);
@@ -101,7 +101,7 @@ export default function CheckOut(props) {
             </span>
           </div>
           <hr />
-          <i className="ml-20">Email</i>
+          <i className="ml-20">Email:</i>
           <div>{userLogin.email}</div>
           <hr />
           <i>Tên Khách Hàng:</i>
@@ -123,7 +123,7 @@ export default function CheckOut(props) {
               dispatch(actDatVe(thongTinDatVe));
             }}
             block>
-            Default
+            Đặt vé
           </Button>
         </div>
       </div>

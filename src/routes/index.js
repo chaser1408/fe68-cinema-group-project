@@ -10,30 +10,6 @@ import LoginUser from "container/shared/LoginUser/LoginUser";
 import CheckOut from "container/clients/CheckOut/CheckOut";
 import UpdateUser from "container/admin/UserManagement/UpdateUser/UpdateUser";
 
-// export const adminRoutes = [
-//   {
-//     path: "/Admin/MovieManager/AddMovie",
-//     component: AddMovie,
-//     exact: true,
-//   },
-//   {
-//     path: "/Admin/MovieManager/EditMovie/:id",
-//     component: EditMovie,
-//     exact: true,
-//   },
-
-//   // {
-//   //   path: "/Admin/UserManagement",
-//   //   component: UserManagement,
-//   //   exact: true,
-//   // },
-//   {
-//     path: "/Admin/MovieManager",
-//     component: Admin,
-//     exact: true,
-//   },
-// ];
-
 export const clientRoutes = [
   {
     path: "/",
@@ -47,17 +23,6 @@ export const clientRoutes = [
     exact: false,
     isPrivate: false,
   },
-
-  // {
-  //   path: "/Admin/MovieManager",
-  //   component: Admin,
-  //   exact: false,
-  // },
-  // {
-  //   path: "/seat-plan/:showTimeId",
-  //   component: SeatPlan,
-  //   exact: false,
-  // },
   {
     path: "/CheckOut/:id",
     component: CheckOut,
@@ -65,7 +30,7 @@ export const clientRoutes = [
     isPrivate: true,
   },
   {
-    path: "/login",
+    path: "/Login",
     component: LoginUser,
     exact: false,
     isPrivate: false,
