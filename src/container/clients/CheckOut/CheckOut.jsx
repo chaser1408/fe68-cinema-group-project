@@ -106,14 +106,6 @@ export default function CheckOut(props) {
           <hr />
           <i>Tên Khách Hàng:</i>
           <div>{userLogin.taiKhoan}</div>
-          {/* <button  onClick={()=>{
-                         const thongTinDatVe = new ThongTinDatVe()
-                            thongTinDatVe.maLichChieu =props.match.params.id;
-                            thongTinDatVe.danhSachVe= danhSachGheDangDat;
-                            console.log("thongtindatve", thongTinDatVe);
-                            dispatch(actDatVe(thongTinDatVe));
-
-                    }} className="bg-green  w-full text-center py-3 font-bold text-2xl datVe__chechout"> Đặt Vé</button> */}
           <Button
             onClick={() => {
               const thongTinDatVe = new ThongTinDatVe();

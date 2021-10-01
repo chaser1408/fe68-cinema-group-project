@@ -107,6 +107,8 @@ export default function QuanLyPhim(props) {
       },
     }
   ];
+
+  
   const onSearch = values => {
     console.log(values);
     dispatch(actFetchMovieManager(values));

@@ -80,7 +80,7 @@ export default function LoginUser(props) {
             span: 16,
           }}>
           <Button type="primary" htmlType="submit">
-            Submit
+            Login
           </Button>
         </Form.Item>
       </Form>
