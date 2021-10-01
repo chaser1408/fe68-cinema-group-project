@@ -7,7 +7,7 @@ import "../MovieList/MovieList.scss";
 import Slider from "react-slick";
 import { Button } from 'antd';
 import { PHIM_SAP_CHIEU, PHIM_DANG_CHIEU } from "./module/types";
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 function SampleNextArrow(props) {
@@ -47,9 +47,10 @@ const settings = {
 export default function MovieList(props) {
   const dispatch = useDispatch();
   const { listMovie } = useSelector(state => state.movieReducer)
+  const [state, setState] = useState(true)
 
   console.log("object", listMovie);
-  useEffect((listMovie) => {
+  useEffect(() => {
     dispatch(actFetchAllMovieApi())
   }, [])
 
@@ -57,9 +58,12 @@ export default function MovieList(props) {
     <div>
       <div className="container  movieList">
         <div className="text-center mb-20">
-          <Button className="mb-30"type="primary" danger onClick={() => dispatch({
-              type: PHIM_DANG_CHIEU,
-          })}>
+          <Button className="mb-30"type="primary" danger onClick={() => {
+            setState(true);
+            dispatch({type: PHIM_DANG_CHIEU})
+          }
+              
+          }>
             Đang Chiếu
           </Button>
 

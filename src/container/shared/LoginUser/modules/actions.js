@@ -2,6 +2,7 @@
 import movieApi from "apis/movieApi";
 import {
   FETCH_LOGIN_SUCCESS,
+  LOGOUT
   //   FETCH_LOGIN_FAIL,
   //   FETCH_LOGIN_RESQUEST,
 } from "./types";
@@ -64,3 +65,10 @@ export const loginAction = (user, pushCallback) => {
       });
   };
 };
+
+
+
+export const actLogout = () => ({
+  type: LOGOUT,
+  payload: null,
+});
