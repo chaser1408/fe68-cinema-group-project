@@ -1,6 +1,6 @@
 import { LOGOUT, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAIL } from "./types";
 const initialState = {
-  userLogin: {},
+  userLogin: null,
   loading: false,
   error: "",
 };

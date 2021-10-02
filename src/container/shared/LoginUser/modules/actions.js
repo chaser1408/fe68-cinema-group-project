@@ -20,7 +20,7 @@ export const loginAction = (user, pushCallback) => {
       .then((rs) => {
         const { content } = rs.data;
         message.success("Xin chao " + content.hoTen, 2);
-        localStorage.setItem("userLogin", JSON.stringify(content));
+        // localStorage.setItem("userLogin", JSON.stringify(content));
         if (content.maLoaiNguoiDung === "QuanTri") {
           pushCallback("Admin/MovieManager/");
         } else {

@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-// import { Button } from "antd";
 import "./MovieList.scss";
 import { actFetchAllMovieApi } from "./module/actions";
 import { Link } from "react-router-dom";
