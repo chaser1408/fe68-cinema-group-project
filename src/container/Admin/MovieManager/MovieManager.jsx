@@ -87,10 +87,11 @@ export default function QuanLyPhim(props) {
 
 //<EditOutlined />
       render: (text, film) => {
-    
         return <Fragment>
-          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/EditMovie/${film.maPhim}`} ><EditOutlined/>
-
+          <NavLink className="bg-dark text-white hhhhh" to={`/Admin/MovieManager/EditMovie/${film.maPhim}`} >
+            <i className="btn-xoa-sua-showtime">
+            <EditOutlined/>
+              </i>
           </NavLink>
           <span width={200} onClick className=" bg-dark ml-2" to="/Admin/MovieManager/delete" onClick={() => {
             if (window.confirm('Are you sure you want to delete' + film.maPhim)) {
@@ -98,22 +99,25 @@ export default function QuanLyPhim(props) {
               dispatch(actDeleteMovie(film.maPhim));
             }
           }} >
+            <i className="btn-xoa-sua-showtime">
             <DeleteOutlined />
+            </i>
           </span>
-          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/ShowTime/${film.maPhim}`} ><CalendarOutlined style={{color:'green', background:'none'}}/>
+          <NavLink className="bg-dark text-white" to={`/Admin/MovieManager/ShowTime/${film.maPhim}`} >
+            <i className="btn-xoa-sua-showtime">
+            <CalendarOutlined />
+
+            </i>
           </NavLink>
 
         </Fragment>
       },
     }
   ];
-
-  
   const onSearch = values => {
     console.log(values);
     dispatch(actFetchMovieManager(values));
   }
-
 
   // const onSearch = value => console.log(value);
   const data = movieManager;

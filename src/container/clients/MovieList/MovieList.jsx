@@ -75,7 +75,7 @@ export default function MovieList(props) {
             return <div className="  movieList__card   " height={50} key={movie.maPhim}>
               <img className="card-img-top movieList__imgs" height={300} width={200} backgroundposition='center' src={movie.hinhAnh} alt={movie.biDanh} />
               <div className="card-body">
-                <h5 className="card-title h-21" >{movie.tenPhim}</h5>
+                <h5 className="card-title h-21" >{movie.tenPhim.length > 10 ? <span>{movie.tenPhim.slice(0,10)}....</span>: <span>{movie.tenPhim}</span>}</h5>
                 <p className="card-text text-truncate">{movie.moTa.length > 100 ? <span>{movie.moTa.slice(0, 100)}...</span> : <span>{movie.moTa}</span>}</p>
 
                 <button className="btn btn-dark">
