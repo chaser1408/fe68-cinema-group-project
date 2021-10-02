@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 import movieReducer from "container/clients/MovieList/module/reducers";
 import movieDetailReducer from "container/clients/MovieDetail/module/reducers";
@@ -10,8 +11,8 @@ import userEditUserReducer from "container/admin/UserManagement/UpdateUser/modul
 import clientMovieReducer from "container/clients/MovieInfor/modules/reducer";
 import movieSeatPlanReducer1 from "container/clients/CheckOut/module/reducers";
 import userLoginReducer from "container/shared/LoginUser/modules/reducers";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-// import QuanLyPhimReducer from "components/HomeMovie/module/reducer"
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
@@ -25,11 +26,24 @@ const rootReducer = combineReducers({
   userEditUserReducer,
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["userLoginReducer"],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(
+  persistedReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
+
+const persistor = persistStore(store);
 
 // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-export default store;
+export { store, persistor };
 
 // lấy danh sách người dùng
 //

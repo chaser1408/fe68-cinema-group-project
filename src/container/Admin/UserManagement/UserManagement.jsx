@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +30,7 @@ function UserManagement(props) {
   const renderUserList = () =>
     userManagement?.map((user, idx) => {
       return (
-        <div className="col-4">
+        <div className="col-4" key={idx}>
           <div className="card">
             <img className="card-img-top" src="holder.js/100x180/" alt="" />
             <div className="card-body">
@@ -101,12 +102,6 @@ function UserManagement(props) {
             visible={isModalVisible}
             footer={null}
             onCancel={handleCancel}>
-            {/* onOk={handleOk}
-            onCancel={handleCancel}> */}
-            {/* <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p> */}
-
             <Form
               name="basic"
               labelCol={{
