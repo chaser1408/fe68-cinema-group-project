@@ -144,4 +144,3 @@ export default function QuanLyPhim(props) {
   )
 }
 
-// tai sao mat cai search nhi, ko mất đâu, nó bị đẩy lên

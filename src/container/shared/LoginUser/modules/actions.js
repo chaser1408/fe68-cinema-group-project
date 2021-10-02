@@ -3,6 +3,7 @@ import movieApi from "apis/movieApi";
 import {
   FETCH_LOGIN_SUCCESS,
   LOGOUT,
+  SET_THONG_TIN_NGUOI_DUNG,
   //   FETCH_LOGIN_FAIL,
   //   FETCH_LOGIN_RESQUEST,
 } from "./types";
@@ -40,3 +41,29 @@ export const actLogout = () => ({
   type: LOGOUT,
   payload: null,
 });
+
+
+export const layThongTinNguoiDungAction = (user) => {
+  return async (dispatch) => {
+      try {
+          const result = await movieApi.layThongTinNguoiDungApi(user);
+          console.log("actTTND", result)
+
+
+          if (result.data.statusCode === 200) {
+              dispatch({
+                  type: SET_THONG_TIN_NGUOI_DUNG,
+                  thongTinNguoiDung: result.data.content
+              });
+
+          }
+
+          console.log('result', result);
+
+      } catch (error) {
+          console.log('error', error.response.data);
+      }
+
+  }
+
+}

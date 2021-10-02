@@ -10,9 +10,10 @@ import { DAT_VE } from "container/clients/CheckOut/module/types";
 import _ from "lodash";
 import { ThongTinDatVe } from "_core/models/ThongTinDatVe";
 import { Button } from "antd";
+import { Tabs } from 'antd';
+import {layThongTinNguoiDungAction} from "../../shared/LoginUser/modules/actions"
 
-export default function CheckOut(props) {
-  console.log(".....", props);
+function CheckOut(props) {
 
   const dispatch = useDispatch();
   const { movieSeat, danhSachGheDangDat } = useSelector(
@@ -121,4 +122,68 @@ export default function CheckOut(props) {
       </div>
     </div>
   );
+}
+
+
+
+
+const { TabPane } = Tabs;
+
+function callback(key) {
+  console.log(key);
+}
+
+export default function (props) {
+  return <div>
+
+    <div className="p-5" >
+      <Tabs defaultActiveKey="1" onChange={callback}>
+        <TabPane tab="01 CHỌN GHẾ VÀ THANH TOÁN " key="1">
+          <CheckOut  {...props} />
+        </TabPane>
+        <TabPane tab="02 KẾT QUẢ VÀ ĐẶT VÉ" key="2">
+        <KetQuaDatVe {...props} />
+
+        </TabPane>
+
+      </Tabs>
+    </div>
+
+  </div>
+
+}
+
+
+
+function KetQuaDatVe(props) {
+  console.log("propslichsudatphim", props);
+  const dispatch = useDispatch();
+  const { userLogin,thongTinNguoiDung } = useSelector((state) => state.userLoginReducer);
+  // const { thongTinNguoiDung} = useSelector(state => state.userLoginReducer);
+  console.log('thongTinNguoiDung', thongTinNguoiDung);
+  useEffect((user) => {
+    dispatch(layThongTinNguoiDungAction(user))
+}, [])
+
+
+
+  return (
+    <div className="container p-5">
+
+    
+<section className="text-gray-600 body-font">
+            <div className="container px-5 py-24 mx-auto">
+                <div className="flex flex-col text-center w-full mb-20">
+                    <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4  text-purple-600 ">Lịch sử đặt vé khách hàng</h1>
+                    <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Hãy xem thông tin địa và thời gian để xem phim vui vẻ bạn nhé !</p>
+                </div>
+                <div className="flex flex-wrap -m-2">
+                  hhhh
+                    
+
+                </div>
+            </div>
+        </section>
+    </div>
+  )
 }
