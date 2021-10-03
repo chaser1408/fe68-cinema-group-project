@@ -5,8 +5,10 @@ import "./CheckOut.scss";
 import {
   actFetchMovieSeatApi,
   actDatVe,
-  layThongTinNguoiDungAction,
+ 
 } from "container/clients/CheckOut/module/actions";
+
+import { layThongTinNguoiDungAction} from "../CheckOut/userInfor/modules/action"
 import { CloseOutlined } from "@ant-design/icons";
 import { DAT_VE } from "container/clients/CheckOut/module/types";
 import _ from "lodash";
@@ -19,7 +21,7 @@ import moment from 'moment';
 function CheckOut(props) {
   const dispatch = useDispatch();
   const { movieSeat, danhSachGheDangDat } = useSelector(
-    (state) => state.movieSeatPlanReducer1
+    (state) => state.movieSeatPlanReducer
   );
 
   console.log("seat", movieSeat);
@@ -156,36 +158,33 @@ function KetQuaDatVe(props) {
   const { userLogin } = useSelector((state) => state.userLoginReducer);
 
   const { thongTinNguoiDung } = useSelector(
-    (state) => state.movieSeatPlanReducer1 );
+    (state) => state.thongTinDatVeReducer
+  );
+
+  console.log("thongTinNguoiDung1", thongTinNguoiDung);
 
   useEffect(() => {
     dispatch(layThongTinNguoiDungAction(userLogin));
   }, []);
-
-  console.log("thongTinNguoiDung1", thongTinNguoiDung);
-
-
-  // const renderTicketItem = function () {
-  //   return thongTinNguoiDung.thongTinDatVe.map((ticket, index) => {
-  //     // const seats = _.first(ticket.danhSachGhe);
-
-  //     return <div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={index}>
-  //       <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-  //         <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
-  //         <div className="flex-grow">
-  //           {/* <h2 className="text-pink-500 title-font font-medium text-2xl">{ticket.tenPhim}</h2> */}
-  //           {/* <p className="text-gray-500"><span className="font-bold">Giờ chiếu:</span> {moment(ticket.ngayDat).format('hh:mm A')} - <span className="font-bold">Ngày chiếu:</span>  {moment(ticket.ngayDat).format('DD-MM-YYYY')} .</p> */}
-  //           {/* <p><span className="font-bold">Địa điểm:</span> {seats.tenHeThongRap}   </p> */}
-  //           {/* <p>
-  //             <span className="font-bold">Tên rạp:</span>  {seats.tenCumRap} - <span className="font-bold">Ghế:</span>  {ticket.danhSachGhe.map((ghe, index) => { return <span className="text-green-500 text-xl" key={index}> [ {ghe.tenGhe} ] </span> })}
-  //           </p> */}
-  //         </div>
-  //       </div>
-  //     </div>
-  //   })
-  // }
+  const renderTicketItem = function () {
+    return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
+      const seats = _.first(ticket.danhSachGhe);
+      return <div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={index}>
+        <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
+          <div className="flex-grow">
+            <h2 className="text-pink-500 title-font font-medium text-2xl">{ticket.tenPhim}</h2>
+            <p className="text-gray-500"><span className="font-bold">Giờ chiếu:</span> {moment(ticket.ngayDat).format('hh:mm A')} - <span className="font-bold">Ngày chiếu:</span>  {moment(ticket.ngayDat).format('DD-MM-YYYY')} .</p>
+            <p><span className="font-bold">Địa điểm:</span> {seats.tenHeThongRap}   </p>
+            <p>
+              <span className="font-bold">Tên rạp:</span>  {seats.tenCumRap} - <span className="font-bold">Ghế:</span>  {ticket.danhSachGhe.map((ghe, index) => { return <span className="text-green-500 text-xl" key={index}> [ {ghe.tenGhe} ] </span> })}
+            </p>
+          </div>
+        </div>
+      </div>
+    })
+  }
   return (
-
     <div className="container p-5">
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
@@ -198,17 +197,7 @@ function KetQuaDatVe(props) {
             </p>
           </div>
           <div className="flex flex-wrap -m-2">
-            {/* {renderTicketItem()} */}
-            {thongTinNguoiDung?.thongTinDatVe.map((ticket, index)=>{
-           const seats = _.first(ticket.danhSachGhe);
-
-             <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
-
-
-            })}
-
-            hhhhhh
-
+            {renderTicketItem()}
           </div>
         </div>
       </section>

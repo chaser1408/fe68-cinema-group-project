@@ -9,14 +9,16 @@ import editMovieInforReducer from "container/admin/MovieManager/Edit/modules/red
 import userMagenementReducer from "container/admin/UserManagement/modules/reducers";
 import userEditUserReducer from "container/admin/UserManagement/UpdateUser/modules/reducers";
 import clientMovieReducer from "container/clients/MovieInfor/modules/reducer";
-import movieSeatPlanReducer1 from "container/clients/CheckOut/module/reducers";
+import movieSeatPlanReducer from "container/clients/CheckOut/module/reducers";
 import userLoginReducer from "container/shared/LoginUser/modules/reducers";
+import thongTinDatVeReducer from "container/clients/CheckOut/userInfor/modules/reduces"
 import { composeWithDevTools } from "redux-devtools-extension";
+
 
 const rootReducer = combineReducers({
   movieReducer,
   movieDetailReducer,
-  movieSeatPlanReducer1,
+  movieSeatPlanReducer,
   userLoginReducer,
   movieManagerReducer,
   clientMovieReducer,
@@ -24,6 +26,7 @@ const rootReducer = combineReducers({
   // user - admin
   userMagenementReducer,
   userEditUserReducer,
+  thongTinDatVeReducer
 });
 
 const persistConfig = {
