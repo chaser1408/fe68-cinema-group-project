@@ -46,17 +46,16 @@ export const layThongTinNguoiDungAction = (user) => {
   return async (dispatch) => {
       try {
           const result = await movieApi.layThongTinNguoiDungApi(user);
-          console.log("actTTND", result)
+          console.log("result layThongTinNguoiDungApi", result)
 
 
-          if (result.data.statusCode === 200) {
+          // if (result.data.status === 200) {
               dispatch({
                   type: SET_THONG_TIN_NGUOI_DUNG,
-                  thongTinNguoiDung: result.data.content
+                  payload: result.data.content
               });
-
-          }
-
+          // }
+          
           console.log('result', result);
 
       } catch (error) {

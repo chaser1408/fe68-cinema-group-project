@@ -3,7 +3,7 @@ const initialState = {
   userLogin: null,
   loading: false,
   error: "",
-  thongTinNguoiDung: {}
+  thongTinNguoiDung: null
 };
 const userLoginReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -21,6 +21,9 @@ const userLoginReducer = (state = initialState, { type, payload }) => {
 
     case SET_THONG_TIN_NGUOI_DUNG:
       state.thongTinNguoiDung = payload;
+      console.log('thongTinNguoiDung lalalalala', payload)
+
+      // nó ko chạy vô đây, coi chừng lộn reducer
       return {...state}
     default:
       return state;

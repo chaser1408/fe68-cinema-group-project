@@ -28,6 +28,7 @@ function CheckOut(props) {
     dispatch(actFetchMovieSeatApi(props.match.params.id));
   }, []);
   const { userLogin } = useSelector((state) => state.userLoginReducer);
+
   console.log("objectuser", userLogin);
   const { thongTinPhim, danhSachGhe } = movieSeat;
   const renderSeats = () => {
@@ -159,11 +160,13 @@ export default function (props) {
 function KetQuaDatVe(props) {
   console.log("propslichsudatphim", props);
   const dispatch = useDispatch();
-  const { userLogin,thongTinNguoiDung } = useSelector((state) => state.userLoginReducer);
+
+    const { userLogin, thongTinNguoiDung } = useSelector((state) => state.userLoginReducer)
+
   // const { thongTinNguoiDung} = useSelector(state => state.userLoginReducer);
   console.log('thongTinNguoiDung', thongTinNguoiDung);
-  useEffect((user) => {
-    dispatch(layThongTinNguoiDungAction(user))
+  useEffect(() => {
+    dispatch(layThongTinNguoiDungAction(props.match.params.id))
 }, [])
 
 
@@ -179,7 +182,7 @@ function KetQuaDatVe(props) {
                     <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Hãy xem thông tin địa và thời gian để xem phim vui vẻ bạn nhé !</p>
                 </div>
                 <div className="flex flex-wrap -m-2">
-                  hhhh
+
                     
 
                 </div>
