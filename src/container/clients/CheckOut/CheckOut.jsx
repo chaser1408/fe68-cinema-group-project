@@ -5,18 +5,18 @@ import "./CheckOut.scss";
 import {
   actFetchMovieSeatApi,
   actDatVe,
+  layThongTinNguoiDungAction,
 } from "container/clients/CheckOut/module/actions";
 import { CloseOutlined } from "@ant-design/icons";
 import { DAT_VE } from "container/clients/CheckOut/module/types";
 import _ from "lodash";
 import { ThongTinDatVe } from "_core/models/ThongTinDatVe";
 import { Button } from "antd";
-import { Tabs } from 'antd';
-import {layThongTinNguoiDungAction} from "../../shared/LoginUser/modules/actions"
+import { Tabs } from "antd";
 import moment from 'moment';
 
-function CheckOut(props) {
 
+function CheckOut(props) {
   const dispatch = useDispatch();
   const { movieSeat, danhSachGheDangDat } = useSelector(
     (state) => state.movieSeatPlanReducer1
@@ -85,8 +85,7 @@ function CheckOut(props) {
           {renderSeats()}
         </div>
         <div className="col-4 checkout__right">
-          Tên Phim:{" "}
-          <span>{thongTinPhim?.tenPhim}</span>
+          Tên Phim: <span>{thongTinPhim?.tenPhim}</span>
           <div className="text-red-400 text-lg col-span-3 md:col-span-4 my-auto ml-6 ">
             <span className="text-red-400 text-lg">Ghế:</span>
 
@@ -116,7 +115,7 @@ function CheckOut(props) {
               thongTinDatVe.maLichChieu = props.match.params.id;
               thongTinDatVe.danhSachVe = danhSachGheDangDat;
               console.log("thongtindatve", thongTinDatVe);
-              dispatch(actDatVe(thongTinDatVe));
+              dispatch(actDatVe(userLogin, thongTinDatVe));
             }}
             block>
             Đặt vé
@@ -127,9 +126,6 @@ function CheckOut(props) {
   );
 }
 
-
-
-
 const { TabPane } = Tabs;
 
 function callback(key) {
@@ -137,76 +133,85 @@ function callback(key) {
 }
 
 export default function (props) {
-  return <div>
-
-    <div className="p-5" >
-      <Tabs defaultActiveKey="1" onChange={callback}>
-        <TabPane tab="01 CHỌN GHẾ VÀ THANH TOÁN " key="1">
-          <CheckOut  {...props} />
-        </TabPane>
-        <TabPane tab="02 KẾT QUẢ VÀ ĐẶT VÉ" key="2">
-        <KetQuaDatVe {...props} />
-
-        </TabPane>
-
-      </Tabs>
+  return (
+    <div>
+      <div className="p-5">
+        <Tabs defaultActiveKey="1" onChange={callback}>
+          <TabPane tab="01 CHỌN GHẾ VÀ THANH TOÁN " key="1">
+            <CheckOut {...props} />
+          </TabPane>
+          <TabPane tab="02 KẾT QUẢ VÀ ĐẶT VÉ" key="2">
+            <KetQuaDatVe {...props} />
+          </TabPane>
+        </Tabs>
+      </div>
     </div>
-
-  </div>
-
+  );
 }
-
-
 
 function KetQuaDatVe(props) {
   console.log("propslichsudatphim", props);
   const dispatch = useDispatch();
 
-    const { userLogin, thongTinNguoiDung } = useSelector((state) => state.userLoginReducer)
+  const { userLogin } = useSelector((state) => state.userLoginReducer);
 
-  // const { thongTinNguoiDung} = useSelector(state => state.userLoginReducer);
-  console.log('thongTinNguoiDung', thongTinNguoiDung);
+  const { thongTinNguoiDung } = useSelector(
+    (state) => state.movieSeatPlanReducer1 );
+
   useEffect(() => {
-    dispatch(layThongTinNguoiDungAction(props.match.params.id))
-}, [])
+    dispatch(layThongTinNguoiDungAction(userLogin));
+  }, []);
 
-const renderTicketItem = function () {
-  return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
-      const seats = _.first(ticket.danhSachGhe);
+  console.log("thongTinNguoiDung1", thongTinNguoiDung);
 
-      return <div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={index}>
-          <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-              <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
-              <div className="flex-grow">
-                  <h2 className="text-pink-500 title-font font-medium text-2xl">{ticket.tenPhim}</h2>
-                  <p className="text-gray-500"><span className="font-bold">Giờ chiếu:</span> {moment(ticket.ngayDat).format('hh:mm A')} - <span className="font-bold">Ngày chiếu:</span>  {moment(ticket.ngayDat).format('DD-MM-YYYY')} .</p>
-                  <p><span className="font-bold">Địa điểm:</span> {seats.tenHeThongRap}   </p>
-                  <p>
-                      <span className="font-bold">Tên rạp:</span>  {seats.tenCumRap} - <span className="font-bold">Ghế:</span>  {ticket.danhSachGhe.map((ghe, index) => { return <span className="text-green-500 text-xl" key={index}> [ {ghe.tenGhe} ] </span> })}
-                  </p>
-              </div>
-          </div>
-      </div>
-  })
-}
 
+  // const renderTicketItem = function () {
+  //   return thongTinNguoiDung.thongTinDatVe.map((ticket, index) => {
+  //     // const seats = _.first(ticket.danhSachGhe);
+
+  //     return <div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={index}>
+  //       <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+  //         <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
+  //         <div className="flex-grow">
+  //           {/* <h2 className="text-pink-500 title-font font-medium text-2xl">{ticket.tenPhim}</h2> */}
+  //           {/* <p className="text-gray-500"><span className="font-bold">Giờ chiếu:</span> {moment(ticket.ngayDat).format('hh:mm A')} - <span className="font-bold">Ngày chiếu:</span>  {moment(ticket.ngayDat).format('DD-MM-YYYY')} .</p> */}
+  //           {/* <p><span className="font-bold">Địa điểm:</span> {seats.tenHeThongRap}   </p> */}
+  //           {/* <p>
+  //             <span className="font-bold">Tên rạp:</span>  {seats.tenCumRap} - <span className="font-bold">Ghế:</span>  {ticket.danhSachGhe.map((ghe, index) => { return <span className="text-green-500 text-xl" key={index}> [ {ghe.tenGhe} ] </span> })}
+  //           </p> */}
+  //         </div>
+  //       </div>
+  //     </div>
+  //   })
+  // }
   return (
+
     <div className="container p-5">
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="flex flex-col text-center w-full mb-20">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4  text-purple-600 ">
+              Lịch sử đặt vé khách hàng
+            </h1>
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Hãy xem thông tin địa và thời gian để xem phim vui vẻ bạn nhé !
+            </p>
+          </div>
+          <div className="flex flex-wrap -m-2">
+            {/* {renderTicketItem()} */}
+            {thongTinNguoiDung?.thongTinDatVe.map((ticket, index)=>{
+           const seats = _.first(ticket.danhSachGhe);
 
-    
-<section className="text-gray-600 body-font">
-            <div className="container px-5 py-24 mx-auto">
-                <div className="flex flex-col text-center w-full mb-20">
-                    <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4  text-purple-600 ">Lịch sử đặt vé khách hàng</h1>
-                    <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Hãy xem thông tin địa và thời gian để xem phim vui vẻ bạn nhé !</p>
-                </div>
-                <div className="flex flex-wrap -m-2">
+             <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
 
-                {renderTicketItem()}
 
-                </div>
-            </div>
-        </section>
+            })}
+
+            hhhhhh
+
+          </div>
+        </div>
+      </section>
     </div>
-  )
+  );
 }

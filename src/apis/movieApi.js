@@ -75,12 +75,12 @@ const movieApi = {
     );
   },
   //api DatVe
-  fetchDatVeApi(thongTinDatVe = new ThongTinDatVe()) {
-    return callApiPost(`QuanLyDatVe/DatVe`, thongTinDatVe);
+  fetchDatVeApi(thongTinDatVe = new ThongTinDatVe(), headers) {
+    return callApiPost(`QuanLyDatVe/DatVe`, thongTinDatVe, headers);
   },
-  layThongTinNguoiDungApi(){
-    return callApiPost(`QuanLyNguoiDung/ThongTinTaiKhoan`)
-  }
+  layThongTinNguoiDungApi(headers) {
+    return callApiPost(`QuanLyNguoiDung/ThongTinTaiKhoan`, null, headers);
+  },
 };
 
 export default movieApi;

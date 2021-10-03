@@ -2,15 +2,15 @@
 // import Carousel from "components/carousel/Carousel";
 
 import React, { Component } from "react";
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { actLogout } from "container/shared/LoginUser/modules/actions";
 
 import "./Header.scss";
- class Header extends Component {
+class Header extends Component {
   handleLogout = () => {
     this.props.logout();
-    this.props.history.push('/');
+    this.props.history.push("/");
   };
   render() {
     return (
@@ -52,33 +52,31 @@ import "./Header.scss";
                 </Link>
               </li>
               {this.props.userLogin ? (
-              <li className="nav-item" onClick={this.handleLogout}>
-                <a className="nav-link">Logout</a>
-              </li>
-            ) : (
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              </li>
-            )}
+                <li className="nav-item" onClick={this.handleLogout}>
+                  <a className="nav-link">Logout</a>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Login">
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </nav>
-        <div>
-        </div>
+        <div></div>
         {/* <Carousel /> */}
-
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userLogin: state.userLoginReducer.userLogin,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(actLogout()),
 });
 

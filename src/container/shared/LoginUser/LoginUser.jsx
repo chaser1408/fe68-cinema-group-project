@@ -11,11 +11,9 @@ export default function LoginUser(props) {
 
   const dispatch = useDispatch();
 
-  const { loading,userLogin, thongTinNguoiDung } = useSelector((state) => state.userLoginReducer);
+  const { loading, userLogin } = useSelector((state) => state.userLoginReducer);
 
-  console.log('user Sang test',userLogin);
-
-  console.log('thongTinUser Sang tesst', thongTinNguoiDung);
+  console.log("user Sang test", userLogin);
 
   console.log(loading);
 
@@ -24,11 +22,11 @@ export default function LoginUser(props) {
     console.log("user login:", userLogin);
   }, []);
 
-  const pushCallback = (url) => {
-    history.push(url);
-  };
+  // const pushCallback = (url) => {
+  //   history.push(url);
+  // };
   const onFinish = (values) => {
-    dispatch(loginAction(values, pushCallback));
+    dispatch(loginAction(values, history));
     console.log("thang cong", values);
   };
 

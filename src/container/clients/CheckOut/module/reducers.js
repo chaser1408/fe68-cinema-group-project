@@ -4,6 +4,7 @@ import {
   FETCH_MOVIE_SEAT_SUCCESS,
   DAT_VE,
   DAT_VE_HOAN_TAT,
+  SET_THONG_TIN_NGUOI_DUNG,
   // START_LOADING,
   // STOP_LOADING,
 } from "./types";
@@ -13,7 +14,7 @@ const initialState = {
   loading: false,
   danhSachGheDangDat: [],
   error: "",
-  
+  thongTinNguoiDung: {},
 };
 
 const movieSeatPlanReducer1 = (state = initialState, action) => {
@@ -39,6 +40,13 @@ const movieSeatPlanReducer1 = (state = initialState, action) => {
     }
     case DAT_VE_HOAN_TAT:
       state.danhSachGheDangDat = [];
+      return { ...state };
+
+    case SET_THONG_TIN_NGUOI_DUNG:
+      state.thongTinNguoiDung = action.payload;
+      console.log("thongTinNguoiDung lalalalala", action.payload);
+
+      // nó ko chạy vô đây, coi chừng lộn reducer
       return { ...state };
 
     default:

@@ -1,15 +1,17 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const withLayout = (WrappedComponent) => {
   return ({ component: Component, isPrivate, ...rest }) => {
     console.log("isPrivate", isPrivate);
-    const userLogin = useSelector((state) => state.userLoginReducer.userLogin);
-    const storageUserLogin = localStorage.getItem("userLogin", userLogin);
-    console.log(storageUserLogin, "storageUserLogin");
 
-    console.log(userLogin, "userLogin");
+    const { userLogin } = useSelector((state) => state.userLoginReducer);
+
+    // const storageUserLogin = localStorage.getItem("userLogin", userLogin);
+    // console.log(storageUserLogin, "storageUserLogin");
+
     const content = (
       <Route
         {...rest}
@@ -21,7 +23,7 @@ const withLayout = (WrappedComponent) => {
       />
     );
     if (isPrivate) {
-      if (userLogin || storageUserLogin) {
+      if (userLogin) {
         return content;
       } else {
       
