@@ -2,7 +2,6 @@ import movieApi from "apis/movieApi";
 import {
   FETCH_LOGIN_SUCCESS,
   LOGOUT,
-  SET_THONG_TIN_NGUOI_DUNG,
   //   FETCH_LOGIN_FAIL,
   //   FETCH_LOGIN_RESQUEST,
 } from "./types";
@@ -13,21 +12,21 @@ export const actFetchMovieLoginSuccess = (userLogin) => ({
   payload: userLogin,
 });
 
-export const loginAction = (user, pushCallback) => {
+export const loginAction = (user, history) => {
   return (dispatch) => {
     movieApi
       .fetchMovieUserLoginApi(user)
       .then((rs) => {
         const { content } = rs.data;
         message.success("Xin chao " + content.hoTen, 2);
-        // localStorage.setItem("userLogin", JSON.stringify(content));
+        console.log("object user", user);
+        dispatch(actFetchMovieLoginSuccess(content));
         if (content.maLoaiNguoiDung === "QuanTri") {
-          pushCallback("Admin/MovieManager/");
+          history.push("/Admin/MovieManager");
         } else {
-          pushCallback("/");
+          history.push("/");
         }
         console.log("OK 200 Login");
-        dispatch(actFetchMovieLoginSuccess(content));
       })
       .catch((err) => {
         message.error(err.response.data.content);
@@ -40,28 +39,3 @@ export const actLogout = () => ({
   type: LOGOUT,
   payload: null,
 });
-
-
-export const layThongTinNguoiDungAction = (user) => {
-  return async (dispatch) => {
-      try {
-          const result = await movieApi.layThongTinNguoiDungApi(user);
-          console.log("result layThongTinNguoiDungApi", result)
-
-
-          // if (result.data.status === 200) {
-              dispatch({
-                  type: SET_THONG_TIN_NGUOI_DUNG,
-                  payload: result.data.content
-              });
-          // }
-          
-          console.log('result', result);
-
-      } catch (error) {
-          console.log('error', error.response.data);
-      }
-
-  }
-
-}
