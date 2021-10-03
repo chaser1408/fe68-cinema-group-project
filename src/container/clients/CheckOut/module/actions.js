@@ -20,10 +20,10 @@ export const actDatVe = (thongTinDatVe) => {
   return async (dispatch) => {
     try {
       const res = await movieApi.fetchDatVeApi(thongTinDatVe);
-      console.log("datve,,,,,,,", res.data.contet);
-      alert("datveThanh cong");
+      console.log("datve", res.data.content);
+      alert("datve Thanh cong");
     } catch (err) {
-      console.log("err.................", err.response?.data);
+      console.log("errdatve", err.response?.data);
     }
   };
 };

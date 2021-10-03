@@ -78,6 +78,9 @@ const movieApi = {
   fetchDatVeApi(thongTinDatVe = new ThongTinDatVe()) {
     return callApiPost(`QuanLyDatVe/DatVe`, thongTinDatVe);
   },
+  layThongTinNguoiDungApi(){
+    return callApiPost(`QuanLyNguoiDung/ThongTinTaiKhoan`)
+  }
 };
 
 export default movieApi;

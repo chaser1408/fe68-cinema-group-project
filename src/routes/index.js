@@ -1,3 +1,4 @@
+import Admin from "container/admin/AdminLayout/Admin";
 import UserManagement from "container/admin/UserManagement/UserManagement";
 import Home from "container/clients/Home/Home";
 import MovieDetail from "container/clients/MovieDetail/MovieDetail";
@@ -22,11 +23,6 @@ export const clientRoutes = [
     exact: false,
     isPrivate: false,
   },
-  // {
-  //   path: "/seat-plan/:showTimeId",
-  //   component: SeatPlan,
-  //   exact: false,
-  // },
   {
     path: "/CheckOut/:id",
     component: CheckOut,
@@ -34,7 +30,7 @@ export const clientRoutes = [
     isPrivate: true,
   },
   {
-    path: "/login",
+    path: "/Login",
     component: LoginUser,
     exact: false,
     isPrivate: false,

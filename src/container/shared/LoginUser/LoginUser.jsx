@@ -4,23 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "./modules/actions";
 import { Form, Input, Button } from "antd";
 import "./LoginUser.scss";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function LoginUser(props) {
   const history = useHistory();
 
   const dispatch = useDispatch();
 
-  const { loading } = useSelector((state) => state.userLoginReducer);
+  const { loading,userLogin, thongTinNguoiDung } = useSelector((state) => state.userLoginReducer);
+
+  console.log('user Sang test',userLogin);
+
+  console.log('thongTinUser Sang tesst', thongTinNguoiDung);
 
   console.log(loading);
 
   useEffect(() => {
     const userLogin = JSON.parse(localStorage.getItem("userLogin"));
     console.log("user login:", userLogin);
-    // if (userLogin.taiKhoan !== null) {
-    //     history.push('/');
-    // }
   }, []);
 
   const pushCallback = (url) => {
@@ -37,53 +38,71 @@ export default function LoginUser(props) {
 
   return (
     <div className={`container-fluid loginHeader`}>
-      <Form
-        name="basic"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off">
-        <Form.Item
-          label="Username"
-          name="taiKhoan"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}>
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Password"
-          name="matKhau"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}>
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        <Form
+          name="basic"
+          labelCol={{
+            span: 8,
+          }}
           wrapperCol={{
-            offset: 8,
             span: 16,
-          }}>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-      </Form>
+          }}
+          onFinish={onFinish}
+          style={{ width: "500px" }}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off">
+          <Form.Item
+            label="Username"
+            name="taiKhoan"
+            rules={[
+              {
+                required: true,
+                message: "Please input your username!",
+              },
+            ]}>
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Password"
+            name="matKhau"
+            rules={[
+              {
+                required: true,
+                message: "Please input your password!",
+              },
+            ]}>
+            <Input.Password />
+          </Form.Item>
+
+          <Form.Item
+            name="remember"
+            valuePropName="checked"
+            wrapperCol={{
+              offset: 8,
+              span: 16,
+            }}>
+            <Link className="a login-form-forgot" to="/ForgotPassword">
+              Forgot password?
+            </Link>
+          </Form.Item>
+
+          <Form.Item
+            wrapperCol={{
+              offset: 8,
+              span: 16,
+            }}>
+            <Button type="primary" htmlType="submit">
+              Login
+            </Button>{" "}
+            Or <Link to="/Register">Register now!</Link>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 }

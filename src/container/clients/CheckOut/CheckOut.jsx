@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../CheckOut/CheckOut.scss";
+import "./CheckOut.scss";
 import {
   actFetchMovieSeatApi,
   actDatVe,
@@ -11,9 +11,10 @@ import { DAT_VE } from "container/clients/CheckOut/module/types";
 import _ from "lodash";
 import { ThongTinDatVe } from "_core/models/ThongTinDatVe";
 import { Button } from "antd";
+import { Tabs } from 'antd';
+import {layThongTinNguoiDungAction} from "../../shared/LoginUser/modules/actions"
 
-export default function CheckOut(props) {
-  console.log(".....", props);
+function CheckOut(props) {
 
   const dispatch = useDispatch();
   const { movieSeat, danhSachGheDangDat } = useSelector(
@@ -27,6 +28,7 @@ export default function CheckOut(props) {
     dispatch(actFetchMovieSeatApi(props.match.params.id));
   }, []);
   const { userLogin } = useSelector((state) => state.userLoginReducer);
+
   console.log("objectuser", userLogin);
   const { thongTinPhim, danhSachGhe } = movieSeat;
   const renderSeats = () => {
@@ -75,14 +77,14 @@ export default function CheckOut(props) {
     });
   };
   return (
-    <div className=" container bg__screen   ">
+    <div className="container bg__screen">
       <div className="row">
         <div className="col-8 checkout">
           <div className={`screen`}></div>
           {renderSeats()}
         </div>
         <div className="col-4 checkout__right">
-          Tên Phim:
+          Tên Phim:{" "}
           <span>{thongTinPhim?.tenPhim}</span>
           <div className="text-red-400 text-lg col-span-3 md:col-span-4 my-auto ml-6 ">
             <span className="text-red-400 text-lg">Ghế:</span>
@@ -93,7 +95,7 @@ export default function CheckOut(props) {
           </div>
           <div className="text-right ">
             <span className="text-green-800 text-lg">
-              Giá Vé:
+              Giá Vé:{" "}
               {danhSachGheDangDat
                 .reduce((tongTien, ghe, index) => {
                   return (tongTien += ghe.giaVe);
@@ -102,7 +104,7 @@ export default function CheckOut(props) {
             </span>
           </div>
           <hr />
-          <i className="ml-20">Email</i>
+          <i className="ml-20">Email:</i>
           <div>{userLogin.email}</div>
           <hr />
           <i>Tên Khách Hàng:</i>
@@ -116,10 +118,76 @@ export default function CheckOut(props) {
               dispatch(actDatVe(thongTinDatVe));
             }}
             block>
-            Default
+            Đặt vé
           </Button>
         </div>
       </div>
     </div>
   );
+}
+
+
+
+
+const { TabPane } = Tabs;
+
+function callback(key) {
+  console.log(key);
+}
+
+export default function (props) {
+  return <div>
+
+    <div className="p-5" >
+      <Tabs defaultActiveKey="1" onChange={callback}>
+        <TabPane tab="01 CHỌN GHẾ VÀ THANH TOÁN " key="1">
+          <CheckOut  {...props} />
+        </TabPane>
+        <TabPane tab="02 KẾT QUẢ VÀ ĐẶT VÉ" key="2">
+        <KetQuaDatVe {...props} />
+
+        </TabPane>
+
+      </Tabs>
+    </div>
+
+  </div>
+
+}
+
+
+
+function KetQuaDatVe(props) {
+  console.log("propslichsudatphim", props);
+  const dispatch = useDispatch();
+
+    const { userLogin, thongTinNguoiDung } = useSelector((state) => state.userLoginReducer)
+
+  // const { thongTinNguoiDung} = useSelector(state => state.userLoginReducer);
+  console.log('thongTinNguoiDung', thongTinNguoiDung);
+  useEffect(() => {
+    dispatch(layThongTinNguoiDungAction(props.match.params.id))
+}, [])
+
+
+
+  return (
+    <div className="container p-5">
+
+    
+<section className="text-gray-600 body-font">
+            <div className="container px-5 py-24 mx-auto">
+                <div className="flex flex-col text-center w-full mb-20">
+                    <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4  text-purple-600 ">Lịch sử đặt vé khách hàng</h1>
+                    <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Hãy xem thông tin địa và thời gian để xem phim vui vẻ bạn nhé !</p>
+                </div>
+                <div className="flex flex-wrap -m-2">
+
+                    
+
+                </div>
+            </div>
+        </section>
+    </div>
+  )
 }

@@ -9,9 +9,19 @@ function ClientLayout(props) {
   return (
     <>
       <div className="">
-        <Header />
-        {props.children}
-        <Footer />
+        <div>
+          <Header />
+        </div>
+        <div>
+          {props.children}
+        </div>
+        
+        <div className="mt-20">
+          <Footer />
+
+        </div>
+
+
       </div>
     </>
   );

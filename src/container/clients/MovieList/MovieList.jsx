@@ -91,7 +91,11 @@ export default function MovieList(props) {
                   alt={movie.biDanh}
                 />
                 <div className="card-body">
-                  <h5 className="card-title h-21">{movie.tenPhim}</h5>
+                  <h5 className="card-title h-21"> {movie.tenPhim.length > 10 ? (
+                      <span>{movie.tenPhim.slice(0, 10)}...</span>
+                    ) : (
+                      <span>{movie.tenPhim}</span>
+                    )}</h5>
                   <p className="card-text text-truncate">
                     {movie.moTa.length > 100 ? (
                       <span>{movie.moTa.slice(0, 100)}...</span>
