@@ -42,10 +42,10 @@ export const actLogout = () => ({
 });
 
 
-export const layThongTinNguoiDungAction = (user) => {
+export const layThongTinNguoiDungAction = () => {
   return async (dispatch) => {
       try {
-          const result = await movieApi.layThongTinNguoiDungApi(user);
+          const result = await movieApi.layThongTinNguoiDungApi();
           console.log("result layThongTinNguoiDungApi", result)
 
 

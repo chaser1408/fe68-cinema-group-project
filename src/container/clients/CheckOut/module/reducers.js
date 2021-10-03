@@ -13,6 +13,7 @@ const initialState = {
   loading: false,
   danhSachGheDangDat: [],
   error: "",
+  
 };
 
 const movieSeatPlanReducer1 = (state = initialState, action) => {

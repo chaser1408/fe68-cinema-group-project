@@ -21,10 +21,10 @@ const withLayout = (WrappedComponent) => {
       />
     );
     if (isPrivate) {
-      if (userLogin.taiKhoan || storageUserLogin) {
+      if (userLogin || storageUserLogin) {
         return content;
       } else {
-        alert("Please login!");
+      
         return <Redirect to="/Login" />;
       }
     }
