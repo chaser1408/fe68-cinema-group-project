@@ -3,4 +3,4 @@ export const FETCH_LOGIN_SUCCESS = "FETCH_LOGIN_SUCCESS";
 export const FETCH_LOGIN_FAIL = "FETCH_LOGIN_FAIL";
 export const LOGOUT = 'LOGOUT';
 // user booking Movie
-export const SET_THONG_TIN_NGUOI_DUNG= "SET_THONG_TIN_NGUOI_DUNG";
+// export const SET_THONG_TIN_NGUOI_DUNG= "SET_THONG_TIN_NGUOI_DUNG";

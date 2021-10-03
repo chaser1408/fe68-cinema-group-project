@@ -42,26 +42,26 @@ export const actLogout = () => ({
 });
 
 
-export const layThongTinNguoiDungAction = () => {
-  return async (dispatch) => {
-      try {
-          const result = await movieApi.layThongTinNguoiDungApi();
-          console.log("result layThongTinNguoiDungApi", result)
+// export const layThongTinNguoiDungAction = () => {
+//   return async (dispatch) => {
+//       try {
+//           const result = await movieApi.layThongTinNguoiDungApi();
+//           console.log("result layThongTinNguoiDungApi", result)
 
 
-          // if (result.data.status === 200) {
-              dispatch({
-                  type: SET_THONG_TIN_NGUOI_DUNG,
-                  payload: result.data.content
-              });
-          // }
+//           // if (result.data.status === 200) {
+//               dispatch({
+//                   type: SET_THONG_TIN_NGUOI_DUNG,
+//                   payload: result.data.content
+//               });
+//           // }
           
-          console.log('result', result);
+//           console.log('result', result);
 
-      } catch (error) {
-          console.log('error', error.response.data);
-      }
+//       } catch (error) {
+//           console.log('error', error.response.data);
+//       }
 
-  }
+//   }
 
-}
+// }
