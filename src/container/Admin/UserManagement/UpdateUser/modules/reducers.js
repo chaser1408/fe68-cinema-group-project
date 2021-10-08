@@ -1,4 +1,9 @@
-import { FETCH_GET_USER_FAIL, FETCH_GET_USER_SUCCESS } from "./types";
+import {
+  FETCH_GET_USER_FAIL,
+  FETCH_GET_USER_SUCCESS,
+  FETCH_UPDATE_USER_FAIL,
+  FETCH_UPDATE_USER_SUCCESS,
+} from "./types";
 
 const initialState = {
   userInfo: [],
@@ -12,6 +17,13 @@ const userEditUserReducer = (state = initialState, { type, payload }) => {
       return { ...state, userInfo: payload };
 
     case FETCH_GET_USER_FAIL:
+      return { ...state, err: payload };
+
+    case FETCH_UPDATE_USER_SUCCESS:
+      console.log(payload, "FETCH_UPDATE_USER_SUCCESS");
+      return { ...state, userInfo: payload };
+
+    case FETCH_UPDATE_USER_FAIL:
       return { ...state, err: payload };
 
     default:

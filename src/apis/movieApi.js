@@ -81,6 +81,13 @@ const movieApi = {
   layThongTinNguoiDungApi(headers) {
     return callApiPost(`QuanLyNguoiDung/ThongTinTaiKhoan`, null, headers);
   },
+  fetchUpdateUser(userInfo, headers) {
+    return callApiPost(
+      `QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      userInfo,
+      headers
+    );
+  },
 };
 
 export default movieApi;

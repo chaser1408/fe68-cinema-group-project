@@ -17,6 +17,8 @@ function UserManagement(props) {
     (state) => state.userMagenementReducer
   );
 
+  console.log(userManagement, "userManagement");
+
   useEffect(() => {
     dispatch(actFetchUserManagement());
   }, []);
@@ -111,7 +113,7 @@ function UserManagement(props) {
                 span: 20,
               }}
               initialValues={{
-                remember: true,
+                remember: false,
               }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}

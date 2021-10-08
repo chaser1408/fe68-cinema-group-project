@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Select } from "antd";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { actFetchUserInfo } from "./modules/actions";
+import { actFetchUserInfo, actFetchUserUpdate } from "./modules/actions";
 import "./UpdateUser.scss";
 
 function UpdateUser(props) {
@@ -12,14 +12,23 @@ function UpdateUser(props) {
   const history = useHistory();
   console.log(props);
   const { userInfo } = useSelector((state) => state.userEditUserReducer);
+  const { userLogin } = useSelector((state) => state.userLoginReducer);
   console.log(userInfo, "userInfo");
   useEffect(() => {
-    dispatch(actFetchUserInfo(props.match.params.taiKhoan, pushCallback));
-    console.log(props.match.params.taiKhoan);
+    dispatch(actFetchUserInfo(props.match.params.taiKhoan));
   }, []);
 
-  const pushCallback = (url) => {
-    history.push(url);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const onFinish = (values, history) => {
+    console.log("Success:", values);
+    dispatch(actFetchUserUpdate(values, history, userLogin));
+    setIsModalVisible(false);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+    setIsModalVisible(false);
   };
 
   const renderUserInfo = () =>
@@ -33,18 +42,24 @@ function UpdateUser(props) {
         wrapperCol={{
           span: 20,
         }}
-        initialValues={{
-          remember: true,
-        }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="on"
+        autoComplete="off"
         labelAlign="right"
-        onValuesChange>
+        onValuesChange
+        // form={form}
+        initialValues={{
+          taiKhoan: `${info.taiKhoan}`,
+          matKhau: `${info.matKhau}`,
+          email: `${info.email}`,
+          soDt: `${info.soDt}`,
+          maNhom: `GP02`,
+          maLoaiNguoiDung: `${info.maLoaiNguoiDung}`,
+          hoTen: `${info.hoTen}`,
+        }}>
         <Form.Item
           label="Username"
           name="taiKhoan"
-          initialValues={`${info.taiKhoan}`}
           rules={[
             {
               required: true,
@@ -54,10 +69,31 @@ function UpdateUser(props) {
           <Input />
         </Form.Item>
 
+        {/* <Form.Item
+          shouldUpdate={(prevValues, curValues) =>
+            prevValues.additional !== curValues.additional
+          }>
+          {() => {
+            return (
+              <Form.Item
+                label="Username"
+                name="taiKhoan"
+                value={`${info.taiKhoan}`}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input user's username!",
+                  },
+                ]}>
+                <Input defaultValue={`${info.taiKhoan}`} />
+              </Form.Item>
+            );
+          }}
+        </Form.Item> */}
+
         <Form.Item
           label="Password"
           name="matKhau"
-          initialValues={`${info.matKhau}`}
           rules={[
             {
               required: true,
@@ -70,7 +106,6 @@ function UpdateUser(props) {
         <Form.Item
           label="Email"
           name="email"
-          initialValues={`${info.email}`}
           rules={[
             {
               required: true,
@@ -83,7 +118,6 @@ function UpdateUser(props) {
         <Form.Item
           label="Phone Number"
           name="soDt"
-          initialValues={`${info.soDt}`}
           rules={[
             {
               required: true,
@@ -94,22 +128,36 @@ function UpdateUser(props) {
         </Form.Item>
 
         <Form.Item
-          label="User Role"
-          name="maLoaiNguoiDung"
-          initialValues={`${info.maLoaiNguoiDung}`}
+          label="GROUP NUMBER"
+          name="maNhom"
           rules={[
             {
               required: true,
-              message: "Please input user's role!",
             },
           ]}>
           <Input />
         </Form.Item>
 
         <Form.Item
+          label="User Role"
+          name="maLoaiNguoiDung"
+          rules={[
+            {
+              required: true,
+              message: "Please input user's role!",
+            },
+          ]}>
+          <Select>
+            <Select.Option value="KhachHang">Khách Hàng</Select.Option>
+            <Select.Option value="QuanTri">Quản Trị</Select.Option>
+            {/* <Select.Option value="KhachHang">Khách Hàng</Select.Option> */}
+          </Select>
+          {/* <Input /> */}
+        </Form.Item>
+
+        <Form.Item
           label="User's Fullname"
           name="hoTen"
-          initialValues={`${info.hoTen}`}
           rules={[
             {
               required: true,
@@ -130,22 +178,6 @@ function UpdateUser(props) {
         </Form.Item>
       </Form>
     ));
-  // Button + Modal - Ant Design
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  // Form - Ant Design
-
-  const onFinish = (values) => {
-    console.log("Success:", values);
-
-    setIsModalVisible(false);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-    setIsModalVisible(false);
-  };
 
   return (
     <>
