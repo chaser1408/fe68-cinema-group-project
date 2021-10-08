@@ -21,6 +21,7 @@ const userEditUserReducer = (state = initialState, { type, payload }) => {
 
     case FETCH_UPDATE_USER_SUCCESS:
       console.log(payload, "FETCH_UPDATE_USER_SUCCESS");
+
       return { ...state, userInfo: payload };
 
     case FETCH_UPDATE_USER_FAIL:
