@@ -8,7 +8,8 @@ import {
   const initialState = {
     
     error: "",
-    thongTinNguoiDung: null,
+    thongTinNguoiDung: {},
+    // thongTinDatVe: {}
   };
   
   const thongTinDatVeReducer = (state = initialState, action) => {
