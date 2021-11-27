@@ -6,7 +6,6 @@ import {
   actFetchMovieSeatApi,
   actDatVe,
 } from "container/clients/CheckOut/module/actions";
-
 import { layThongTinNguoiDungAction } from "../CheckOut/userInfor/modules/action";
 import { CloseOutlined } from "@ant-design/icons";
 import { DAT_VE } from "container/clients/CheckOut/module/types";

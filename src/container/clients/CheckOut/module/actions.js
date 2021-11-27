@@ -1,9 +1,6 @@
 /* eslint-disable no-unused-vars */
 import movieApi from "apis/movieApi";
-import {
-  FETCH_MOVIE_SEAT_SUCCESS,
-  FETCH_MOVIE_SEAT_FAIL,
-} from "./types";
+import { FETCH_MOVIE_SEAT_SUCCESS, FETCH_MOVIE_SEAT_FAIL } from "./types";
 
 export const actFetchMovieSeatApi = (showTimeId) => {
   return async (dispatch) => {
@@ -33,4 +30,3 @@ export const actDatVe = (userLogin, thongTinDatVe) => {
     }
   };
 };
-
